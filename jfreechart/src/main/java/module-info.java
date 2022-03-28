@@ -25,19 +25,5 @@ module org.jfree.chart {
     exports org.jfree.chart.text;
     exports org.jfree.chart.text.format;
     exports org.jfree.chart.title;
-    exports org.jfree.chart.urls;
-    exports org.jfree.chart.util;
-    exports org.jfree.data;
-    exports org.jfree.data.category;
-    exports org.jfree.data.flow;    
-    exports org.jfree.data.function;    
-    exports org.jfree.data.gantt;
-    exports org.jfree.data.general;
-    exports org.jfree.data.io;
-    exports org.jfree.data.json;
-    exports org.jfree.data.statistics;
-    exports org.jfree.data.time;
-    exports org.jfree.data.time.ohlc;
-    exports org.jfree.data.xml;
-    exports org.jfree.data.xy;
+   
 }
