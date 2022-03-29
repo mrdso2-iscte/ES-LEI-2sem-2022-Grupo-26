@@ -35,14 +35,23 @@
  */
 
 package org.jfree.chart.plot.compass;
+import java.awt.Graphics2D;
+import java.awt.Rectangle;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.Point2D;
 
+import java.awt.image.BufferedImage;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GradientPaint;
 
+import org.jfree.chart.ChartRenderingInfo;
 import org.jfree.chart.TestUtils;
 import org.jfree.chart.internal.CloneUtils;
+import org.jfree.chart.plot.PlotRenderingInfo;
+import org.jfree.chart.plot.PlotState;
 import org.jfree.data.general.DefaultValueDataset;
+import org.jfree.data.general.ValueDataset;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -66,42 +75,80 @@ public class CompassPlotTest {
         assertNotEquals(plot1, plot2);
         plot2.setLabelType(CompassPlot.VALUE_LABELS);
         assertEquals(plot1, plot2);
+        assertEquals(plot1.getLabelType(), CompassPlot.VALUE_LABELS);
+        assertEquals(plot2.getLabelType(), CompassPlot.VALUE_LABELS);
 
         // labelFont
-        plot1.setLabelFont(new Font("Serif", Font.PLAIN, 10));
+        Font lf = new Font("Serif", Font.PLAIN, 10);
+        plot1.setLabelFont(lf);
         assertNotEquals(plot1, plot2);
-        plot2.setLabelFont(new Font("Serif", Font.PLAIN, 10));
+        plot2.setLabelFont(lf);
         assertEquals(plot1, plot2);
+        assertEquals(plot1.getLabelFont(), lf);
+        assertEquals(plot2.getLabelFont(), lf);
 
         // drawBorder
         plot1.setDrawBorder(true);
         assertNotEquals(plot1, plot2);
         plot2.setDrawBorder(true);
         assertEquals(plot1, plot2);
+        assertEquals(plot1.getDrawBorder(), true);
+        assertEquals(plot1.getDrawBorder(), true);
 
         // rosePaint
-        plot1.setRosePaint(new GradientPaint(1.0f, 2.0f, Color.BLUE,
-                3.0f, 4.0f, Color.YELLOW));
+        GradientPaint gpRose = new GradientPaint(1.0f, 2.0f, Color.BLUE,
+                3.0f, 4.0f, Color.YELLOW);
+        plot1.setRosePaint(gpRose);
         assertNotEquals(plot1, plot2);
-        plot2.setRosePaint(new GradientPaint(1.0f, 2.0f, Color.BLUE,
-                3.0f, 4.0f, Color.YELLOW));
-        assertEquals(plot1, plot2);
+        plot2.setRosePaint(gpRose);
+        assertEquals(plot1, plot2);      
+        assertEquals(plot1.getRosePaint(), gpRose);
+        assertEquals(plot2.getRosePaint(), gpRose);
 
         // roseCenterPaint
-        plot1.setRoseCenterPaint(new GradientPaint(1.0f, 2.0f, Color.RED,
-                3.0f, 4.0f, Color.YELLOW));
+        GradientPaint gpCenter = new GradientPaint(1.0f, 2.0f, Color.RED,
+                3.0f, 4.0f, Color.YELLOW);
+        plot1.setRoseCenterPaint(gpCenter);
         assertNotEquals(plot1, plot2);
-        plot2.setRoseCenterPaint(new GradientPaint(1.0f, 2.0f, Color.RED,
-                3.0f, 4.0f, Color.YELLOW));
+        plot2.setRoseCenterPaint(gpCenter);
         assertEquals(plot1, plot2);
+        assertEquals(plot1.getRoseCenterPaint(), gpCenter);
+        assertEquals(plot2.getRoseCenterPaint(), gpCenter);
 
         // roseHighlightPaint
-        plot1.setRoseHighlightPaint(new GradientPaint(1.0f, 2.0f, Color.GREEN,
-                3.0f, 4.0f, Color.YELLOW));
+        GradientPaint gpHighlight = new GradientPaint(1.0f, 2.0f, Color.GREEN,
+                3.0f, 4.0f, Color.YELLOW);
+        plot1.setRoseHighlightPaint(gpHighlight);
         assertNotEquals(plot1, plot2);
-        plot2.setRoseHighlightPaint(new GradientPaint(1.0f, 2.0f, Color.GREEN,
-                3.0f, 4.0f, Color.YELLOW));
+        plot2.setRoseHighlightPaint(gpHighlight);
         assertEquals(plot1, plot2);
+        assertEquals(plot1.getRoseHighlightPaint(), gpHighlight);
+        assertEquals(plot2.getRoseHighlightPaint(), gpHighlight);
+        
+        //plotType
+        assertEquals(plot1.getPlotType(), plot2.getPlotType());
+        
+        //Dataset
+        ValueDataset vd = new DefaultValueDataset();
+        MeterNeedle needle = null;
+        plot1.addDataset(vd);
+        plot1.addDataset(vd, needle);
+        assertNotEquals(plot1, plot2);
+        plot2.addDataset(vd);
+        plot2.addDataset(vd, needle);
+        assertEquals(plot1, plot2);
+        
+        //draw
+        BufferedImage image = new BufferedImage(200, 400, BufferedImage.TYPE_INT_ARGB);        
+        Graphics2D g2 = (Graphics2D) image.getGraphics();
+        Rectangle2D area = new Rectangle(200, 400);
+        Point2D anchor = null;
+        PlotState parentState = new PlotState();
+        PlotRenderingInfo info = new PlotRenderingInfo(new ChartRenderingInfo());
+        plot1.draw(g2, area, anchor, parentState, info);
+        plot1.draw(g2, area, anchor, parentState, info);
+
+        
     }
 
     /**
