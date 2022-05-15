@@ -21,9 +21,9 @@ public class GapSpiderWebPlot implements Serializable {
 	/** The gap between the labels and the axes as a %age of the radius. */
 	public double axisLabelGap;
 	
-	private SpiderWebPlot swp;
+	private Plot swp;
 
-	public GapSpiderWebPlot(SpiderWebPlot swp) {
+	public GapSpiderWebPlot(Plot swp) {
 		this.interiorGap = DEFAULT_INTERIOR_GAP;
 		this.axisLabelGap = DEFAULT_AXIS_LABEL_GAP;
 		this.swp=swp;

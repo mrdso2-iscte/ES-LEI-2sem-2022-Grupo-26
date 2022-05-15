@@ -91,6 +91,7 @@ public class SpiderWebPlot extends Plot implements Cloneable, Serializable {
     /** The default series label paint. */
     public static final Paint  DEFAULT_LABEL_PAINT = Color.BLACK;
 
+  
     /** The default series label background paint. */
     public static final Paint  DEFAULT_LABEL_BACKGROUND_PAINT
             = new Color(255, 255, 192);
