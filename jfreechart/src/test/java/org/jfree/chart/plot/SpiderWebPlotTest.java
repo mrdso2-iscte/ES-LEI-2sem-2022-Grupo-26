@@ -88,9 +88,9 @@ public class SpiderWebPlotTest {
         assertEquals(p1, p2);
 
         // interiorGap
-        p1.setInteriorGap(0.123);
+        p1.getGapData().setInteriorGap(0.123);
         assertNotEquals(p1, p2);
-        p2.setInteriorGap(0.123);
+        p2.getGapData().setInteriorGap(0.123);
         assertEquals(p1, p2);
 
         // startAngle
@@ -170,9 +170,9 @@ public class SpiderWebPlotTest {
         assertEquals(p1, p2);
 
         // axisLabelGap
-        p1.setAxisLabelGap(0.11);
+        p1.getGapData().setAxisLabelGap(0.11);
         assertNotEquals(p1, p2);
-        p2.setAxisLabelGap(0.11);
+        p2.getGapData().setAxisLabelGap(0.11);
         assertEquals(p1, p2);
 
         // labelFont
