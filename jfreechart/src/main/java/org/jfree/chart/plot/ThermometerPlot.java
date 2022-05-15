@@ -79,6 +79,7 @@ import org.jfree.data.general.DatasetChangeEvent;
 import org.jfree.data.general.DefaultValueDataset;
 import org.jfree.data.general.ValueDataset;
 
+
 /**
  * A plot that displays a single value (from a {@link ValueDataset}) in a
  * thermometer type display.
@@ -103,30 +104,6 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
     /** For serialization. */
     private static final long serialVersionUID = 4087093313147984390L;
 
-    /** A constant for unit type 'None'. */
-    public static final int UNITS_NONE = 0;
-
-    /** A constant for unit type 'Fahrenheit'. */
-    public static final int UNITS_FAHRENHEIT = 1;
-
-    /** A constant for unit type 'Celcius'. */
-    public static final int UNITS_CELCIUS = 2;
-
-    /** A constant for unit type 'Kelvin'. */
-    public static final int UNITS_KELVIN = 3;
-
-    /** A constant for the value label position (no label). */
-    public static final int NONE = 0;
-
-    /** A constant for the value label position (right of the thermometer). */
-    public static final int RIGHT = 1;
-
-    /** A constant for the value label position (left of the thermometer). */
-    public static final int LEFT = 2;
-
-    /** A constant for the value label position (in the thermometer bulb). */
-    public static final int BULB = 3;
-
     /** A constant for the 'normal' range. */
     public static final int NORMAL = 0;
 
@@ -139,9 +116,7 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
     /** The axis gap. */
     protected static final int AXIS_GAP = 10;
 
-    /** The unit strings. */
-    protected static final String[] UNITS = {"", "\u00B0F", "\u00B0C",
-            "\u00B0K"};
+    
 
     /** Index for low value in subrangeInfo matrix. */
     protected static final int RANGE_LOW = 0;
@@ -213,15 +188,17 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
 
     /** Paint for drawing the thermometer */
     private transient Paint thermometerPaint = Color.BLACK;
+    
+    //    /** The display units */
+    //private int units = UNITS_CELCIUS;
 
-    /** The display units */
-    private int units = UNITS_CELCIUS;
+    private UnitsThermometerPlot unitData;
 
-    /** The value label position. */
-    private int valueLocation = BULB;
+	/** The value label position. */
+    private int valueLocation = PositionLabels.BULB;
 
     /** The position of the axis **/
-    private int axisLocation = LEFT;
+    private int axisLocation = PositionLabels.LEFT;
 
     /** The font to write the value in */
     private Font valueFont = new Font("SansSerif", Font.BOLD, 16);
@@ -283,7 +260,6 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
     public ThermometerPlot() {
         this(new DefaultValueDataset());
     }
-
     /**
      * Creates a new thermometer plot, using default attributes where necessary.
      *
@@ -306,6 +282,7 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
         axis.addChangeListener(this);
         this.rangeAxis = axis;
         setAxisRange();
+        this.unitData = new UnitsThermometerPlot(this, Units.UNITS_CELCIUS);
     }
 
     /**
@@ -348,7 +325,11 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
 
     }
 
-    /**
+    public UnitsThermometerPlot getUnitData() {
+		return unitData;
+	}
+
+	/**
      * Returns the range axis.
      *
      * @return The range axis (never {@code null}).
@@ -518,43 +499,10 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
         }
     }
 
-    /**
-     * Returns a code indicating the unit display type.  This is one of
-     * {@link #UNITS_NONE}, {@link #UNITS_FAHRENHEIT}, {@link #UNITS_CELCIUS}
-     * and {@link #UNITS_KELVIN}.
-     *
-     * @return The units type.
-     *
-     * @see #setUnits(int)
-     */
-    public int getUnits() {
-        return this.units;
-    }
+   
 
-    /**
-     * Sets the units to be displayed in the thermometer. Use one of the
-     * following constants:
-     *
-     * <ul>
-     * <li>UNITS_NONE : no units displayed.</li>
-     * <li>UNITS_FAHRENHEIT : units displayed in Fahrenheit.</li>
-     * <li>UNITS_CELCIUS : units displayed in Celcius.</li>
-     * <li>UNITS_KELVIN : units displayed in Kelvin.</li>
-     * </ul>
-     *
-     * @param u  the new unit type.
-     *
-     * @see #getUnits()
-     */
-    public void setUnits(int u) {
-        if ((u >= 0) && (u < UNITS.length)) {
-            if (this.units != u) {
-                this.units = u;
-                fireChangeEvent();
-            }
-        }
-    }
-
+   
+  
     /**
      * Returns a code indicating the location at which the value label is
      * displayed.
@@ -1095,7 +1043,7 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
             }
 
             // draw the axis...
-            if ((this.rangeAxis != null) && (this.axisLocation != NONE)) {
+            if ((this.rangeAxis != null) && (this.axisLocation != PositionLabels.NONE)) {
                 int drawWidth = AXIS_GAP;
                 if (this.showValueLines) {
                     drawWidth += getColumnDiameter();
@@ -1104,7 +1052,7 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
                 double cursor;
 
                 switch (this.axisLocation) {
-                    case RIGHT:
+                    case PositionLabels.RIGHT:
                         cursor = midX + getColumnRadius();
                         drawArea = new Rectangle2D.Double(cursor,
                                 stemTop, drawWidth, (stemBottom - stemTop + 1));
@@ -1112,7 +1060,7 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
                                 RectangleEdge.RIGHT, null);
                         break;
 
-                    case LEFT:
+                    case PositionLabels.LEFT:
                     default:
                         //cursor = midX - COLUMN_RADIUS - AXIS_GAP;
                         cursor = midX - getColumnRadius();
@@ -1130,17 +1078,17 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
             g2.setPaint(this.valuePaint);
             metrics = g2.getFontMetrics();
             switch (this.valueLocation) {
-                case RIGHT:
+                case PositionLabels.RIGHT:
                     g2.drawString(this.valueFormat.format(current),
                             midX + getColumnRadius() + getGap(), midY);
                     break;
-                case LEFT:
+                case PositionLabels.LEFT:
                     String valueString = this.valueFormat.format(current);
                     int stringWidth = metrics.stringWidth(valueString);
                     g2.drawString(valueString, midX - getColumnRadius()
                             - getGap() - stringWidth, midY);
                     break;
-                case BULB:
+                case PositionLabels.BULB:
                     temp = this.valueFormat.format(current);
                     i = metrics.stringWidth(temp) / 2;
                     g2.drawString(temp, midX - i,
@@ -1157,9 +1105,9 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
         //  draw units indicator
         metrics = g2.getFontMetrics();
         int tickX1 = midX - getColumnRadius() - getGap() * 2
-                     - metrics.stringWidth(UNITS[this.units]);
+                     - metrics.stringWidth(Units.UNITS[this.unitData.units]);
         if (tickX1 > area.getMinX()) {
-            g2.drawString(UNITS[this.units], tickX1,
+            g2.drawString(Units.UNITS[this.unitData.units], tickX1,
                     (int) (area.getMinY() + 20));
         }
 
@@ -1359,7 +1307,7 @@ public class ThermometerPlot extends Plot implements ValueAxisPlot,
                 that.thermometerPaint)) {
             return false;
         }
-        if (this.units != that.units) {
+        if (this.unitData.units != that.unitData.units) {
             return false;
         }
         if (this.valueLocation != that.valueLocation) {
