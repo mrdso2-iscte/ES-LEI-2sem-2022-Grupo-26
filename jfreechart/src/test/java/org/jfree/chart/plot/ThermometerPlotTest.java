@@ -45,7 +45,7 @@ import java.text.DecimalFormat;
 import org.jfree.chart.TestUtils;
 import org.jfree.chart.api.RectangleInsets;
 import org.jfree.chart.internal.CloneUtils;
-
+import org.jfree.data.general.DefaultValueDataset;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -87,21 +87,21 @@ public class ThermometerPlotTest {
         assertEquals(p2, p1);
 
         // units
-        p1.setUnits(ThermometerPlot.UNITS_KELVIN);
+        p1.getUnitData().setUnits(Units.UNITS_KELVIN);
         assertNotEquals(p1, p2);
-        p2.setUnits(ThermometerPlot.UNITS_KELVIN);
+        p2.getUnitData().setUnits(Units.UNITS_KELVIN);
         assertEquals(p2, p1);
 
         // valueLocation
-        p1.setValueLocation(ThermometerPlot.LEFT);
+        p1.setValueLocation(PositionLabels.LEFT);
         assertNotEquals(p1, p2);
-        p2.setValueLocation(ThermometerPlot.LEFT);
+        p2.setValueLocation(PositionLabels.LEFT);
         assertEquals(p2, p1);
 
         // axisLocation
-        p1.setAxisLocation(ThermometerPlot.RIGHT);
+        p1.setAxisLocation(PositionLabels.RIGHT);
         assertNotEquals(p1, p2);
-        p2.setAxisLocation(ThermometerPlot.RIGHT);
+        p2.setAxisLocation(PositionLabels.RIGHT);
         assertEquals(p2, p1);
 
         // valueFont
@@ -178,6 +178,7 @@ public class ThermometerPlotTest {
     @Test
     public void testSerialization() {
         ThermometerPlot p1 = new ThermometerPlot();
+        System.out.println(p1);
         ThermometerPlot p2 = TestUtils.serialised(p1);
         assertEquals(p1, p2);
     }
