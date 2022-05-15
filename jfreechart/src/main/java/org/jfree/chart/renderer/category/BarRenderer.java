@@ -149,18 +149,6 @@ public class BarRenderer extends AbstractCategoryItemRenderer
         BarRenderer.defaultShadowsVisible = visible;
     }
 
-    /** The margin between items (bars) within a category. */
-    private double itemMargin;
-
-    /** A flag that controls whether or not bar outlines are drawn. */
-    private boolean drawBarOutline;
-
-    /** The maximum bar width as a percentage of the available space. */
-    private double maximumBarWidth;
-
-    /** The minimum bar length (in Java2D units). */
-    private double minimumBarLength;
-
     /**
      * An optional class used to transform gradient paint objects to fit each
      * bar.
@@ -187,21 +175,9 @@ public class BarRenderer extends AbstractCategoryItemRenderer
     private double lowerClip;
     // TODO:  this needs to move into the renderer state
 
-    /** The base value for the bars (defaults to 0.0). */
-    private double base;
+    private Bar bar;
 
-    /**
-     * A flag that controls whether the base value is included in the range
-     * returned by the findRangeBounds() method.
-     */
-    private boolean includeBaseInRange;
-
-    /**
-     * The bar painter (never {@code null}).
-     */
-    private BarPainter barPainter;
-
-    /**
+	/**
      * The flag that controls whether or not shadows are drawn for the bars.
      */
     private boolean shadowsVisible;
@@ -221,27 +197,24 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      */
     private double shadowYOffset;
 
+	private BarPainter barPainter;
+
     /**
      * Creates a new bar renderer with default settings.
      */
     public BarRenderer() {
         super();
-        this.base = 0.0;
-        this.includeBaseInRange = true;
-        this.itemMargin = DEFAULT_ITEM_MARGIN;
-        this.drawBarOutline = false;
-        this.maximumBarWidth = 1.0;
+        this.bar = new Bar(0.0, true, DEFAULT_ITEM_MARGIN, false, 1.0, 0.0);
             // 100 percent, so it will not apply unless changed
         this.positiveItemLabelPositionFallback = null;
         this.negativeItemLabelPositionFallback = null;
         this.gradientPaintTransformer = new StandardGradientPaintTransformer();
-        this.minimumBarLength = 0.0;
         setDefaultLegendShape(new Rectangle2D.Double(-4.0, -4.0, 8.0, 8.0));
-        this.barPainter = getDefaultBarPainter();
         this.shadowsVisible = getDefaultShadowsVisible();
         this.shadowPaint = Color.GRAY;
         this.shadowXOffset = 4.0;
         this.shadowYOffset = 4.0;
+        this.barPainter=getDefaultBarPainter();
     }
 
     /**
@@ -253,7 +226,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      * @see #setBase(double)
      */
     public double getBase() {
-        return this.base;
+        return this.bar.base;
     }
 
     /**
@@ -265,7 +238,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      * @see #getBase()
      */
     public void setBase(double base) {
-        this.base = base;
+        this.bar.base = base;
         fireChangeEvent();
     }
 
@@ -278,7 +251,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      * @see #setItemMargin(double)
      */
     public double getItemMargin() {
-        return this.itemMargin;
+        return this.bar.itemMargin;
     }
 
     /**
@@ -292,7 +265,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      * @see #getItemMargin()
      */
     public void setItemMargin(double percent) {
-        this.itemMargin = percent;
+        this.bar.itemMargin = percent;
         fireChangeEvent();
     }
 
@@ -304,7 +277,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      * @see #setDrawBarOutline(boolean)
      */
     public boolean isDrawBarOutline() {
-        return this.drawBarOutline;
+        return this.bar.drawBarOutline;
     }
 
     /**
@@ -316,7 +289,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      * @see #isDrawBarOutline()
      */
     public void setDrawBarOutline(boolean draw) {
-        this.drawBarOutline = draw;
+        this.bar.drawBarOutline = draw;
         fireChangeEvent();
     }
 
@@ -329,7 +302,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      * @see #setMaximumBarWidth(double)
      */
     public double getMaximumBarWidth() {
-        return this.maximumBarWidth;
+        return this.bar.maximumBarWidth;
     }
 
     /**
@@ -342,7 +315,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      * @see #getMaximumBarWidth()
      */
     public void setMaximumBarWidth(double percent) {
-        this.maximumBarWidth = percent;
+        this.bar.maximumBarWidth = percent;
         fireChangeEvent();
     }
 
@@ -355,7 +328,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      * @see #setMinimumBarLength(double)
      */
     public double getMinimumBarLength() {
-        return this.minimumBarLength;
+        return this.bar.minimumBarLength;
     }
 
     /**
@@ -376,7 +349,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
         if (min < 0.0) {
             throw new IllegalArgumentException("Requires 'min' >= 0.0");
         }
-        this.minimumBarLength = min;
+        this.bar.minimumBarLength = min;
         fireChangeEvent();
     }
 
@@ -471,7 +444,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      * @see #setIncludeBaseInRange(boolean)
      */
     public boolean getIncludeBaseInRange() {
-        return this.includeBaseInRange;
+        return this.bar.includeBaseInRange;
     }
 
     /**
@@ -485,13 +458,13 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      * @see #getIncludeBaseInRange()
      */
     public void setIncludeBaseInRange(boolean include) {
-        if (this.includeBaseInRange != include) {
-            this.includeBaseInRange = include;
+        if (this.bar.includeBaseInRange != include) {
+            this.bar.includeBaseInRange = include;
             fireChangeEvent();
         }
     }
-
-    /**
+	
+	/**
      * Returns the bar painter.
      *
      * @return The bar painter (never {@code null}).
@@ -501,7 +474,6 @@ public class BarRenderer extends AbstractCategoryItemRenderer
     public BarPainter getBarPainter() {
         return this.barPainter;
     }
-
     /**
      * Sets the bar painter for this renderer and sends a
      * {@link RendererChangeEvent} to all registered listeners.
@@ -510,11 +482,16 @@ public class BarRenderer extends AbstractCategoryItemRenderer
      *
      * @see #getBarPainter()
      */
+    
     public void setBarPainter(BarPainter painter) {
         Args.nullNotPermitted(painter, "painter");
         this.barPainter = painter;
         fireChangeEvent();
     }
+       
+    
+    
+   
 
     /**
      * Returns the flag that controls whether or not shadows are drawn for
@@ -764,8 +741,8 @@ public class BarRenderer extends AbstractCategoryItemRenderer
     protected double[] calculateBarL0L1(double value) {
         double lclip = getLowerClip();
         double uclip = getUpperClip();
-        double barLow = Math.min(this.base, value);
-        double barHigh = Math.max(this.base, value);
+        double barLow = Math.min(this.bar.base, value);
+        double barHigh = Math.max(this.bar.base, value);
         if (barHigh < lclip) {  // bar is not visible
             return null;
         }
@@ -797,8 +774,8 @@ public class BarRenderer extends AbstractCategoryItemRenderer
         }
         Range result = super.findRangeBounds(dataset, includeInterval);
         if (result != null) {
-            if (this.includeBaseInRange) {
-                result = Range.expandToInclude(result, this.base);
+            if (this.bar.includeBaseInRange) {
+                result = Range.expandToInclude(result, this.bar.base);
             }
         }
         return result;
@@ -915,7 +892,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
         // relative to the base value and (b) whether or not the range axis is
         // inverted.  This only matters if/when we apply the minimumBarLength
         // attribute, because we should extend the non-base end of the bar
-        boolean positive = (value >= this.base);
+        boolean positive = (value >= this.bar.base);
         boolean inverted = rangeAxis.isInverted();
         double barL0 = Math.min(transL0, transL1);
         double barLength = Math.abs(transL1 - transL0);
@@ -960,10 +937,10 @@ public class BarRenderer extends AbstractCategoryItemRenderer
             beginElementGroup(g2, key);
         }
         if (getShadowsVisible()) {
-            this.barPainter.paintBarShadow(g2, this, row, column, bar, barBase,
+            this.getBarPainter().paintBarShadow(g2, this, row, column, bar, barBase,
                 true);
         }
-        this.barPainter.paintBar(g2, this, row, column, bar, barBase);
+        this.getBarPainter().paintBar(g2, this, row, column, bar, barBase);
         if (state.getElementHinting()) {
             endElementGroup(g2);
         }
@@ -1236,19 +1213,19 @@ public class BarRenderer extends AbstractCategoryItemRenderer
             return false;
         }
         BarRenderer that = (BarRenderer) obj;
-        if (this.base != that.base) {
+        if (this.bar.base != that.bar.base) {
             return false;
         }
-        if (this.itemMargin != that.itemMargin) {
+        if (this.bar.itemMargin != that.bar.itemMargin) {
             return false;
         }
-        if (this.drawBarOutline != that.drawBarOutline) {
+        if (this.bar.drawBarOutline != that.bar.drawBarOutline) {
             return false;
         }
-        if (this.maximumBarWidth != that.maximumBarWidth) {
+        if (this.bar.maximumBarWidth != that.bar.maximumBarWidth) {
             return false;
         }
-        if (this.minimumBarLength != that.minimumBarLength) {
+        if (this.bar.minimumBarLength != that.bar.minimumBarLength) {
             return false;
         }
         if (!Objects.equals(this.gradientPaintTransformer, that.gradientPaintTransformer)) {
@@ -1260,7 +1237,7 @@ public class BarRenderer extends AbstractCategoryItemRenderer
         if (!Objects.equals(this.negativeItemLabelPositionFallback, that.negativeItemLabelPositionFallback)) {
             return false;
         }
-        if (!this.barPainter.equals(that.barPainter)) {
+        if (!this.getBarPainter().equals(that.getBarPainter())) {
             return false;
         }
         if (this.shadowsVisible != that.shadowsVisible) {
