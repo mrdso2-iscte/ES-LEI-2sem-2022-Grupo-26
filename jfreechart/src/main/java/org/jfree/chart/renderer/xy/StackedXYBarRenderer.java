@@ -341,7 +341,7 @@ public class StackedXYBarRenderer extends XYBarRenderer {
         }
 
         if (pass == 0) {
-            if (getShadowsVisible()) {
+            if (getShadows().getShadowsVisible()) {
                 getBarPainter().paintBarShadow(g2, this, series, item, bar,
                         barBase, false);
             }

@@ -293,7 +293,7 @@ public class ClusteredXYBarRenderer extends XYBarRenderer
                 barBase = RectangleEdge.TOP;
             }
         }
-        if (pass == 0 && getShadowsVisible()) {
+        if (pass == 0 && getShadows().getShadowsVisible()) {
             getBarPainter().paintBarShadow(g2, this, series, item, bar, barBase,
                     !getUseYInterval());
         }
