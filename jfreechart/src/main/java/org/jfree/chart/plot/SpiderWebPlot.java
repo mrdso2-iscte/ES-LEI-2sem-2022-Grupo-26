@@ -80,15 +80,7 @@ public class SpiderWebPlot extends Plot implements Cloneable, Serializable {
     /** The default head radius percent (currently 1%). */
     public static final double DEFAULT_HEAD = 0.01;
 
-    /** The default axis label gap (currently 10%). */
-    public static final double DEFAULT_AXIS_LABEL_GAP = 0.10;
-
-    /** The default interior gap. */
-    public static final double DEFAULT_INTERIOR_GAP = 0.25;
-
-    /** The maximum interior gap (currently 40%). */
-    public static final double MAX_INTERIOR_GAP = 0.40;
-
+   
     /** The default starting angle for the radar chart axes. */
     public static final double DEFAULT_START_ANGLE = 90.0;
 
@@ -99,6 +91,7 @@ public class SpiderWebPlot extends Plot implements Cloneable, Serializable {
     /** The default series label paint. */
     public static final Paint  DEFAULT_LABEL_PAINT = Color.BLACK;
 
+  
     /** The default series label background paint. */
     public static final Paint  DEFAULT_LABEL_BACKGROUND_PAINT
             = new Color(255, 255, 192);
@@ -121,14 +114,11 @@ public class SpiderWebPlot extends Plot implements Cloneable, Serializable {
 
     /** The head radius as a percentage of the available drawing area. */
     protected double headPercent;
+    
+    /** nova class gap*/
+    private GapSpiderWebPlot gapData;
 
-    /** The space left around the outside of the plot as a percentage. */
-    private double interiorGap;
-
-    /** The gap between the labels and the axes as a %age of the radius. */
-    private double axisLabelGap;
-
-    /** The paint used to draw the axis lines. */
+	/** The paint used to draw the axis lines. */
     private transient Paint axisLinePaint;
 
     /** The stroke used to draw the axis lines. */
@@ -224,14 +214,15 @@ public class SpiderWebPlot extends Plot implements Cloneable, Serializable {
         if (dataset != null) {
             dataset.addChangeListener(this);
         }
+        
+        this.gapData= new GapSpiderWebPlot(this);
 
         this.dataExtractOrder = extract;
-        this.headPercent = DEFAULT_HEAD;
-        this.axisLabelGap = DEFAULT_AXIS_LABEL_GAP;
+        this.headPercent = DEFAULT_HEAD;      
         this.axisLinePaint = Color.BLACK;
         this.axisLineStroke = new BasicStroke(1.0f);
 
-        this.interiorGap = DEFAULT_INTERIOR_GAP;
+    
         this.startAngle = DEFAULT_START_ANGLE;
         this.direction = Rotation.CLOCKWISE;
         this.maxValue = DEFAULT_MAX_VALUE;
@@ -273,8 +264,14 @@ public class SpiderWebPlot extends Plot implements Cloneable, Serializable {
     public CategoryDataset getDataset() {
         return this.dataset;
     }
+    
+    
 
-    /**
+    public GapSpiderWebPlot getGapData() {
+		return gapData;
+	}
+
+	/**
      * Sets the dataset used by the plot and sends a {@link PlotChangeEvent}
      * to all registered listeners.
      *
@@ -457,61 +454,10 @@ public class SpiderWebPlot extends Plot implements Cloneable, Serializable {
         fireChangeEvent();
     }
 
-    /**
-     * Returns the interior gap, measured as a percentage of the available
-     * drawing space.
-     *
-     * @return The gap (as a percentage of the available drawing space).
-     *
-     * @see #setInteriorGap(double)
-     */
-    public double getInteriorGap() {
-        return this.interiorGap;
-    }
+    
+    
+ 
 
-    /**
-     * Sets the interior gap and sends a {@link PlotChangeEvent} to all
-     * registered listeners. This controls the space between the edges of the
-     * plot and the plot area itself (the region where the axis labels appear).
-     *
-     * @param percent  the gap (as a percentage of the available drawing space).
-     *
-     * @see #getInteriorGap()
-     */
-    public void setInteriorGap(double percent) {
-        if ((percent < 0.0) || (percent > MAX_INTERIOR_GAP)) {
-            throw new IllegalArgumentException(
-                    "Percentage outside valid range.");
-        }
-        if (this.interiorGap != percent) {
-            this.interiorGap = percent;
-            fireChangeEvent();
-        }
-    }
-
-    /**
-     * Returns the axis label gap.
-     *
-     * @return The axis label gap.
-     *
-     * @see #setAxisLabelGap(double)
-     */
-    public double getAxisLabelGap() {
-        return this.axisLabelGap;
-    }
-
-    /**
-     * Sets the axis label gap and sends a {@link PlotChangeEvent} to all
-     * registered listeners.
-     *
-     * @param gap  the gap.
-     *
-     * @see #getAxisLabelGap()
-     */
-    public void setAxisLabelGap(double gap) {
-        this.axisLabelGap = gap;
-        fireChangeEvent();
-    }
 
     /**
      * Returns the paint used to draw the axis lines.
@@ -997,15 +943,13 @@ public class SpiderWebPlot extends Plot implements Cloneable, Serializable {
 
             // Next, setup the plot area
 
-            // adjust the plot area by the interior spacing value
+            // adjust the plot area by the interior spacing value          
+           
 
-            double gapHorizontal = area.getWidth() * getInteriorGap();
-            double gapVertical = area.getHeight() * getInteriorGap();
-
-            double X = area.getX() + gapHorizontal / 2;
-            double Y = area.getY() + gapVertical / 2;
-            double W = area.getWidth() - gapHorizontal;
-            double H = area.getHeight() - gapVertical;
+            double X = area.getX() + gapData.gapHorizontal(area) / 2;
+            double Y = area.getY() + gapData.gapVertical(area) / 2;
+            double W = area.getWidth() - gapData.gapHorizontal(area);
+            double H = area.getHeight() - gapData.gapVertical(area);
 
             double headW = area.getWidth() * this.headPercent;
             double headH = area.getHeight() * this.headPercent;
@@ -1272,9 +1216,9 @@ public class SpiderWebPlot extends Plot implements Cloneable, Serializable {
         Point2D point1 = arc1.getEndPoint();
 
         double deltaX = -(point1.getX() - plotArea.getCenterX())
-                        * this.axisLabelGap;
+                        * this.gapData.axisLabelGap;
         double deltaY = -(point1.getY() - plotArea.getCenterY())
-                        * this.axisLabelGap;
+                        * this.gapData.axisLabelGap;
 
         double labelX = point1.getX() - deltaX;
         double labelY = point1.getY() - deltaY;
@@ -1319,7 +1263,7 @@ public class SpiderWebPlot extends Plot implements Cloneable, Serializable {
         if (this.headPercent != that.headPercent) {
             return false;
         }
-        if (this.interiorGap != that.interiorGap) {
+        if (this.gapData.interiorGap != that.gapData.interiorGap) {
             return false;
         }
         if (this.startAngle != that.startAngle) {
@@ -1334,7 +1278,7 @@ public class SpiderWebPlot extends Plot implements Cloneable, Serializable {
         if (this.webFilled != that.webFilled) {
             return false;
         }
-        if (this.axisLabelGap != that.axisLabelGap) {
+        if (this.gapData.axisLabelGap != that.gapData.axisLabelGap) {
             return false;
         }
         if (!PaintUtils.equal(this.axisLinePaint, that.axisLinePaint)) {

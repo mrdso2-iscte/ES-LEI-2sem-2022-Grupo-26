@@ -116,32 +116,8 @@ public class XYBarRenderer extends AbstractXYItemRenderer
         XYBarRenderer.defaultBarPainter = painter;
     }
 
-    /**
-     * The default value for the initialisation of the shadowsVisible flag.
-     */
-    private static boolean defaultShadowsVisible = true;
 
-    /**
-     * Returns the default value for the {@code shadowsVisible} flag.
-     *
-     * @return A boolean.
-     *
-     * @see #setDefaultShadowsVisible(boolean)
-     */
-    public static boolean getDefaultShadowsVisible() {
-        return XYBarRenderer.defaultShadowsVisible;
-    }
 
-    /**
-     * Sets the default value for the shadows visible flag.
-     *
-     * @param visible  the new value for the default.
-     *
-     * @see #getDefaultShadowsVisible()
-     */
-    public static void setDefaultShadowsVisible(boolean visible) {
-        XYBarRenderer.defaultShadowsVisible = visible;
-    }
 
     /**
      * The state class used by this renderer.
@@ -223,22 +199,9 @@ public class XYBarRenderer extends AbstractXYItemRenderer
      */
     private XYBarPainter barPainter;
 
-    /**
-     * The flag that controls whether or not shadows are drawn for the bars.
-     */
-    private boolean shadowsVisible;
+    private XYBarRendererShadows shadows;
 
-    /**
-     * The x-offset for the shadow effect.
-     */
-    private double shadowXOffset;
-
-    /**
-     * The y-offset for the shadow effect.
-     */
-    private double shadowYOffset;
-
-    /**
+	/**
      * A factor used to align the bars about the x-value.
      */
     private double barAlignmentFactor;
@@ -264,9 +227,7 @@ public class XYBarRenderer extends AbstractXYItemRenderer
         this.drawBarOutline = false;
         this.legendBar = new Rectangle2D.Double(-3.0, -5.0, 6.0, 10.0);
         this.barPainter = getDefaultBarPainter();
-        this.shadowsVisible = getDefaultShadowsVisible();
-        this.shadowXOffset = 4.0;
-        this.shadowYOffset = 4.0;
+        this.shadows = new XYBarRendererShadows(4.0, 4.0);
         this.barAlignmentFactor = -1.0;
     }
 
@@ -500,15 +461,7 @@ public class XYBarRenderer extends AbstractXYItemRenderer
         fireChangeEvent();
     }
 
-    /**
-     * Returns the flag that controls whether or not shadows are drawn for
-     * the bars.
-     *
-     * @return A boolean.
-     */
-    public boolean getShadowsVisible() {
-        return this.shadowsVisible;
-    }
+    
 
     /**
      * Sets the flag that controls whether or not the renderer
@@ -518,18 +471,10 @@ public class XYBarRenderer extends AbstractXYItemRenderer
      * @param visible  the new flag value.
      */
     public void setShadowVisible(boolean visible) {
-        this.shadowsVisible = visible;
+        this.shadows.shadowsVisible = visible;
         fireChangeEvent();
     }
 
-    /**
-     * Returns the shadow x-offset.
-     *
-     * @return The shadow x-offset.
-     */
-    public double getShadowXOffset() {
-        return this.shadowXOffset;
-    }
 
     /**
      * Sets the x-offset for the bar shadow and sends a
@@ -538,19 +483,11 @@ public class XYBarRenderer extends AbstractXYItemRenderer
      * @param offset  the offset.
      */
     public void setShadowXOffset(double offset) {
-        this.shadowXOffset = offset;
+        this.shadows.shadowXOffset = offset;
         fireChangeEvent();
     }
 
-    /**
-     * Returns the shadow y-offset.
-     *
-     * @return The shadow y-offset.
-     */
-    public double getShadowYOffset() {
-        return this.shadowYOffset;
-    }
-
+   
     /**
      * Sets the y-offset for the bar shadow and sends a
      * {@link RendererChangeEvent} to all registered listeners.
@@ -558,10 +495,14 @@ public class XYBarRenderer extends AbstractXYItemRenderer
      * @param offset  the offset.
      */
     public void setShadowYOffset(double offset) {
-        this.shadowYOffset = offset;
+        this.shadows.shadowYOffset = offset;
         fireChangeEvent();
     }
-
+    
+    public XYBarRendererShadows getShadows() {
+    	return this.shadows;
+    }
+    
     /**
      * Returns the bar alignment factor. 
      * 
@@ -807,7 +748,7 @@ public class XYBarRenderer extends AbstractXYItemRenderer
         if (state.getElementHinting()) {
             beginElementGroup(g2, dataset.getSeriesKey(series), item);
         }
-        if (getShadowsVisible()) {
+        if (shadows.getShadowsVisible()) {
             this.barPainter.paintBarShadow(g2, this, series, item, bar, barBase,
                 !this.useYInterval);
         }
@@ -1140,13 +1081,13 @@ public class XYBarRenderer extends AbstractXYItemRenderer
         if (!this.barPainter.equals(that.barPainter)) {
             return false;
         }
-        if (this.shadowsVisible != that.shadowsVisible) {
+        if (this.shadows.shadowsVisible != that.shadows.shadowsVisible) {
             return false;
         }
-        if (this.shadowXOffset != that.shadowXOffset) {
+        if (this.shadows.shadowXOffset != that.shadows.shadowXOffset) {
             return false;
         }
-        if (this.shadowYOffset != that.shadowYOffset) {
+        if (this.shadows.shadowYOffset != that.shadows.shadowYOffset) {
             return false;
         }
         if (this.barAlignmentFactor != that.barAlignmentFactor) {

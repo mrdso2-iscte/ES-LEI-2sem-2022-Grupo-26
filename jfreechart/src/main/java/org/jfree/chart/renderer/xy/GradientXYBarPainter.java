@@ -210,8 +210,8 @@ public class GradientXYBarPainter implements XYBarPainter, Serializable {
             }
         }
 
-        RectangularShape shadow = createShadow(bar, renderer.getShadowXOffset(),
-                renderer.getShadowYOffset(), base, pegShadow);
+        RectangularShape shadow = createShadow(bar, renderer.getShadows().getShadowXOffset(),
+                renderer.getShadows().getShadowYOffset(), base, pegShadow);
         g2.setPaint(Color.GRAY);
         g2.fill(shadow);
 

@@ -93,10 +93,10 @@ public class PolarChartPanel extends ChartPanel {
     public PolarChartPanel(JFreeChart chart, boolean useBuffer) {
         super(chart, useBuffer);
         checkChart(chart);
-        setMinimumDrawWidth(200);
-        setMinimumDrawHeight(200);
-        setMaximumDrawWidth(2000);
-        setMaximumDrawHeight(2000);
+        getDrawing().setMinimumDrawWidth(200);
+        getDrawing().setMinimumDrawHeight(200);
+        getDrawing().setMaximumDrawWidth(2000);
+        getDrawing().setMaximumDrawHeight(2000);
     }
 
     /**

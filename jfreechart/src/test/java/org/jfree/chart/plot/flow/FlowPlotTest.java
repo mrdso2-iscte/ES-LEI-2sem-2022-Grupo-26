@@ -45,6 +45,7 @@ import org.jfree.chart.api.VerticalAlignment;
 import org.jfree.chart.event.PlotChangeEvent;
 import org.jfree.chart.event.PlotChangeListener;
 import org.jfree.chart.labels.StandardFlowLabelGenerator;
+import org.jfree.data.flow.FlowDataset;
 import org.jfree.data.flow.NodeKey;
 import org.junit.jupiter.api.Test;
 
@@ -169,6 +170,30 @@ public class FlowPlotTest implements PlotChangeListener {
 
         // test fields one by one - the independence checker does this
         testIndependence(p1, p2);
+        
+        //test getPlotType
+        assertEquals(p1.getPlotType(),p2.getPlotType());
+        
+        //getDataset
+        assertEquals(p1.getDataset(),p2.getDataset());        
+     
+        
+        // getNodeMargin
+        double margin = 0.5;
+        p1.setNodeMargin(margin);
+       // assertNotEquals(p1,p2);
+        p2.setNodeMargin(margin);
+        assertEquals(p1,p2);        
+        assertEquals(p1.getNodeMargin(),p2.getNodeMargin());
+        
+        //getNodeWidth
+        assertEquals(p1.getFlowMargin(),p2.getFlowMargin());
+        assertEquals(p1.getNodeWidth(),p2.getNodeWidth());
+        
+        assertEquals(p1.getNodeColorSwatch(),p2.getNodeColorSwatch());
+        
+        assertEquals(p1.getDefaultNodeColor(),p2.getDefaultNodeColor());
+        
     }
 
     /**
