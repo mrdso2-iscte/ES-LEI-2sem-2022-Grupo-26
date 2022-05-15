@@ -148,77 +148,6 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
      */
     public static final boolean DEFAULT_BUFFER_USED = true;
 
-    /** The default panel width. */
-    public static final int DEFAULT_WIDTH = 1024;
-
-    /** The default panel height. */
-    public static final int DEFAULT_HEIGHT = 768;
-
-    /** The default limit below which chart scaling kicks in. */
-    public static final int DEFAULT_MINIMUM_DRAW_WIDTH = 300;
-
-    /** The default limit below which chart scaling kicks in. */
-    public static final int DEFAULT_MINIMUM_DRAW_HEIGHT = 200;
-
-    /** The default limit above which chart scaling kicks in. */
-    public static final int DEFAULT_MAXIMUM_DRAW_WIDTH = 1024;
-
-    /** The default limit above which chart scaling kicks in. */
-    public static final int DEFAULT_MAXIMUM_DRAW_HEIGHT = 768;
-
-    /** Properties action command. */
-    public static final String PROPERTIES_COMMAND = "PROPERTIES";
-
-    /**
-     * Copy action command.
-     */
-    public static final String COPY_COMMAND = "COPY";
-
-    /** Save action command. */
-    public static final String SAVE_COMMAND = "SAVE";
-
-    /** Action command to save as PNG. */
-    protected static final String SAVE_AS_PNG_COMMAND = "SAVE_AS_PNG";
-    
-    /** Action command to save as PNG - use screen size */
-    protected static final String SAVE_AS_PNG_SIZE_COMMAND = "SAVE_AS_PNG_SIZE";
-
-    /** Action command to save as SVG. */
-    protected static final String SAVE_AS_SVG_COMMAND = "SAVE_AS_SVG";
-    
-    /** Action command to save as PDF. */
-    protected static final String SAVE_AS_PDF_COMMAND = "SAVE_AS_PDF";
-    
-    /** Print action command. */
-    public static final String PRINT_COMMAND = "PRINT";
-
-    /** Zoom in (both axes) action command. */
-    public static final String ZOOM_IN_BOTH_COMMAND = "ZOOM_IN_BOTH";
-
-    /** Zoom in (domain axis only) action command. */
-    public static final String ZOOM_IN_DOMAIN_COMMAND = "ZOOM_IN_DOMAIN";
-
-    /** Zoom in (range axis only) action command. */
-    public static final String ZOOM_IN_RANGE_COMMAND = "ZOOM_IN_RANGE";
-
-    /** Zoom out (both axes) action command. */
-    public static final String ZOOM_OUT_BOTH_COMMAND = "ZOOM_OUT_BOTH";
-
-    /** Zoom out (domain axis only) action command. */
-    public static final String ZOOM_OUT_DOMAIN_COMMAND = "ZOOM_DOMAIN_BOTH";
-
-    /** Zoom out (range axis only) action command. */
-    public static final String ZOOM_OUT_RANGE_COMMAND = "ZOOM_RANGE_BOTH";
-
-    /** Zoom reset (both axes) action command. */
-    public static final String ZOOM_RESET_BOTH_COMMAND = "ZOOM_RESET_BOTH";
-
-    /** Zoom reset (domain axis only) action command. */
-    public static final String ZOOM_RESET_DOMAIN_COMMAND = "ZOOM_RESET_DOMAIN";
-
-    /** Zoom reset (range axis only) action command. */
-    public static final String ZOOM_RESET_RANGE_COMMAND = "ZOOM_RESET_RANGE";
-
     // default modifiers for zooming, private to avoid constant inlining,
     // publicly available through getDefaultDragModifiersEx()
     private static final int DEFAULT_DRAG_MODIFIERS_EX;
@@ -285,30 +214,9 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
     /** The width of the chart buffer. */
     protected int chartBufferWidth;
 
-    /**
-     * The minimum width for drawing a chart (uses scaling for smaller widths).
-     */
-    protected int minimumDrawWidth;
+    protected ChartPanelDrawing drawing;
 
-    /**
-     * The minimum height for drawing a chart (uses scaling for smaller
-     * heights).
-     */
-    protected int minimumDrawHeight;
-
-    /**
-     * The maximum width for drawing a chart (uses scaling for bigger
-     * widths).
-     */
-    protected int maximumDrawWidth;
-
-    /**
-     * The maximum height for drawing a chart (uses scaling for bigger
-     * heights).
-     */
-    protected int maximumDrawHeight;
-
-    /** The popup menu for the frame. */
+	/** The popup menu for the frame. */
     protected JPopupMenu popup;
 
     /** The drawing info collected the last time the chart was drawn. */
@@ -335,34 +243,9 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
     /** A strategy to handle zoom rectangle processing and painting. */
     private SelectionZoomStrategy selectionZoomStrategy = new DefaultSelectionZoomStrategy();
 
-    /** Menu item for zooming in on a chart (both axes). */
-    protected JMenuItem zoomInBothMenuItem;
+    protected ChartPanelJMenuZoom jMenuZoom;
 
-    /** Menu item for zooming in on a chart (domain axis). */
-    protected JMenuItem zoomInDomainMenuItem;
-
-    /** Menu item for zooming in on a chart (range axis). */
-    protected JMenuItem zoomInRangeMenuItem;
-
-    /** Menu item for zooming out on a chart. */
-    protected JMenuItem zoomOutBothMenuItem;
-
-    /** Menu item for zooming out on a chart (domain axis). */
-    protected JMenuItem zoomOutDomainMenuItem;
-
-    /** Menu item for zooming out on a chart (range axis). */
-    protected JMenuItem zoomOutRangeMenuItem;
-
-    /** Menu item for resetting the zoom (both axes). */
-    protected JMenuItem zoomResetBothMenuItem;
-
-    /** Menu item for resetting the zoom (domain axis only). */
-    protected JMenuItem zoomResetDomainMenuItem;
-
-    /** Menu item for resetting the zoom (range axis only). */
-    protected JMenuItem zoomResetRangeMenuItem;
-
-    /**
+	/**
      * The default directory for saving charts to file.
      */
     protected File defaultDirectoryForSaveAs;
@@ -457,9 +340,9 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
      * @param chart  the chart.
      */
     public ChartPanel(JFreeChart chart) {
-        this(chart, DEFAULT_WIDTH, DEFAULT_HEIGHT,
-            DEFAULT_MINIMUM_DRAW_WIDTH, DEFAULT_MINIMUM_DRAW_HEIGHT,
-            DEFAULT_MAXIMUM_DRAW_WIDTH, DEFAULT_MAXIMUM_DRAW_HEIGHT,
+        this(chart, ChartPanelMeasures.DEFAULT_WIDTH, ChartPanelMeasures.DEFAULT_HEIGHT,
+        		ChartPanelMeasures.DEFAULT_MINIMUM_DRAW_WIDTH, ChartPanelMeasures.DEFAULT_MINIMUM_DRAW_HEIGHT,
+        		ChartPanelMeasures.DEFAULT_MAXIMUM_DRAW_WIDTH, ChartPanelMeasures.DEFAULT_MAXIMUM_DRAW_HEIGHT,
             DEFAULT_BUFFER_USED,
             true,  // properties
             true,  // save
@@ -488,9 +371,9 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
      */
     public ChartPanel(JFreeChart chart, boolean useBuffer) {
 
-        this(chart, DEFAULT_WIDTH, DEFAULT_HEIGHT, DEFAULT_MINIMUM_DRAW_WIDTH,
-                DEFAULT_MINIMUM_DRAW_HEIGHT, DEFAULT_MAXIMUM_DRAW_WIDTH,
-                DEFAULT_MAXIMUM_DRAW_HEIGHT, useBuffer,
+        this(chart, ChartPanelMeasures.DEFAULT_WIDTH, ChartPanelMeasures.DEFAULT_HEIGHT, ChartPanelMeasures.DEFAULT_MINIMUM_DRAW_WIDTH,
+        		ChartPanelMeasures.DEFAULT_MINIMUM_DRAW_HEIGHT, ChartPanelMeasures.DEFAULT_MAXIMUM_DRAW_WIDTH,
+        		ChartPanelMeasures.DEFAULT_MAXIMUM_DRAW_HEIGHT, useBuffer,
                 true,  // properties
                 true,  // save
                 true,  // print
@@ -518,9 +401,9 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
     public ChartPanel(JFreeChart chart, boolean properties, boolean save,
             boolean print, boolean zoom, boolean tooltips) {
 
-        this(chart, DEFAULT_WIDTH, DEFAULT_HEIGHT,
-             DEFAULT_MINIMUM_DRAW_WIDTH, DEFAULT_MINIMUM_DRAW_HEIGHT,
-             DEFAULT_MAXIMUM_DRAW_WIDTH, DEFAULT_MAXIMUM_DRAW_HEIGHT,
+        this(chart, ChartPanelMeasures.DEFAULT_WIDTH, ChartPanelMeasures.DEFAULT_HEIGHT,
+        		ChartPanelMeasures.DEFAULT_MINIMUM_DRAW_WIDTH, ChartPanelMeasures.DEFAULT_MINIMUM_DRAW_HEIGHT,
+        		ChartPanelMeasures.DEFAULT_MAXIMUM_DRAW_WIDTH, ChartPanelMeasures.DEFAULT_MAXIMUM_DRAW_HEIGHT,
              DEFAULT_BUFFER_USED, properties, save, print, zoom, tooltips);
 
     }
@@ -597,10 +480,7 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
         setPreferredSize(new Dimension(width, height));
         this.useBuffer = useBuffer;
         this.refreshBuffer = false;
-        this.minimumDrawWidth = minimumDrawWidth;
-        this.minimumDrawHeight = minimumDrawHeight;
-        this.maximumDrawWidth = maximumDrawWidth;
-        this.maximumDrawHeight = maximumDrawHeight;
+        this.drawing = new ChartPanelDrawing(minimumDrawWidth, minimumDrawHeight, maximumDrawWidth, maximumDrawHeight);
 
         // set up popup menu...
         this.popup = null;
@@ -628,8 +508,12 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
 
         this.overlays = new ArrayList<>();
     }
+    
+    public ChartPanelDrawing getDrawing() {
+		return drawing;
+	}
 
-    /**
+	/**
      * Returns the chart contained in the panel.
      *
      * @return The chart (possibly {@code null}).
@@ -677,105 +561,7 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
 
     }
 
-    /**
-     * Returns the minimum drawing width for charts.
-     * <P>
-     * If the width available on the panel is less than this, then the chart is
-     * drawn at the minimum width then scaled down to fit.
-     *
-     * @return The minimum drawing width.
-     */
-    public int getMinimumDrawWidth() {
-        return this.minimumDrawWidth;
-    }
-
-    /**
-     * Sets the minimum drawing width for the chart on this panel.
-     * <P>
-     * At the time the chart is drawn on the panel, if the available width is
-     * less than this amount, the chart will be drawn using the minimum width
-     * then scaled down to fit the available space.
-     *
-     * @param width  The width.
-     */
-    public void setMinimumDrawWidth(int width) {
-        this.minimumDrawWidth = width;
-    }
-
-    /**
-     * Returns the maximum drawing width for charts.
-     * <P>
-     * If the width available on the panel is greater than this, then the chart
-     * is drawn at the maximum width then scaled up to fit.
-     *
-     * @return The maximum drawing width.
-     */
-    public int getMaximumDrawWidth() {
-        return this.maximumDrawWidth;
-    }
-
-    /**
-     * Sets the maximum drawing width for the chart on this panel.
-     * <P>
-     * At the time the chart is drawn on the panel, if the available width is
-     * greater than this amount, the chart will be drawn using the maximum
-     * width then scaled up to fit the available space.
-     *
-     * @param width  The width.
-     */
-    public void setMaximumDrawWidth(int width) {
-        this.maximumDrawWidth = width;
-    }
-
-    /**
-     * Returns the minimum drawing height for charts.
-     * <P>
-     * If the height available on the panel is less than this, then the chart
-     * is drawn at the minimum height then scaled down to fit.
-     *
-     * @return The minimum drawing height.
-     */
-    public int getMinimumDrawHeight() {
-        return this.minimumDrawHeight;
-    }
-
-    /**
-     * Sets the minimum drawing height for the chart on this panel.
-     * <P>
-     * At the time the chart is drawn on the panel, if the available height is
-     * less than this amount, the chart will be drawn using the minimum height
-     * then scaled down to fit the available space.
-     *
-     * @param height  The height.
-     */
-    public void setMinimumDrawHeight(int height) {
-        this.minimumDrawHeight = height;
-    }
-
-    /**
-     * Returns the maximum drawing height for charts.
-     * <P>
-     * If the height available on the panel is greater than this, then the
-     * chart is drawn at the maximum height then scaled up to fit.
-     *
-     * @return The maximum drawing height.
-     */
-    public int getMaximumDrawHeight() {
-        return this.maximumDrawHeight;
-    }
-
-    /**
-     * Sets the maximum drawing height for the chart on this panel.
-     * <P>
-     * At the time the chart is drawn on the panel, if the available height is
-     * greater than this amount, the chart will be drawn using the maximum
-     * height then scaled up to fit the available space.
-     *
-     * @param height  The height.
-     */
-    public void setMaximumDrawHeight(int height) {
-        this.maximumDrawHeight = height;
-    }
+    
 
     /**
      * Returns the X scale factor for the chart.  This will be 1.0 if no
@@ -1421,25 +1207,25 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
         this.scaleX = 1.0;
         this.scaleY = 1.0;
 
-        if (drawWidth < this.minimumDrawWidth) {
-            this.scaleX = drawWidth / this.minimumDrawWidth;
-            drawWidth = this.minimumDrawWidth;
+        if (drawWidth < this.drawing.minimumDrawWidth) {
+            this.scaleX = drawWidth / this.drawing.minimumDrawWidth;
+            drawWidth = this.drawing.minimumDrawWidth;
             scale = true;
         }
-        else if (drawWidth > this.maximumDrawWidth) {
-            this.scaleX = drawWidth / this.maximumDrawWidth;
-            drawWidth = this.maximumDrawWidth;
+        else if (drawWidth > this.drawing.maximumDrawWidth) {
+            this.scaleX = drawWidth / this.drawing.maximumDrawWidth;
+            drawWidth = this.drawing.maximumDrawWidth;
             scale = true;
         }
 
-        if (drawHeight < this.minimumDrawHeight) {
-            this.scaleY = drawHeight / this.minimumDrawHeight;
-            drawHeight = this.minimumDrawHeight;
+        if (drawHeight < this.drawing.minimumDrawHeight) {
+            this.scaleY = drawHeight / this.drawing.minimumDrawHeight;
+            drawHeight = this.drawing.minimumDrawHeight;
             scale = true;
         }
-        else if (drawHeight > this.maximumDrawHeight) {
-            this.scaleY = drawHeight / this.maximumDrawHeight;
-            drawHeight = this.maximumDrawHeight;
+        else if (drawHeight > this.drawing.maximumDrawHeight) {
+            this.scaleY = drawHeight / this.drawing.maximumDrawHeight;
+            drawHeight = this.drawing.maximumDrawHeight;
             scale = true;
         }
 
@@ -1586,13 +1372,13 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
         }
 
         switch (command) {
-        case PROPERTIES_COMMAND:
+        case ChartPanelCommands.PROPERTIES_COMMAND:
             doEditChartProperties();
             break;
-        case COPY_COMMAND:
+        case ChartPanelCommands.COPY_COMMAND:
             doCopy();
             break;
-        case SAVE_AS_PNG_COMMAND:
+        case ChartPanelCommands.SAVE_AS_PNG_COMMAND:
             try {
                 doSaveAs();
             } catch (IOException e) {
@@ -1600,7 +1386,7 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
                         localizationResources.getString("Save_as_PNG"), JOptionPane.WARNING_MESSAGE);
             }
             break;
-        case SAVE_AS_PNG_SIZE_COMMAND:
+        case ChartPanelCommands.SAVE_AS_PNG_SIZE_COMMAND:
             try {
                 final Dimension ss = Toolkit.getDefaultToolkit().getScreenSize();
                 doSaveAs(ss.width, ss.height);
@@ -1609,7 +1395,7 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
                         localizationResources.getString("Save_as_PNG"), JOptionPane.WARNING_MESSAGE);
             }
             break;
-        case SAVE_AS_SVG_COMMAND:
+        case ChartPanelCommands.SAVE_AS_SVG_COMMAND:
             try {
                 saveAsSVG(null);
             } catch (IOException e) {
@@ -1617,37 +1403,37 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
                         localizationResources.getString("Save_as_SVG"), JOptionPane.WARNING_MESSAGE);
             }
             break;
-        case SAVE_AS_PDF_COMMAND:
+        case ChartPanelCommands.SAVE_AS_PDF_COMMAND:
             saveAsPDF(null);
             break;
-        case PRINT_COMMAND:
+        case ChartPanelCommands.PRINT_COMMAND:
             createChartPrintJob();
             break;
-        case ZOOM_IN_BOTH_COMMAND:
+        case ChartPanelCommands.ZOOM_IN_BOTH_COMMAND:
             zoomInBoth(screenX, screenY);
             break;
-        case ZOOM_IN_DOMAIN_COMMAND:
+        case ChartPanelCommands.ZOOM_IN_DOMAIN_COMMAND:
             zoomInDomain(screenX, screenY);
             break;
-        case ZOOM_IN_RANGE_COMMAND:
+        case ChartPanelCommands.ZOOM_IN_RANGE_COMMAND:
             zoomInRange(screenX, screenY);
             break;
-        case ZOOM_OUT_BOTH_COMMAND:
+        case ChartPanelCommands.ZOOM_OUT_BOTH_COMMAND:
             zoomOutBoth(screenX, screenY);
             break;
-        case ZOOM_OUT_DOMAIN_COMMAND:
+        case ChartPanelCommands.ZOOM_OUT_DOMAIN_COMMAND:
             zoomOutDomain(screenX, screenY);
             break;
-        case ZOOM_OUT_RANGE_COMMAND:
+        case ChartPanelCommands.ZOOM_OUT_RANGE_COMMAND:
             zoomOutRange(screenX, screenY);
             break;
-        case ZOOM_RESET_BOTH_COMMAND:
+        case ChartPanelCommands.ZOOM_RESET_BOTH_COMMAND:
             restoreAutoBounds();
             break;
-        case ZOOM_RESET_DOMAIN_COMMAND:
+        case ChartPanelCommands.ZOOM_RESET_DOMAIN_COMMAND:
             restoreAutoDomainBounds();
             break;
-        case ZOOM_RESET_RANGE_COMMAND:
+        case ChartPanelCommands.ZOOM_RESET_RANGE_COMMAND:
             restoreAutoRangeBounds();
             break;
         }
@@ -2432,8 +2218,8 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
         int w = getWidth() - insets.left - insets.right;
         int h = getHeight() - insets.top - insets.bottom;
         ChartTransferable selection = new ChartTransferable(this.chart, w, h,
-                getMinimumDrawWidth(), getMinimumDrawHeight(),
-                getMaximumDrawWidth(), getMaximumDrawHeight(), true);
+                drawing.getMinimumDrawWidth(), drawing.getMinimumDrawHeight(),
+                drawing.getMaximumDrawWidth(), drawing.getMaximumDrawHeight(), true);
         systemClipboard.setContents(selection, null);
     }
 
@@ -2800,7 +2586,7 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
         if (properties) {
             JMenuItem propertiesItem = new JMenuItem(
                     localizationResources.getString("Properties..."));
-            propertiesItem.setActionCommand(PROPERTIES_COMMAND);
+            propertiesItem.setActionCommand(ChartPanelCommands.PROPERTIES_COMMAND);
             propertiesItem.addActionListener(this);
             result.add(propertiesItem);
             separator = true;
@@ -2812,7 +2598,7 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
             }
             JMenuItem copyItem = new JMenuItem(
                     localizationResources.getString("Copy"));
-            copyItem.setActionCommand(COPY_COMMAND);
+            copyItem.setActionCommand(ChartPanelCommands.COPY_COMMAND);
             copyItem.addActionListener(this);
             result.add(copyItem);
             separator = !save;
@@ -2829,7 +2615,7 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
             {
                 JMenuItem pngItem = new JMenuItem(localizationResources.getString(
                         "PNG..."));
-                pngItem.setActionCommand(SAVE_AS_PNG_COMMAND);
+                pngItem.setActionCommand(ChartPanelCommands.SAVE_AS_PNG_COMMAND);
                 pngItem.addActionListener(this);
                 saveSubMenu.add(pngItem);
 
@@ -2840,7 +2626,7 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
             	final Dimension ss = Toolkit.getDefaultToolkit().getScreenSize();
                 final String pngName = "PNG ("+ss.width+"x"+ss.height+") ...";
                 JMenuItem pngItem = new JMenuItem(pngName);
-                pngItem.setActionCommand(SAVE_AS_PNG_SIZE_COMMAND);
+                pngItem.setActionCommand(ChartPanelCommands.SAVE_AS_PNG_SIZE_COMMAND);
                 pngItem.addActionListener(this);
                 saveSubMenu.add(pngItem);
             }
@@ -2848,7 +2634,7 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
             if (ChartUtils.isJFreeSVGAvailable()) {
                 JMenuItem svgItem = new JMenuItem(localizationResources.getString(
                         "SVG..."));
-                svgItem.setActionCommand(SAVE_AS_SVG_COMMAND);
+                svgItem.setActionCommand(ChartPanelCommands.SAVE_AS_SVG_COMMAND);
                 svgItem.addActionListener(this);
                 saveSubMenu.add(svgItem);                
             }
@@ -2856,7 +2642,7 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
             if (ChartUtils.isOrsonPDFAvailable()) {
                 JMenuItem pdfItem = new JMenuItem(
                         localizationResources.getString("PDF..."));
-                pdfItem.setActionCommand(SAVE_AS_PDF_COMMAND);
+                pdfItem.setActionCommand(ChartPanelCommands.SAVE_AS_PDF_COMMAND);
                 pdfItem.addActionListener(this);
                 saveSubMenu.add(pdfItem);
             }
@@ -2870,7 +2656,7 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
             }
             JMenuItem printItem = new JMenuItem(
                     localizationResources.getString("Print..."));
-            printItem.setActionCommand(PRINT_COMMAND);
+            printItem.setActionCommand(ChartPanelCommands.PRINT_COMMAND);
             printItem.addActionListener(this);
             result.add(printItem);
             separator = true;
@@ -2880,85 +2666,44 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
             if (separator) {
                 result.addSeparator();
             }
+            
 
             JMenu zoomInMenu = new JMenu(
                     localizationResources.getString("Zoom_In"));
+            jMenuZoom = new ChartPanelJMenuZoom(new JMenuItem(localizationResources.getString("All_Axes")),
+            		new JMenuItem(localizationResources.getString("Domain_Axis")),
+            		new JMenuItem(localizationResources.getString("Range_Axis")),
+            		new JMenuItem(localizationResources.getString("All_Axes")),
+            		new JMenuItem(localizationResources.getString("Domain_Axis")),
+            		new JMenuItem(localizationResources.getString("Range_Axis")),
+            		new JMenuItem(localizationResources.getString("All_Axes")),
+            		new JMenuItem(localizationResources.getString("Domain_Axis")),
+            		new JMenuItem(localizationResources.getString("Range_Axis"))
+            		);
 
-            this.zoomInBothMenuItem = new JMenuItem(
-                    localizationResources.getString("All_Axes"));
-            this.zoomInBothMenuItem.setActionCommand(ZOOM_IN_BOTH_COMMAND);
-            this.zoomInBothMenuItem.addActionListener(this);
-            zoomInMenu.add(this.zoomInBothMenuItem);
-
+            jMenuZoom.setActions(jMenuZoom.getZoomInBothMenuItem(), ChartPanelCommands.ZOOM_IN_BOTH_COMMAND, this, zoomInMenu);
             zoomInMenu.addSeparator();
-
-            this.zoomInDomainMenuItem = new JMenuItem(
-                    localizationResources.getString("Domain_Axis"));
-            this.zoomInDomainMenuItem.setActionCommand(ZOOM_IN_DOMAIN_COMMAND);
-            this.zoomInDomainMenuItem.addActionListener(this);
-            zoomInMenu.add(this.zoomInDomainMenuItem);
-
-            this.zoomInRangeMenuItem = new JMenuItem(
-                    localizationResources.getString("Range_Axis"));
-            this.zoomInRangeMenuItem.setActionCommand(ZOOM_IN_RANGE_COMMAND);
-            this.zoomInRangeMenuItem.addActionListener(this);
-            zoomInMenu.add(this.zoomInRangeMenuItem);
-
+            jMenuZoom.setActions(jMenuZoom.getZoomInDomainMenuItem(), ChartPanelCommands.ZOOM_IN_DOMAIN_COMMAND, this, zoomInMenu);            
+            jMenuZoom.setActions(jMenuZoom.getZoomInRangeMenuItem(), ChartPanelCommands.ZOOM_IN_RANGE_COMMAND, this, zoomInMenu);
             result.add(zoomInMenu);
-
+            
             JMenu zoomOutMenu = new JMenu(
                     localizationResources.getString("Zoom_Out"));
-
-            this.zoomOutBothMenuItem = new JMenuItem(
-                    localizationResources.getString("All_Axes"));
-            this.zoomOutBothMenuItem.setActionCommand(ZOOM_OUT_BOTH_COMMAND);
-            this.zoomOutBothMenuItem.addActionListener(this);
-            zoomOutMenu.add(this.zoomOutBothMenuItem);
-
+            jMenuZoom.setActions(jMenuZoom.getZoomOutBothMenuItem(), ChartPanelCommands.ZOOM_OUT_BOTH_COMMAND, this, zoomOutMenu);
             zoomOutMenu.addSeparator();
-
-            this.zoomOutDomainMenuItem = new JMenuItem(
-                    localizationResources.getString("Domain_Axis"));
-            this.zoomOutDomainMenuItem.setActionCommand(
-                    ZOOM_OUT_DOMAIN_COMMAND);
-            this.zoomOutDomainMenuItem.addActionListener(this);
-            zoomOutMenu.add(this.zoomOutDomainMenuItem);
-
-            this.zoomOutRangeMenuItem = new JMenuItem(
-                    localizationResources.getString("Range_Axis"));
-            this.zoomOutRangeMenuItem.setActionCommand(ZOOM_OUT_RANGE_COMMAND);
-            this.zoomOutRangeMenuItem.addActionListener(this);
-            zoomOutMenu.add(this.zoomOutRangeMenuItem);
-
+            jMenuZoom.setActions(jMenuZoom.getZoomOutDomainMenuItem(), ChartPanelCommands.ZOOM_OUT_DOMAIN_COMMAND, this, zoomOutMenu);
+            jMenuZoom.setActions(jMenuZoom.getZoomOutRangeMenuItem(), ChartPanelCommands.ZOOM_OUT_RANGE_COMMAND, this, zoomOutMenu);  
             result.add(zoomOutMenu);
 
             JMenu autoRangeMenu = new JMenu(
                     localizationResources.getString("Auto_Range"));
+           jMenuZoom.setActions(jMenuZoom.getZoomResetBothMenuItem(), ChartPanelCommands.ZOOM_RESET_BOTH_COMMAND, this, autoRangeMenu);
+           autoRangeMenu.addSeparator();
+           jMenuZoom.setActions(jMenuZoom.getZoomResetDomainMenuItem(), ChartPanelCommands.ZOOM_RESET_DOMAIN_COMMAND, this, autoRangeMenu);
+           jMenuZoom.setActions(jMenuZoom.getZoomResetRangeMenuItem(), ChartPanelCommands.ZOOM_RESET_RANGE_COMMAND, this, autoRangeMenu);  
 
-            this.zoomResetBothMenuItem = new JMenuItem(
-                    localizationResources.getString("All_Axes"));
-            this.zoomResetBothMenuItem.setActionCommand(
-                    ZOOM_RESET_BOTH_COMMAND);
-            this.zoomResetBothMenuItem.addActionListener(this);
-            autoRangeMenu.add(this.zoomResetBothMenuItem);
-
-            autoRangeMenu.addSeparator();
-            this.zoomResetDomainMenuItem = new JMenuItem(
-                    localizationResources.getString("Domain_Axis"));
-            this.zoomResetDomainMenuItem.setActionCommand(
-                    ZOOM_RESET_DOMAIN_COMMAND);
-            this.zoomResetDomainMenuItem.addActionListener(this);
-            autoRangeMenu.add(this.zoomResetDomainMenuItem);
-
-            this.zoomResetRangeMenuItem = new JMenuItem(
-                    localizationResources.getString("Range_Axis"));
-            this.zoomResetRangeMenuItem.setActionCommand(
-                    ZOOM_RESET_RANGE_COMMAND);
-            this.zoomResetRangeMenuItem.addActionListener(this);
-            autoRangeMenu.add(this.zoomResetRangeMenuItem);
-
-            result.addSeparator();
-            result.add(autoRangeMenu);
+           result.addSeparator();
+           result.add(autoRangeMenu);
 
         }
 
@@ -2990,37 +2735,37 @@ public class ChartPanel extends JPanel implements ChartChangeListener,
             isRangeZoomable = z.isRangeZoomable();
         }
 
-        if (this.zoomInDomainMenuItem != null) {
-            this.zoomInDomainMenuItem.setEnabled(isDomainZoomable);
+        if (this.jMenuZoom.zoomInDomainMenuItem != null) {
+            this.jMenuZoom.zoomInDomainMenuItem.setEnabled(isDomainZoomable);
         }
-        if (this.zoomOutDomainMenuItem != null) {
-            this.zoomOutDomainMenuItem.setEnabled(isDomainZoomable);
+        if (this.jMenuZoom.zoomOutDomainMenuItem != null) {
+            this.jMenuZoom.zoomOutDomainMenuItem.setEnabled(isDomainZoomable);
         }
-        if (this.zoomResetDomainMenuItem != null) {
-            this.zoomResetDomainMenuItem.setEnabled(isDomainZoomable);
-        }
-
-        if (this.zoomInRangeMenuItem != null) {
-            this.zoomInRangeMenuItem.setEnabled(isRangeZoomable);
-        }
-        if (this.zoomOutRangeMenuItem != null) {
-            this.zoomOutRangeMenuItem.setEnabled(isRangeZoomable);
+        if (this.jMenuZoom.zoomResetDomainMenuItem != null) {
+            this.jMenuZoom.zoomResetDomainMenuItem.setEnabled(isDomainZoomable);
         }
 
-        if (this.zoomResetRangeMenuItem != null) {
-            this.zoomResetRangeMenuItem.setEnabled(isRangeZoomable);
+        if (this.jMenuZoom.zoomInRangeMenuItem != null) {
+            this.jMenuZoom.zoomInRangeMenuItem.setEnabled(isRangeZoomable);
+        }
+        if (this.jMenuZoom.zoomOutRangeMenuItem != null) {
+            this.jMenuZoom.zoomOutRangeMenuItem.setEnabled(isRangeZoomable);
         }
 
-        if (this.zoomInBothMenuItem != null) {
-            this.zoomInBothMenuItem.setEnabled(isDomainZoomable
+        if (this.jMenuZoom.zoomResetRangeMenuItem != null) {
+            this.jMenuZoom.zoomResetRangeMenuItem.setEnabled(isRangeZoomable);
+        }
+
+        if (this.jMenuZoom.zoomInBothMenuItem != null) {
+            this.jMenuZoom.zoomInBothMenuItem.setEnabled(isDomainZoomable
                     && isRangeZoomable);
         }
-        if (this.zoomOutBothMenuItem != null) {
-            this.zoomOutBothMenuItem.setEnabled(isDomainZoomable
+        if (this.jMenuZoom.zoomOutBothMenuItem != null) {
+            this.jMenuZoom.zoomOutBothMenuItem.setEnabled(isDomainZoomable
                     && isRangeZoomable);
         }
-        if (this.zoomResetBothMenuItem != null) {
-            this.zoomResetBothMenuItem.setEnabled(isDomainZoomable
+        if (this.jMenuZoom.zoomResetBothMenuItem != null) {
+            this.jMenuZoom.zoomResetBothMenuItem.setEnabled(isDomainZoomable
                     && isRangeZoomable);
         }
 
