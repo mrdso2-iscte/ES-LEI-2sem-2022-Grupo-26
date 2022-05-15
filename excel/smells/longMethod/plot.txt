@@ -1,0 +1,418 @@
+org.jfree.chart.plot.CombinedDomainCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	x	B10	0/26
+org.jfree.chart.plot.CombinedDomainCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	y	B10	0/26
+org.jfree.chart.plot.CombinedDomainXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	x	B8	0/26
+org.jfree.chart.plot.CombinedDomainXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	y	B8	0/26
+org.jfree.chart.plot.CombinedRangeCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	x	B8	0/26
+org.jfree.chart.plot.CombinedRangeCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	y	B8	0/26
+org.jfree.chart.plot.CombinedRangeXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	x	B8	0/26
+org.jfree.chart.plot.CombinedRangeXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	y	B8	0/26
+org.jfree.chart.plot.CombinedDomainCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	usableSize	B10	0/26
+org.jfree.chart.plot.CombinedDomainCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	usableSize	B13	0/5
+org.jfree.chart.plot.CombinedDomainXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	usableSize	B8	0/26
+org.jfree.chart.plot.CombinedDomainXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	usableSize	B11	0/5
+org.jfree.chart.plot.CombinedRangeCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	usableSize	B8	0/26
+org.jfree.chart.plot.CombinedRangeCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	usableSize	B11	0/5
+org.jfree.chart.plot.CombinedRangeXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	usableSize	B8	0/26
+org.jfree.chart.plot.CombinedRangeXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	usableSize	B11	0/5
+org.jfree.chart.plot.MeterPlot	protected void fillArc(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, double, java.awt.Paint, boolean) 	arc	B1	0/20
+org.jfree.chart.plot.CategoryPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, CategoryCrosshairState<R,C>) 	state	B2	0/19
+org.jfree.chart.plot.SpiderWebPlot	protected void drawRadarPoly(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotRenderingInfo, int, int, double, double) 	entity	B7	0/14
+org.jfree.chart.plot.SpiderWebPlot	protected void drawRadarPoly(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotRenderingInfo, int, int, double, double) 	entity	B10	0/8
+org.jfree.chart.plot.SpiderWebPlot	protected void drawRadarPoly(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotRenderingInfo, int, int, double, double) 	entity	B12	0/5
+org.jfree.chart.plot.CategoryPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	stream	B1	0/13
+org.jfree.chart.plot.MeterPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	arrow	B13	0/13
+org.jfree.chart.plot.MeterPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	meterArea	B5	0/12
+org.jfree.chart.plot.SpiderWebPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	stream	B1	0/11
+org.jfree.chart.plot.SpiderWebPlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	item	B11	0/10
+org.jfree.chart.plot.CrosshairState	public void updateCrosshairPoint(double, double, int, double, double, org.jfree.chart.plot.PlotOrientation) 	d	B2	0/10
+org.jfree.chart.plot.CategoryPlot	protected void drawDomainCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, int, R, C, java.awt.Stroke, java.awt.Paint) 	line	B1	0/9
+org.jfree.chart.plot.CategoryPlot	protected void drawDomainCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, int, R, C, java.awt.Stroke, java.awt.Paint) 	line	B1	0/9
+org.jfree.chart.plot.RingPlot	protected sealed void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	entity	B26	0/9
+org.jfree.chart.plot.RingPlot	protected sealed void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	entity	B28	0/5
+org.jfree.chart.plot.CategoryPlot	public void panRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	axis	B3	0/8
+org.jfree.chart.plot.CategoryPlot	public void panRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	axis	B6	0/5
+org.jfree.chart.plot.PolarPlot	public sealed void zoom(double) 	axis	B2	0/8
+org.jfree.chart.plot.PolarPlot	public sealed void zoom(double) 	axis	B3	0/6
+org.jfree.chart.plot.CategoryPlot	public void zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean) 	rangeAxis	B4	0/7
+org.jfree.chart.plot.Crosshair	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	stream	B1	0/7
+org.jfree.chart.plot.MeterPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	stream	B1	0/7
+org.jfree.chart.plot.XYPlot	public void zoomDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean) 	xAxis	B4	0/7
+org.jfree.chart.plot.XYPlot	public void zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean) 	yAxis	B4	0/7
+org.jfree.chart.plot.Plot	protected void fillBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation) 	p	B3	0/7
+org.jfree.chart.plot.Plot	protected void fillBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation) 	p	B4	0/5
+org.jfree.chart.plot.Plot	protected void fillBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation) 	p	B3	0/7
+org.jfree.chart.plot.Plot	protected void fillBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation) 	p	B4	0/5
+org.jfree.chart.plot.CategoryPlot	protected void drawRangeCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint) 	line	B3	0/6
+org.jfree.chart.plot.CategoryPlot	protected void drawRangeCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint) 	line	B3	0/6
+org.jfree.chart.plot.CategoryPlot	protected void drawRangeLine(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, java.awt.Stroke, java.awt.Paint) 	line	B1	0/6
+org.jfree.chart.plot.CategoryPlot	protected void drawRangeLine(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, java.awt.Stroke, java.awt.Paint) 	line	B1	0/6
+org.jfree.chart.plot.FastScatterPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	stream	B1	0/6
+org.jfree.chart.plot.Marker	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	stream	B1	0/6
+org.jfree.chart.plot.PolarPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	stream	B1	0/6
+org.jfree.chart.plot.XYPlot	protected void drawDomainCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint) 	line	B3	0/6
+org.jfree.chart.plot.XYPlot	protected void drawDomainCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint) 	line	B3	0/6
+org.jfree.chart.plot.XYPlot	protected void drawRangeCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint) 	line	B3	0/6
+org.jfree.chart.plot.XYPlot	protected void drawRangeCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotOrientation, double, org.jfree.chart.axis.ValueAxis, java.awt.Stroke, java.awt.Paint) 	line	B3	0/6
+org.jfree.chart.plot.PolarPlot	protected org.jfree.chart.text.TextAnchor calculateTextAnchor(double) 	normalizedAngle	B1	0/6
+org.jfree.chart.plot.PolarPlot	protected org.jfree.chart.text.TextAnchor calculateTextAnchor(double) 	normalizedAngle	B2	0/5
+org.jfree.chart.plot.PolarPlot	protected org.jfree.chart.text.TextAnchor calculateTextAnchor(double) 	normalizedAngle	B4	0/3
+org.jfree.chart.plot.PolarPlot	protected org.jfree.chart.text.TextAnchor calculateTextAnchor(double) 	normalizedAngle	B5	0/2
+org.jfree.chart.plot.PolarPlot	public void zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean) 	axis	B3	0/6
+org.jfree.chart.plot.PolarPlot	public void zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean) 	axis	B4	0/4
+org.jfree.chart.plot.CombinedDomainCategoryPlot	public void add(CategoryPlot#RAW, int) 	subplot	B3	0/5
+org.jfree.chart.plot.CombinedRangeCategoryPlot	public void add(CategoryPlot#RAW, int) 	subplot	B3	0/5
+org.jfree.chart.plot.FastScatterPlot	public void panDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	adj	B3	0/5
+org.jfree.chart.plot.FastScatterPlot	public void panDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	domainAxis	B3	0/5
+org.jfree.chart.plot.FastScatterPlot	public void panRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	adj	B3	0/5
+org.jfree.chart.plot.FastScatterPlot	public void panRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	rangeAxis	B3	0/5
+org.jfree.chart.plot.MeterPlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	item	B3	0/5
+org.jfree.chart.plot.Plot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	stream	B1	0/5
+org.jfree.chart.plot.SpiderWebPlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	keys	B3	0/5
+org.jfree.chart.plot.MeterPlot	protected void drawValueLabel(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	valueStr	B2	0/5
+org.jfree.chart.plot.MeterPlot	protected void drawValueLabel(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	valueStr	B3	0/3
+org.jfree.chart.plot.CategoryPlot	public sealed void handleClick(int, int, org.jfree.chart.plot.PlotRenderingInfo) 	java2D	B2	0/5
+org.jfree.chart.plot.CategoryPlot	public void panRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	adj	B6	0/5
+org.jfree.chart.plot.RingPlot	protected sealed void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	nstr	B18	0/5
+org.jfree.chart.plot.CategoryPlot	public boolean removeDomainMarker(int, org.jfree.chart.plot.CategoryMarker, org.jfree.chart.api.Layer, boolean) 	markers	B1	0/4
+org.jfree.chart.plot.CategoryPlot	public boolean removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.api.Layer, boolean) 	markers	B1	0/4
+org.jfree.chart.plot.CombinedDomainCategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	plot	B9	0/4
+org.jfree.chart.plot.CombinedDomainXYPlot	public void add(XYPlot#RAW, int) 	subplot	B3	0/4
+org.jfree.chart.plot.CombinedRangeCategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	plot	B9	0/4
+org.jfree.chart.plot.CombinedRangeXYPlot	public void add(XYPlot#RAW, int) 	subplot	B3	0/4
+org.jfree.chart.plot.PolarPlot	public org.jfree.data.Range getDataRange(org.jfree.chart.axis.ValueAxis) 	mappedDatasets	B1	0/4
+org.jfree.chart.plot.SpiderWebPlot	protected void drawLabel(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, int, double, double) 	label	B1	0/4
+org.jfree.chart.plot.WaferMapPlot	public void setDataset(org.jfree.data.general.WaferMapDataset) 	dataset	B1	0/4
+org.jfree.chart.plot.WaferMapPlot	public void setRenderer(org.jfree.chart.renderer.WaferMapRenderer) 	renderer	B1	0/4
+org.jfree.chart.plot.XYPlot	public boolean removeDomainMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.api.Layer, boolean) 	markers	B1	0/4
+org.jfree.chart.plot.XYPlot	public boolean removeRangeMarker(int, org.jfree.chart.plot.Marker, org.jfree.chart.api.Layer, boolean) 	markers	B1	0/4
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	xx	B52	0/4
+org.jfree.chart.plot.XYPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	axis	B8	0/4
+org.jfree.chart.plot.XYPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	axis	B9	0/3
+org.jfree.chart.plot.XYPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	axis	B10	0/2
+org.jfree.chart.plot.XYPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	axis	B5	0/4
+org.jfree.chart.plot.XYPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	axis	B6	0/3
+org.jfree.chart.plot.XYPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	axis	B7	0/2
+org.jfree.chart.plot.CategoryPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	yAxis	B5	0/4
+org.jfree.chart.plot.CategoryPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	yAxis	B6	0/3
+org.jfree.chart.plot.CategoryPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	yAxis	B7	0/2
+org.jfree.chart.plot.CategoryPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	xAxis	B2	0/4
+org.jfree.chart.plot.CategoryPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	xAxis	B3	0/3
+org.jfree.chart.plot.CategoryPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	xAxis	B4	0/2
+org.jfree.chart.plot.WaferMapPlot	public void setDataset(org.jfree.data.general.WaferMapDataset) 	dataset	B1	0/4
+org.jfree.chart.plot.WaferMapPlot	public void setDataset(org.jfree.data.general.WaferMapDataset) 	dataset	B3	0/2
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	yy	B44	0/4
+org.jfree.chart.plot.PolarPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	axis	B3	0/4
+org.jfree.chart.plot.PolarPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	axis	B4	0/2
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	yy	B59	0/4
+org.jfree.chart.plot.RingPlot	protected sealed void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	url	B28	0/4
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	y	B14	0/4
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	x	B13	0/4
+org.jfree.chart.plot.RingPlot	protected sealed void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	tip	B26	0/4
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	y	B18	0/4
+org.jfree.chart.plot.CategoryPlot	public void setDataset(int, CategoryDataset<R,C>) 	event	B3	0/3
+org.jfree.chart.plot.CategoryPlot	public void setDataset(int, CategoryDataset<R,C>) 	existing	B1	0/3
+org.jfree.chart.plot.CategoryPlot	public void setDomainAxis(int, org.jfree.chart.axis.CategoryAxis, boolean) 	existing	B1	0/3
+org.jfree.chart.plot.CategoryPlot	public void setRangeAxis(int, org.jfree.chart.axis.ValueAxis, boolean) 	existing	B1	0/3
+org.jfree.chart.plot.CombinedDomainCategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	subAnchor	B9	0/3
+org.jfree.chart.plot.CombinedDomainXYPlot	public sealed void datasetChanged(org.jfree.data.general.DatasetChangeEvent) 	dataset	B3	0/3
+org.jfree.chart.plot.CombinedRangeCategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	subAnchor	B9	0/3
+org.jfree.chart.plot.FastScatterPlot	protected void drawDomainGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, List#RAW) 	line	B5	0/3
+org.jfree.chart.plot.FastScatterPlot	protected void drawRangeGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, List#RAW) 	line	B5	0/3
+org.jfree.chart.plot.MeterPlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	color	B3	0/3
+org.jfree.chart.plot.PolarPlot	public void setAxis(int, org.jfree.chart.axis.ValueAxis, boolean) 	existing	B1	0/3
+org.jfree.chart.plot.PolarPlot	public void setDataset(int, XYDataset#RAW) 	event	B3	0/3
+org.jfree.chart.plot.PolarPlot	public void setDataset(int, XYDataset#RAW) 	existing	B1	0/3
+org.jfree.chart.plot.SpiderWebPlot	protected void drawRadarPoly(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotRenderingInfo, int, int, double, double) 	entities	B1	0/3
+org.jfree.chart.plot.XYPlot	protected void drawHorizontalLine(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, java.awt.Stroke, java.awt.Paint) 	axis	B1	0/3
+org.jfree.chart.plot.XYPlot	protected void drawVerticalLine(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, java.awt.Stroke, java.awt.Paint) 	axis	B1	0/3
+org.jfree.chart.plot.XYPlot	public void drawAnnotations(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	annotation	B2	0/3
+org.jfree.chart.plot.XYPlot	public void setDataset(int, XYDataset<S>) 	event	B3	0/3
+org.jfree.chart.plot.XYPlot	public void setDataset(int, XYDataset<S>) 	existing	B1	0/3
+org.jfree.chart.plot.XYPlot	public void setDomainAxis(int, org.jfree.chart.axis.ValueAxis, boolean) 	existing	B1	0/3
+org.jfree.chart.plot.XYPlot	public void setRangeAxis(int, org.jfree.chart.axis.ValueAxis, boolean) 	existing	B1	0/3
+org.jfree.chart.plot.XYPlot	public void setRangeAxis(org.jfree.chart.axis.ValueAxis) 	existing	B3	0/3
+org.jfree.chart.plot.XYPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	dataset	B11	0/3
+org.jfree.chart.plot.XYPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	dataset	B12	0/2
+org.jfree.chart.plot.CategoryPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	dataset	B8	0/3
+org.jfree.chart.plot.CategoryPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	dataset	B9	0/2
+org.jfree.chart.plot.CategoryPlot	public void clearDomainAxes() 	xAxis	B1	0/3
+org.jfree.chart.plot.CategoryPlot	public void clearDomainAxes() 	xAxis	B2	0/2
+org.jfree.chart.plot.CategoryPlot	public void clearRangeAxes() 	yAxis	B1	0/3
+org.jfree.chart.plot.CategoryPlot	public void clearRangeAxes() 	yAxis	B2	0/2
+org.jfree.chart.plot.PolarPlot	protected org.jfree.chart.text.TextAnchor calculateTextAnchor(double) 	offset	B1	0/3
+org.jfree.chart.plot.PolarPlot	protected org.jfree.chart.text.TextAnchor calculateTextAnchor(double) 	offset	B2	0/2
+org.jfree.chart.plot.SpiderWebPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	info	B1	0/3
+org.jfree.chart.plot.SpiderWebPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	info	B2	0/2
+org.jfree.chart.plot.XYPlot	public void clearDomainAxes() 	axis	B1	0/3
+org.jfree.chart.plot.XYPlot	public void clearDomainAxes() 	axis	B2	0/2
+org.jfree.chart.plot.XYPlot	public void clearRangeAxes() 	axis	B1	0/3
+org.jfree.chart.plot.XYPlot	public void clearRangeAxes() 	axis	B2	0/2
+org.jfree.chart.plot.CategoryCrosshairState	public void updateCrosshairX(R, C, int, double, org.jfree.chart.plot.PlotOrientation) 	anchorX	B2	0/3
+org.jfree.chart.plot.CategoryPlot	public void zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean) 	sourceY	B5	0/3
+org.jfree.chart.plot.CombinedDomainCategoryPlot	public sealed void handleClick(int, int, org.jfree.chart.plot.PlotRenderingInfo) 	subplot	B3	0/3
+org.jfree.chart.plot.CombinedDomainXYPlot	public sealed void handleClick(int, int, org.jfree.chart.plot.PlotRenderingInfo) 	subplot	B3	0/3
+org.jfree.chart.plot.CombinedRangeCategoryPlot	public sealed void handleClick(int, int, org.jfree.chart.plot.PlotRenderingInfo) 	subplot	B3	0/3
+org.jfree.chart.plot.CombinedRangeXYPlot	public sealed void handleClick(int, int, org.jfree.chart.plot.PlotRenderingInfo) 	subplot	B3	0/3
+org.jfree.chart.plot.PolarPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	clonedAxis	B4	0/3
+org.jfree.chart.plot.PolarPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	d	B7	0/3
+org.jfree.chart.plot.PolarPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	rc	B12	0/3
+org.jfree.chart.plot.XYPlot	public sealed void datasetChanged(org.jfree.data.general.DatasetChangeEvent) 	e	B3	0/3
+org.jfree.chart.plot.XYPlot	public void zoomDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean) 	sourceX	B5	0/3
+org.jfree.chart.plot.XYPlot	public void zoomRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D, boolean) 	sourceY	B5	0/3
+org.jfree.chart.plot.CategoryPlot	public sealed void datasetChanged(org.jfree.data.general.DatasetChangeEvent) 	e	B6	0/3
+org.jfree.chart.plot.CombinedDomainXYPlot	public sealed void panRangeAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	rangeAxis	B8	0/3
+org.jfree.chart.plot.CombinedRangeXYPlot	public sealed void panDomainAxes(double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	domainAxis	B8	0/3
+org.jfree.chart.plot.PolarPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	dataset	B7	0/3
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	line	B10	0/3
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	line	B12	0/3
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	drawWidth	B16	0/3
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	line	B14	0/3
+org.jfree.chart.plot.CategoryPlot	public void setDataset(int, CategoryDataset<R,C>) 	dataset	B3	0/2
+org.jfree.chart.plot.CategoryPlot	public void zoomRangeAxes(double, double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	yAxis	B2	0/2
+org.jfree.chart.plot.CombinedDomainCategoryPlot	public void remove(CategoryPlot#RAW) 	position	B3	0/2
+org.jfree.chart.plot.CombinedDomainXYPlot	public sealed void setRenderer(org.jfree.chart.renderer.xy.XYItemRenderer) 	renderer	B2	0/2
+org.jfree.chart.plot.CombinedDomainXYPlot	public void remove(XYPlot#RAW) 	position	B3	0/2
+org.jfree.chart.plot.CombinedRangeCategoryPlot	public void remove(CategoryPlot#RAW) 	position	B3	0/2
+org.jfree.chart.plot.CombinedRangeXYPlot	public sealed void setRenderer(org.jfree.chart.renderer.xy.XYItemRenderer) 	renderer	B2	0/2
+org.jfree.chart.plot.CombinedRangeXYPlot	public void remove(XYPlot#RAW) 	position	B3	0/2
+org.jfree.chart.plot.FastScatterPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	domainAxis	B1	0/2
+org.jfree.chart.plot.FastScatterPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	rangeAxis	B3	0/2
+org.jfree.chart.plot.MeterPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	info	B1	0/2
+org.jfree.chart.plot.PolarPlot	protected void drawCornerTextItems(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	y	B8	0/2
+org.jfree.chart.plot.PolarPlot	public java.awt.Point translateToJava2D(double, double, org.jfree.chart.axis.ValueAxis, java.awt.geom.Rectangle2D) 	angleDegrees	B1	0/2
+org.jfree.chart.plot.PolarPlot	public void setDataset(int, XYDataset#RAW) 	dataset	B3	0/2
+org.jfree.chart.plot.ThermometerPlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	rangeAxis	B4	0/2
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	info	B1	0/2
+org.jfree.chart.plot.ThermometerPlot	public void setRangeAxis(org.jfree.chart.axis.ValueAxis) 	axis	B1	0/2
+org.jfree.chart.plot.WaferMapPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	info	B3	0/2
+org.jfree.chart.plot.WaferMapPlot	public void setRenderer(org.jfree.chart.renderer.WaferMapRenderer) 	renderer	B3	0/2
+org.jfree.chart.plot.XYPlot	public void setDataset(int, XYDataset<S>) 	dataset	B3	0/2
+org.jfree.chart.plot.XYPlot	public void zoomDomainAxes(double, double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	xAxis	B2	0/2
+org.jfree.chart.plot.XYPlot	public void zoomRangeAxes(double, double, org.jfree.chart.plot.PlotRenderingInfo, java.awt.geom.Point2D) 	yAxis	B2	0/2
+org.jfree.chart.plot.PolarPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	state	B5	1/10
+org.jfree.chart.plot.PolarPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	state	B7	0/9
+org.jfree.chart.plot.PolarPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	state	B8	0/7
+org.jfree.chart.plot.PolarPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	state	B9	0/6
+org.jfree.chart.plot.PolarPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	state	B10	0/4
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rangeAxisState	B5	3/10
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rangeAxisState	B7	0/6
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rangeAxisState	B10	0/5
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rangeAxisState	B18	0/4
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rangeAxisState	B19	0/2
+org.jfree.chart.plot.CategoryPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B1	4/26
+org.jfree.chart.plot.CategoryPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B3	0/3
+org.jfree.chart.plot.CategoryPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B4	0/2
+org.jfree.chart.plot.CategoryPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B1	4/26
+org.jfree.chart.plot.CategoryPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B7	0/3
+org.jfree.chart.plot.CategoryPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B8	0/2
+org.jfree.chart.plot.CategoryPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, CategoryCrosshairState<R,C>) 	renderer	B1	3/25
+org.jfree.chart.plot.CategoryPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, CategoryCrosshairState<R,C>) 	renderer	B2	0/19
+org.jfree.chart.plot.CategoryPlot	private void checkAxisIndices(List<java.lang.Integer>) 	set	B3	1/7
+org.jfree.chart.plot.CategoryPlot	private void checkAxisIndices(List<java.lang.Integer>) 	set	B5	0/6
+org.jfree.chart.plot.CategoryPlot	private void checkAxisIndices(List<java.lang.Integer>) 	set	B6	0/5
+org.jfree.chart.plot.XYPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B1	6/26
+org.jfree.chart.plot.XYPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B3	0/3
+org.jfree.chart.plot.XYPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B4	0/2
+org.jfree.chart.plot.XYPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B1	6/26
+org.jfree.chart.plot.XYPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B7	0/3
+org.jfree.chart.plot.XYPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	axis	B8	0/2
+org.jfree.chart.plot.CategoryPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	dataset	B1	4/25
+org.jfree.chart.plot.CategoryPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	dataset	B11	0/2
+org.jfree.chart.plot.CombinedDomainCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B10	1/5
+org.jfree.chart.plot.CombinedDomainCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B11	0/3
+org.jfree.chart.plot.CombinedDomainCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B12	0/2
+org.jfree.chart.plot.CombinedDomainXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B8	1/5
+org.jfree.chart.plot.CombinedDomainXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B9	0/3
+org.jfree.chart.plot.CombinedDomainXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B10	0/2
+org.jfree.chart.plot.CombinedRangeCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B8	1/5
+org.jfree.chart.plot.CombinedRangeCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B9	0/3
+org.jfree.chart.plot.CombinedRangeCategoryPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B10	0/2
+org.jfree.chart.plot.CombinedRangeXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B8	1/5
+org.jfree.chart.plot.CombinedRangeXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B9	0/3
+org.jfree.chart.plot.CombinedRangeXYPlot	protected sealed org.jfree.chart.axis.AxisSpace calculateAxisSpace(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	totalWeight	B10	0/2
+org.jfree.chart.plot.RingPlot	protected sealed void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	ep	B9	1/5
+org.jfree.chart.plot.SpiderWebPlot	protected java.awt.geom.Point2D calculateLabelLocation(java.awt.geom.Rectangle2D, double, java.awt.geom.Rectangle2D, double) 	labelY	B1	2/6
+org.jfree.chart.plot.SpiderWebPlot	protected java.awt.geom.Point2D calculateLabelLocation(java.awt.geom.Rectangle2D, double, java.awt.geom.Rectangle2D, double) 	labelY	B5	0/2
+org.jfree.chart.plot.WaferMapPlot	protected void drawWaferEdge(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	notch	B1	1/9
+org.jfree.chart.plot.WaferMapPlot	protected void drawWaferEdge(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	notch	B1	1/9
+org.jfree.chart.plot.SpiderWebPlot	protected void drawRadarPoly(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotRenderingInfo, int, int, double, double) 	url	B7	6/9
+org.jfree.chart.plot.SpiderWebPlot	protected void drawRadarPoly(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotRenderingInfo, int, int, double, double) 	url	B12	0/3
+org.jfree.chart.plot.XYPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	dataset	B1	6/25
+org.jfree.chart.plot.XYPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	dataset	B11	0/2
+org.jfree.chart.plot.CombinedDomainCategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	subplotInfo	B7	1/8
+org.jfree.chart.plot.CombinedRangeCategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	subplotInfo	B7	1/8
+org.jfree.chart.plot.SpiderWebPlot	protected void drawRadarPoly(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotRenderingInfo, int, int, double, double) 	tip	B7	6/9
+org.jfree.chart.plot.SpiderWebPlot	protected void drawRadarPoly(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotRenderingInfo, int, int, double, double) 	tip	B10	0/3
+org.jfree.chart.plot.MeterPlot	protected void drawTick(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, boolean) 	y	B2	3/7
+org.jfree.chart.plot.MeterPlot	protected void drawTick(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, boolean) 	y	B6	0/3
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rangeAxisState	B3	4/12
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rangeAxisState	B5	4/10
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rangeAxisState	B7	1/7
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rangeAxisState	B9	1/5
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rangeAxisState	B25	0/4
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rangeAxisState	B26	0/2
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	cursor	B18	6/9
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	drawArea	B16	9/15
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	drawArea	B18	9/12
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	drawArea	B16	9/15
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	drawArea	B18	9/12
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	domainAxisState	B3	4/12
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	domainAxisState	B5	4/10
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	domainAxisState	B7	1/7
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	domainAxisState	B9	1/5
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	domainAxisState	B22	0/4
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	domainAxisState	B23	0/2
+org.jfree.chart.plot.MeterPlot	protected void drawTick(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, boolean) 	x	B2	3/8
+org.jfree.chart.plot.CombinedDomainXYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	subplotInfo	B7	1/5
+org.jfree.chart.plot.CombinedRangeXYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	subplotInfo	B7	1/5
+org.jfree.chart.plot.PolarPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	info	B3	1/5
+org.jfree.chart.plot.SpiderWebPlot	protected void drawRadarPoly(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotRenderingInfo, int, int, double, double) 	head	B6	2/3
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	l	B4	5/7
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateXDataRange(float[][]) 	highest	B2	2/5
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateXDataRange(float[][]) 	highest	B3	2/4
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateXDataRange(float[][]) 	highest	B4	1/3
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateXDataRange(float[][]) 	highest	B6	0/2
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateYDataRange(float[][]) 	highest	B2	2/5
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateYDataRange(float[][]) 	highest	B3	2/4
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateYDataRange(float[][]) 	highest	B4	1/3
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateYDataRange(float[][]) 	highest	B6	0/2
+org.jfree.chart.plot.CategoryPlot	public void setDomainAxis(int, org.jfree.chart.axis.CategoryAxis, boolean) 	axis	B3	1/4
+org.jfree.chart.plot.CategoryPlot	public void setRangeAxis(int, org.jfree.chart.axis.ValueAxis, boolean) 	axis	B3	1/4
+org.jfree.chart.plot.CombinedDomainXYPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	child	B1	1/4
+org.jfree.chart.plot.CombinedRangeCategoryPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	child	B1	1/4
+org.jfree.chart.plot.CombinedRangeXYPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	child	B1	1/4
+org.jfree.chart.plot.PolarPlot	public void setAxis(int, org.jfree.chart.axis.ValueAxis, boolean) 	axis	B3	1/4
+org.jfree.chart.plot.XYPlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	renderer	B7	1/4
+org.jfree.chart.plot.XYPlot	public void setDomainAxis(int, org.jfree.chart.axis.ValueAxis, boolean) 	axis	B3	1/4
+org.jfree.chart.plot.XYPlot	public void setRangeAxis(int, org.jfree.chart.axis.ValueAxis, boolean) 	axis	B3	1/4
+org.jfree.chart.plot.XYPlot	public void setRangeAxis(org.jfree.chart.axis.ValueAxis) 	axis	B1	1/4
+org.jfree.chart.plot.SpiderWebPlot	protected java.awt.geom.Point2D calculateLabelLocation(java.awt.geom.Rectangle2D, double, java.awt.geom.Rectangle2D, double) 	labelX	B1	2/8
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateXDataRange(float[][]) 	lowest	B2	2/5
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateXDataRange(float[][]) 	lowest	B3	2/4
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateXDataRange(float[][]) 	lowest	B4	1/3
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateYDataRange(float[][]) 	lowest	B2	2/5
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateYDataRange(float[][]) 	lowest	B3	2/4
+org.jfree.chart.plot.FastScatterPlot	private org.jfree.data.Range calculateYDataRange(float[][]) 	lowest	B4	1/3
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	space	B1	1/3
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	xchips	B1	1/3
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	ychips	B1	1/3
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	anchor	B5	3/5
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	anchor	B10	0/2
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	anchor	B5	3/5
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	anchor	B9	0/2
+org.jfree.chart.plot.RingPlot	protected sealed void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	arc	B9	6/8
+org.jfree.chart.plot.RingPlot	protected sealed void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	arc	B11	1/3
+org.jfree.chart.plot.CategoryPlot	protected void drawRangeGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, List<org.jfree.chart.axis.ValueTick>) 	paintLine	B9	2/5
+org.jfree.chart.plot.XYPlot	protected void drawDomainGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, List<org.jfree.chart.axis.ValueTick>) 	paintLine	B6	2/5
+org.jfree.chart.plot.XYPlot	protected void drawRangeGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, List<org.jfree.chart.axis.ValueTick>) 	paintLine	B6	2/5
+org.jfree.chart.plot.MeterPlot	protected void fillArc(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, double, java.awt.Paint, boolean) 	joinType	B1	4/10
+org.jfree.chart.plot.MeterPlot	protected void fillArc(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, double, java.awt.Paint, boolean) 	extent	B1	5/9
+org.jfree.chart.plot.MeterPlot	protected void fillArc(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, double, java.awt.Paint, boolean) 	extent	B3	3/5
+org.jfree.chart.plot.MeterPlot	protected void fillArc(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, double, java.awt.Paint, boolean) 	extent	B7	2/4
+org.jfree.chart.plot.MeterPlot	protected void fillArc(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, double, java.awt.Paint, boolean) 	extent	B8	0/2
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	info	B3	3/7
+org.jfree.chart.plot.SpiderWebPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	X	B9	5/7
+org.jfree.chart.plot.SpiderWebPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	Y	B9	5/7
+org.jfree.chart.plot.XYPlot	protected void drawQuadrants(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	r	B1	16/35
+org.jfree.chart.plot.XYPlot	protected void drawQuadrants(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	r	B3	15/34
+org.jfree.chart.plot.XYPlot	protected void drawQuadrants(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	r	B5	13/31
+org.jfree.chart.plot.PolarPlot	protected void drawCornerTextItems(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	height	B3	3/7
+org.jfree.chart.plot.PolarPlot	protected void drawCornerTextItems(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	height	B4	3/6
+org.jfree.chart.plot.PolarPlot	protected void drawCornerTextItems(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	width	B3	3/7
+org.jfree.chart.plot.PolarPlot	protected void drawCornerTextItems(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	width	B4	3/6
+org.jfree.chart.plot.PolarPlot	protected org.jfree.chart.axis.AxisState drawAxis(org.jfree.chart.axis.ValueAxis, org.jfree.chart.plot.PolarAxisLocation, java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	dataArea	B1	10/22
+org.jfree.chart.plot.PolarPlot	protected org.jfree.chart.axis.AxisState drawAxis(org.jfree.chart.axis.ValueAxis, org.jfree.chart.plot.PolarAxisLocation, java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	dataArea	B1	10/22
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	mercury	B4	6/9
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	mercury	B6	1/4
+org.jfree.chart.plot.CombinedDomainCategoryPlot	public void remove(CategoryPlot#RAW) 	subplot	B1	8/10
+org.jfree.chart.plot.CombinedDomainCategoryPlot	public void remove(CategoryPlot#RAW) 	subplot	B2	5/7
+org.jfree.chart.plot.CombinedDomainCategoryPlot	public void remove(CategoryPlot#RAW) 	subplot	B6	1/3
+org.jfree.chart.plot.CombinedDomainCategoryPlot	public void remove(CategoryPlot#RAW) 	subplot	B7	0/2
+org.jfree.chart.plot.CombinedDomainXYPlot	public void remove(XYPlot#RAW) 	subplot	B1	8/10
+org.jfree.chart.plot.CombinedDomainXYPlot	public void remove(XYPlot#RAW) 	subplot	B2	5/7
+org.jfree.chart.plot.CombinedDomainXYPlot	public void remove(XYPlot#RAW) 	subplot	B6	1/3
+org.jfree.chart.plot.CombinedDomainXYPlot	public void remove(XYPlot#RAW) 	subplot	B7	0/2
+org.jfree.chart.plot.CombinedRangeCategoryPlot	public void remove(CategoryPlot#RAW) 	subplot	B1	8/10
+org.jfree.chart.plot.CombinedRangeCategoryPlot	public void remove(CategoryPlot#RAW) 	subplot	B2	5/7
+org.jfree.chart.plot.CombinedRangeCategoryPlot	public void remove(CategoryPlot#RAW) 	subplot	B6	1/3
+org.jfree.chart.plot.CombinedRangeCategoryPlot	public void remove(CategoryPlot#RAW) 	subplot	B7	0/2
+org.jfree.chart.plot.CombinedRangeXYPlot	public void remove(XYPlot#RAW) 	subplot	B1	8/10
+org.jfree.chart.plot.CombinedRangeXYPlot	public void remove(XYPlot#RAW) 	subplot	B2	5/7
+org.jfree.chart.plot.CombinedRangeXYPlot	public void remove(XYPlot#RAW) 	subplot	B6	1/3
+org.jfree.chart.plot.CombinedRangeXYPlot	public void remove(XYPlot#RAW) 	subplot	B7	0/2
+org.jfree.chart.plot.CategoryPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	renderer	B15	1/2
+org.jfree.chart.plot.CategoryPlot	public void setRenderer(int, org.jfree.chart.renderer.category.CategoryItemRenderer, boolean) 	renderer	B3	1/2
+org.jfree.chart.plot.PolarPlot	public void setRenderer(int, org.jfree.chart.renderer.PolarItemRenderer, boolean) 	renderer	B3	1/2
+org.jfree.chart.plot.XYPlot	public sealed java.lang.Object clone() throws java.lang.CloneNotSupportedException	renderer	B15	1/2
+org.jfree.chart.plot.XYPlot	public void setRenderer(int, org.jfree.chart.renderer.xy.XYItemRenderer, boolean) 	renderer	B3	1/2
+org.jfree.chart.plot.CategoryPlot	protected void drawRangeGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, List<org.jfree.chart.axis.ValueTick>) 	gridPaint	B9	2/4
+org.jfree.chart.plot.CategoryPlot	protected void drawRangeGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, List<org.jfree.chart.axis.ValueTick>) 	gridStroke	B9	2/4
+org.jfree.chart.plot.XYPlot	protected void drawDomainGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, List<org.jfree.chart.axis.ValueTick>) 	gridPaint	B6	2/4
+org.jfree.chart.plot.XYPlot	protected void drawDomainGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, List<org.jfree.chart.axis.ValueTick>) 	gridStroke	B6	2/4
+org.jfree.chart.plot.XYPlot	protected void drawRangeGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, List<org.jfree.chart.axis.ValueTick>) 	gridPaint	B6	2/4
+org.jfree.chart.plot.XYPlot	protected void drawRangeGridlines(java.awt.Graphics2D, java.awt.geom.Rectangle2D, List<org.jfree.chart.axis.ValueTick>) 	gridStroke	B6	2/4
+org.jfree.chart.plot.FastScatterPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	info	B1	4/8
+org.jfree.chart.plot.XYPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState) 	firstItem	B22	4/7
+org.jfree.chart.plot.XYPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState) 	firstItem	B23	1/2
+org.jfree.chart.plot.XYPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState) 	lastItem	B22	4/7
+org.jfree.chart.plot.XYPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState) 	lastItem	B23	1/2
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	crosshairState	B5	17/30
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	crosshairState	B10	14/27
+org.jfree.chart.plot.CategoryPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	crosshairState	B12	12/25
+org.jfree.chart.plot.XYPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState) 	firstItem	B13	3/5
+org.jfree.chart.plot.XYPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState) 	firstItem	B14	1/2
+org.jfree.chart.plot.XYPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState) 	lastItem	B13	3/5
+org.jfree.chart.plot.XYPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState) 	lastItem	B14	1/2
+org.jfree.chart.plot.SpiderWebPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	centre	B9	11/12
+org.jfree.chart.plot.SpiderWebPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	radarArea	B9	11/12
+org.jfree.chart.plot.XYPlot	public org.jfree.data.Range getDataRange(org.jfree.chart.axis.ValueAxis) 	isDomainAxis	B1	4/7
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	chipHeight	B1	11/14
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	chipHeight	B3	6/9
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	chipHeight	B4	5/7
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	chipHeight	B7	1/3
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	chipWidth	B1	11/14
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	chipWidth	B3	6/9
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	chipWidth	B4	5/7
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	chipWidth	B7	1/3
+org.jfree.chart.plot.FastScatterPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	space	B3	2/3
+org.jfree.chart.plot.SpiderWebPlot	private void calculateMaxValue(int, int) 	v	B4	2/3
+org.jfree.chart.plot.MeterPlot	protected void drawTick(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, boolean) 	valueP2X	B1	4/6
+org.jfree.chart.plot.MeterPlot	protected void drawTick(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, boolean) 	valueP2Y	B1	4/6
+org.jfree.chart.plot.MeterPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	meterX	B5	5/7
+org.jfree.chart.plot.MeterPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	meterY	B5	5/7
+org.jfree.chart.plot.WaferMapPlot	protected java.awt.geom.Ellipse2D getWaferEdge(java.awt.geom.Rectangle2D) 	upperLeftX	B1	8/10
+org.jfree.chart.plot.WaferMapPlot	protected java.awt.geom.Ellipse2D getWaferEdge(java.awt.geom.Rectangle2D) 	upperLeftX	B2	7/8
+org.jfree.chart.plot.WaferMapPlot	protected java.awt.geom.Ellipse2D getWaferEdge(java.awt.geom.Rectangle2D) 	upperLeftX	B5	1/2
+org.jfree.chart.plot.WaferMapPlot	protected java.awt.geom.Ellipse2D getWaferEdge(java.awt.geom.Rectangle2D) 	upperLeftY	B1	8/10
+org.jfree.chart.plot.WaferMapPlot	protected java.awt.geom.Ellipse2D getWaferEdge(java.awt.geom.Rectangle2D) 	upperLeftY	B2	7/8
+org.jfree.chart.plot.WaferMapPlot	protected java.awt.geom.Ellipse2D getWaferEdge(java.awt.geom.Rectangle2D) 	upperLeftY	B5	1/2
+org.jfree.chart.plot.PolarPlot	protected void render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	hasData	B1	9/11
+org.jfree.chart.plot.PolarPlot	protected void render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	hasData	B2	8/9
+org.jfree.chart.plot.PolarPlot	protected void render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	hasData	B7	1/2
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startX	B3	8/10
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startX	B4	7/8
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startX	B7	1/2
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startY	B3	8/10
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startY	B4	7/8
+org.jfree.chart.plot.WaferMapPlot	protected void drawChipGrid(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startY	B7	1/2
+org.jfree.chart.plot.MeterPlot	protected void drawTick(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, boolean) 	line	B1	9/12
+org.jfree.chart.plot.WaferMapPlot	protected java.awt.geom.Ellipse2D getWaferEdge(java.awt.geom.Rectangle2D) 	diameter	B1	5/7
+org.jfree.chart.plot.WaferMapPlot	protected java.awt.geom.Ellipse2D getWaferEdge(java.awt.geom.Rectangle2D) 	diameter	B2	4/5
+org.jfree.chart.plot.XYPlot	public boolean render(java.awt.Graphics2D, java.awt.geom.Rectangle2D, int, org.jfree.chart.plot.PlotRenderingInfo, org.jfree.chart.plot.CrosshairState) 	state	B7	23/30
+org.jfree.chart.plot.XYPlot	protected void drawQuadrants(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	somethingToDraw	B1	16/21
+org.jfree.chart.plot.XYPlot	protected void drawQuadrants(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	somethingToDraw	B3	15/19
+org.jfree.chart.plot.XYPlot	protected void drawQuadrants(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	somethingToDraw	B5	13/17
+org.jfree.chart.plot.SpiderWebPlot	protected void drawRadarPoly(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotRenderingInfo, int, int, double, double) 	polygon	B1	7/9
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	dataArea	B3	4/5
+org.jfree.chart.plot.PolarPlot	public java.awt.Point translateToJava2D(double, double, org.jfree.chart.axis.ValueAxis, java.awt.geom.Rectangle2D) 	quadrant	B3	8/10
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	temp	B1	7/9
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	temp	B3	7/8
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	temp	B4	6/7
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	temp	B21	5/6
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	i	B21	7/8
+org.jfree.chart.plot.ThermometerPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	tempArea	B3	14/15
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	crosshairState	B3	54/59
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	crosshairState	B5	54/57
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	crosshairState	B7	51/54
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	crosshairState	B9	51/52
+org.jfree.chart.plot.XYPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	crosshairState	B11	48/49

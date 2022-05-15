@@ -1,0 +1,134 @@
+org.jfree.chart.swing.ChartPanel	protected void saveAsPDF(java.io.File) 	file	B1	0/19
+org.jfree.chart.swing.ChartPanel	protected void saveAsPDF(java.io.File) 	file	B2	0/17
+org.jfree.chart.swing.ChartPanel	protected void saveAsPDF(java.io.File) 	file	B3	0/10
+org.jfree.chart.swing.ChartPanel	protected void saveAsPDF(java.io.File) 	file	B6	0/6
+org.jfree.chart.swing.ChartPanel	protected void saveAsSVG(java.io.File) throws java.io.IOException	file	B1	0/19
+org.jfree.chart.swing.ChartPanel	protected void saveAsSVG(java.io.File) throws java.io.IOException	file	B2	0/17
+org.jfree.chart.swing.ChartPanel	protected void saveAsSVG(java.io.File) throws java.io.IOException	file	B3	0/10
+org.jfree.chart.swing.ChartPanel	protected void saveAsSVG(java.io.File) throws java.io.IOException	file	B6	0/6
+org.jfree.chart.swing.ChartPanel	protected void saveAsSVG(java.io.File) throws java.io.IOException	writer	B10	0/11
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	autoRangeMenu	B22	0/11
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomInMenu	B22	0/11
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomOutMenu	B22	0/11
+org.jfree.chart.swing.PolarChartPanel	protected sealed javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomInIndex	B4	0/10
+org.jfree.chart.swing.UIUtils	public static void positionDialogRelativeToParent(java.awt.Dialog, double, double) 	r	B3	0/9
+org.jfree.chart.swing.ChartPanel	public void mouseDragged(java.awt.event.MouseEvent) 	selectionZoomStrategy	B14	0/9
+org.jfree.chart.swing.ChartPanel	public void mouseDragged(java.awt.event.MouseEvent) 	selectionZoomStrategy	B17	0/3
+org.jfree.chart.swing.ChartPanel	public void zoom(java.awt.geom.Rectangle2D) 	z	B3	0/9
+org.jfree.chart.swing.ChartPanel	public void mouseMoved(java.awt.event.MouseEvent) 	entity	B3	0/8
+org.jfree.chart.swing.ChartPanel	public void mouseMoved(java.awt.event.MouseEvent) 	entity	B4	0/3
+org.jfree.chart.swing.ChartPanel	public void restoreAutoDomainBounds() 	z	B2	0/7
+org.jfree.chart.swing.ChartPanel	public void restoreAutoRangeBounds() 	z	B2	0/7
+org.jfree.chart.swing.ChartPanel	public int print(java.awt.Graphics, java.awt.print.PageFormat, int) 	chart	B3	0/6
+org.jfree.chart.swing.ChartPanel	public void zoomInDomain(double, double) 	z	B2	0/5
+org.jfree.chart.swing.ChartPanel	public void zoomInRange(double, double) 	z	B2	0/5
+org.jfree.chart.swing.ChartPanel	public void zoomOutDomain(double, double) 	z	B2	0/5
+org.jfree.chart.swing.ChartPanel	public void zoomOutRange(double, double) 	z	B2	0/5
+org.jfree.chart.swing.ChartPanel	public void doCopy() 	selection	B1	0/4
+org.jfree.chart.swing.MouseWheelHandler	private void handleZoomable(org.jfree.chart.plot.Zoomable, java.awt.event.MouseWheelEvent) 	zf	B3	0/4
+org.jfree.chart.swing.ChartPanel	public void restoreAutoBounds() 	plot	B1	0/4
+org.jfree.chart.swing.ChartPanel	public void restoreAutoBounds() 	plot	B3	0/3
+org.jfree.chart.swing.ChartPanel	public void zoomInBoth(double, double) 	plot	B1	0/4
+org.jfree.chart.swing.ChartPanel	public void zoomInBoth(double, double) 	plot	B3	0/3
+org.jfree.chart.swing.ChartPanel	public void zoomOutBoth(double, double) 	plot	B1	0/4
+org.jfree.chart.swing.ChartPanel	public void zoomOutBoth(double, double) 	plot	B3	0/3
+org.jfree.chart.swing.ChartPanel	protected void saveAsPDF(java.io.File) 	filename	B3	0/4
+org.jfree.chart.swing.ChartPanel	protected void saveAsPDF(java.io.File) 	filename	B4	0/2
+org.jfree.chart.swing.ChartPanel	protected void saveAsSVG(java.io.File) throws java.io.IOException	filename	B3	0/4
+org.jfree.chart.swing.ChartPanel	protected void saveAsSVG(java.io.File) throws java.io.IOException	filename	B4	0/2
+org.jfree.chart.swing.ChartPanel	public void doSaveAs(int, int) throws java.io.IOException	filename	B2	0/4
+org.jfree.chart.swing.ChartPanel	public void doSaveAs(int, int) throws java.io.IOException	filename	B3	0/2
+org.jfree.chart.swing.ChartPanel	public void mouseExited(java.awt.event.MouseEvent) 	ttm	B2	0/4
+org.jfree.chart.swing.UIUtils	public static javax.swing.JPanel createTablePanel(javax.swing.table.TableModel) 	column	B3	0/4
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	pngItem	B10	0/4
+org.jfree.chart.swing.ChartPanel	public void setDefaultDirectoryForSaveAs(java.io.File) 	directory	B1	0/3
+org.jfree.chart.swing.ChartPanel	public void mouseReleased(java.awt.event.MouseEvent) 	popup	B16	0/3
+org.jfree.chart.swing.ChartPanel	public void mouseReleased(java.awt.event.MouseEvent) 	popup	B17	0/2
+org.jfree.chart.swing.ChartPanel	protected void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	chart	B1	0/2
+org.jfree.chart.swing.ChartPanel	public void doSaveAs(int, int) throws java.io.IOException	h	B7	0/2
+org.jfree.chart.swing.ChartPanel	public void doSaveAs(int, int) throws java.io.IOException	w	B5	0/2
+org.jfree.chart.swing.ChartPanel	public void zoom(java.awt.geom.Rectangle2D) 	p	B2	1/5
+org.jfree.chart.swing.ChartPanel	public void zoom(java.awt.geom.Rectangle2D) 	p	B3	0/3
+org.jfree.chart.swing.ChartPanel	public void mousePressed(java.awt.event.MouseEvent) 	popup	B3	3/13
+org.jfree.chart.swing.ChartPanel	public void mousePressed(java.awt.event.MouseEvent) 	popup	B8	0/10
+org.jfree.chart.swing.ChartPanel	public void mousePressed(java.awt.event.MouseEvent) 	popup	B13	0/3
+org.jfree.chart.swing.ChartPanel	public void mousePressed(java.awt.event.MouseEvent) 	popup	B14	0/2
+org.jfree.chart.swing.MouseWheelHandler	private void handleZoomable(org.jfree.chart.plot.Zoomable, java.awt.event.MouseWheelEvent) 	zoomable	B1	3/11
+org.jfree.chart.swing.MouseWheelHandler	private void handleZoomable(org.jfree.chart.plot.Zoomable, java.awt.event.MouseWheelEvent) 	zoomable	B3	0/8
+org.jfree.chart.swing.MouseWheelHandler	private void handleZoomable(org.jfree.chart.plot.Zoomable, java.awt.event.MouseWheelEvent) 	zoomable	B5	0/4
+org.jfree.chart.swing.ChartPanel	public void mouseClicked(java.awt.event.MouseEvent) 	entity	B1	3/8
+org.jfree.chart.swing.ChartPanel	public void mouseClicked(java.awt.event.MouseEvent) 	entity	B5	0/5
+org.jfree.chart.swing.ChartPanel	public void mouseClicked(java.awt.event.MouseEvent) 	entity	B6	0/3
+org.jfree.chart.swing.ChartPanel	public void mouseClicked(java.awt.event.MouseEvent) 	chartEvent	B1	3/10
+org.jfree.chart.swing.ChartPanel	public void mouseClicked(java.awt.event.MouseEvent) 	chartEvent	B3	0/7
+org.jfree.chart.swing.ChartPanel	public void mouseClicked(java.awt.event.MouseEvent) 	chartEvent	B5	0/6
+org.jfree.chart.swing.ChartPanel	public void restoreAutoDomainBounds() 	plot	B1	1/5
+org.jfree.chart.swing.ChartPanel	public void restoreAutoDomainBounds() 	plot	B2	0/3
+org.jfree.chart.swing.ChartPanel	public void restoreAutoRangeBounds() 	plot	B1	1/5
+org.jfree.chart.swing.ChartPanel	public void restoreAutoRangeBounds() 	plot	B2	0/3
+org.jfree.chart.swing.ChartPanel	public void zoomInDomain(double, double) 	plot	B1	1/5
+org.jfree.chart.swing.ChartPanel	public void zoomInDomain(double, double) 	plot	B2	0/3
+org.jfree.chart.swing.ChartPanel	public void zoomInRange(double, double) 	plot	B1	1/5
+org.jfree.chart.swing.ChartPanel	public void zoomInRange(double, double) 	plot	B2	0/3
+org.jfree.chart.swing.ChartPanel	public void zoomOutDomain(double, double) 	plot	B1	1/5
+org.jfree.chart.swing.ChartPanel	public void zoomOutDomain(double, double) 	plot	B2	0/3
+org.jfree.chart.swing.ChartPanel	public void zoomOutRange(double, double) 	plot	B1	1/5
+org.jfree.chart.swing.ChartPanel	public void zoomOutRange(double, double) 	plot	B2	0/3
+org.jfree.chart.swing.ChartPanel	public void mouseDragged(java.awt.event.MouseEvent) 	p	B4	2/10
+org.jfree.chart.swing.ChartPanel	public void mouseDragged(java.awt.event.MouseEvent) 	p	B6	0/8
+org.jfree.chart.swing.MouseWheelHandler	private void handleZoomable(org.jfree.chart.plot.Zoomable, java.awt.event.MouseWheelEvent) 	plot	B1	3/15
+org.jfree.chart.swing.MouseWheelHandler	private void handleZoomable(org.jfree.chart.plot.Zoomable, java.awt.event.MouseWheelEvent) 	plot	B3	0/12
+org.jfree.chart.swing.ChartPanel	public void setChart(org.jfree.chart.JFreeChart) 	chart	B1	1/7
+org.jfree.chart.swing.ChartPanel	public void setChart(org.jfree.chart.JFreeChart) 	chart	B3	1/4
+org.jfree.chart.swing.ChartPanel	public void setChart(org.jfree.chart.JFreeChart) 	chart	B4	0/2
+org.jfree.chart.swing.ChartPanel	public void setChart(org.jfree.chart.JFreeChart) 	chart	B1	1/7
+org.jfree.chart.swing.ChartPanel	protected java.lang.String generateSVG(int, int) 	chart	B1	1/3
+org.jfree.chart.swing.ChartPanel	protected java.lang.String generateSVG(int, int) 	chart	B3	0/2
+org.jfree.chart.swing.ChartPanel	protected void saveAsSVG(java.io.File) throws java.io.IOException	writer	B10	1/3
+org.jfree.chart.swing.ChartPanel	public void mousePressed(java.awt.event.MouseEvent) 	selectionZoomStrategy	B3	4/10
+org.jfree.chart.swing.ChartPanel	public void mousePressed(java.awt.event.MouseEvent) 	selectionZoomStrategy	B8	1/7
+org.jfree.chart.swing.ChartPanel	public void mousePressed(java.awt.event.MouseEvent) 	selectionZoomStrategy	B9	0/6
+org.jfree.chart.swing.ChartPanel	public void mousePressed(java.awt.event.MouseEvent) 	selectionZoomStrategy	B10	0/5
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomInBothMenuItem	B19	1/3
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomInBothMenuItem	B22	0/2
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomInDomainMenuItem	B19	1/3
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomInDomainMenuItem	B22	0/2
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomInRangeMenuItem	B19	1/3
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomInRangeMenuItem	B22	0/2
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomOutBothMenuItem	B19	1/3
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomOutBothMenuItem	B22	0/2
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomOutDomainMenuItem	B19	1/3
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomOutDomainMenuItem	B22	0/2
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomOutRangeMenuItem	B19	1/3
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomOutRangeMenuItem	B22	0/2
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomResetBothMenuItem	B19	1/3
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomResetBothMenuItem	B22	0/2
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomResetDomainMenuItem	B19	1/3
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomResetDomainMenuItem	B22	0/2
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomResetRangeMenuItem	B19	1/3
+org.jfree.chart.swing.ChartPanel	protected javax.swing.JPopupMenu createPopupMenu(boolean, boolean, boolean, boolean, boolean) 	zoomResetRangeMenuItem	B22	0/2
+org.jfree.chart.swing.ChartPanel	public sealed void paintComponent(java.awt.Graphics) 	available	B3	1/3
+org.jfree.chart.swing.CrosshairOverlay	protected void drawHorizontalCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, org.jfree.chart.plot.Crosshair) 	alignPt	B5	1/2
+org.jfree.chart.swing.CrosshairOverlay	protected void drawHorizontalCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, org.jfree.chart.plot.Crosshair) 	pt	B5	1/2
+org.jfree.chart.swing.CrosshairOverlay	protected void drawVerticalCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, org.jfree.chart.plot.Crosshair) 	alignPt	B5	1/2
+org.jfree.chart.swing.CrosshairOverlay	protected void drawVerticalCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, org.jfree.chart.plot.Crosshair) 	pt	B5	1/2
+org.jfree.chart.swing.CrosshairOverlay	public void removeDomainCrosshair(org.jfree.chart.plot.Crosshair) 	crosshair	B1	1/2
+org.jfree.chart.swing.CrosshairOverlay	public void removeRangeCrosshair(org.jfree.chart.plot.Crosshair) 	crosshair	B1	1/2
+org.jfree.chart.swing.ChartPanel	public void actionPerformed(java.awt.event.ActionEvent) 	screenX	B1	2/4
+org.jfree.chart.swing.ChartPanel	public void actionPerformed(java.awt.event.ActionEvent) 	screenY	B1	2/4
+org.jfree.chart.swing.ChartPanel	protected void displayPopupMenu(int, int) 	isDomainZoomable	B3	3/5
+org.jfree.chart.swing.ChartPanel	protected void displayPopupMenu(int, int) 	isDomainZoomable	B4	1/2
+org.jfree.chart.swing.ChartPanel	protected void displayPopupMenu(int, int) 	isRangeZoomable	B3	3/5
+org.jfree.chart.swing.ChartPanel	protected void displayPopupMenu(int, int) 	isRangeZoomable	B4	1/2
+org.jfree.chart.swing.ChartPanel	public sealed void paintComponent(java.awt.Graphics) 	scale	B3	9/14
+org.jfree.chart.swing.CrosshairOverlay	protected void drawHorizontalCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, org.jfree.chart.plot.Crosshair) 	xx	B5	2/3
+org.jfree.chart.swing.CrosshairOverlay	protected void drawHorizontalCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, org.jfree.chart.plot.Crosshair) 	yy	B5	2/3
+org.jfree.chart.swing.CrosshairOverlay	protected void drawVerticalCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, org.jfree.chart.plot.Crosshair) 	xx	B5	2/3
+org.jfree.chart.swing.CrosshairOverlay	protected void drawVerticalCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, org.jfree.chart.plot.Crosshair) 	yy	B5	2/3
+org.jfree.chart.swing.ChartPanel	protected void saveAsPDF(java.io.File) 	fileChooser	B2	4/6
+org.jfree.chart.swing.ChartPanel	protected void saveAsSVG(java.io.File) throws java.io.IOException	fileChooser	B2	4/6
+org.jfree.chart.swing.ChartPanel	public void doSaveAs(int, int) throws java.io.IOException	fileChooser	B1	4/6
+org.jfree.chart.swing.ChartPanel	public void mouseClicked(java.awt.event.MouseEvent) 	anchor	B1	3/4
+org.jfree.chart.swing.ChartPanel	private void writeAsPDF(java.io.File, int, int) 	chart	B3	9/11
+org.jfree.chart.swing.CrosshairOverlay	protected void drawHorizontalCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, org.jfree.chart.plot.Crosshair) 	hotspot	B5	5/6
+org.jfree.chart.swing.CrosshairOverlay	protected void drawVerticalCrosshair(java.awt.Graphics2D, java.awt.geom.Rectangle2D, double, org.jfree.chart.plot.Crosshair) 	hotspot	B5	5/6

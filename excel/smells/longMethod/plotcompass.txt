@@ -1,0 +1,39 @@
+org.jfree.chart.plot.compass.CompassPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	p	B14	0/8
+org.jfree.chart.plot.compass.CompassPlot	protected java.awt.Font getCompassFont(int) 	fontSize	B1	0/3
+org.jfree.chart.plot.compass.CompassPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	a1	B7	0/3
+org.jfree.chart.plot.compass.CompassPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	needleArea	B15	0/3
+org.jfree.chart.plot.compass.CompassPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	info	B1	0/2
+org.jfree.chart.plot.compass.MiddlePinNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	shape	B1	1/19
+org.jfree.chart.plot.compass.MiddlePinNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	shape	B3	1/10
+org.jfree.chart.plot.compass.PinNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	shape	B1	1/18
+org.jfree.chart.plot.compass.PinNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	shape	B3	1/10
+org.jfree.chart.plot.compass.PinNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	pointer	B1	4/11
+org.jfree.chart.plot.compass.PinNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	pointer	B3	0/4
+org.jfree.chart.plot.compass.MiddlePinNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	pointer	B1	7/12
+org.jfree.chart.plot.compass.MiddlePinNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	pointer	B3	0/4
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	shape3	B1	9/15
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	shape3	B3	0/5
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	shape1	B1	8/13
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	shape1	B3	0/4
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	shape2	B1	9/14
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	shape2	B3	0/4
+org.jfree.chart.plot.compass.CompassPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	radius	B5	2/6
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	s3	B1	10/18
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	s3	B3	1/8
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	s1	B1	9/16
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	s1	B3	1/7
+org.jfree.chart.plot.compass.CompassPlot	public void addDataset(org.jfree.data.general.ValueDataset, org.jfree.chart.plot.compass.MeterNeedle) 	p	B2	4/7
+org.jfree.chart.plot.compass.CompassPlot	public void addDataset(org.jfree.data.general.ValueDataset, org.jfree.chart.plot.compass.MeterNeedle) 	p	B3	2/4
+org.jfree.chart.plot.compass.CompassPlot	public void addDataset(org.jfree.data.general.ValueDataset, org.jfree.chart.plot.compass.MeterNeedle) 	t	B2	4/7
+org.jfree.chart.plot.compass.CompassPlot	public void addDataset(org.jfree.data.general.ValueDataset, org.jfree.chart.plot.compass.MeterNeedle) 	t	B3	2/4
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	s2	B1	10/17
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	s2	B3	1/7
+org.jfree.chart.plot.compass.CompassPlot	public void addDataset(org.jfree.data.general.ValueDataset, org.jfree.chart.plot.compass.MeterNeedle) 	a	B5	2/4
+org.jfree.chart.plot.compass.CompassPlot	public void addDataset(org.jfree.data.general.ValueDataset, org.jfree.chart.plot.compass.MeterNeedle) 	a	B6	1/2
+org.jfree.chart.plot.compass.CompassPlot	public void addDataset(org.jfree.data.general.ValueDataset, org.jfree.chart.plot.compass.MeterNeedle) 	b	B5	2/4
+org.jfree.chart.plot.compass.CompassPlot	public void addDataset(org.jfree.data.general.ValueDataset, org.jfree.chart.plot.compass.MeterNeedle) 	b	B6	1/2
+org.jfree.chart.plot.compass.CompassPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	x2	B9	1/2
+org.jfree.chart.plot.compass.CompassPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	y2	B9	1/2
+org.jfree.chart.plot.compass.CompassPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	value	B17	2/4
+org.jfree.chart.plot.compass.LongNeedle	protected sealed void drawNeedle(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, double) 	y	B1	3/6
+org.jfree.chart.plot.compass.CompassPlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	current	B17	2/3

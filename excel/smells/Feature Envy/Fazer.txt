@@ -1,0 +1,1 @@
+verificar se para cada class que esta no excel  se um método chama mais objetos/métodos de outras classes do que os objetos/métodos da própria classe

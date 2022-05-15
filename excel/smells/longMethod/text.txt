@@ -1,0 +1,32 @@
+org.jfree.chart.text.TextBlock	private float[] calculateOffsets(org.jfree.chart.text.TextBlockAnchor, double, double) 	yAdj	B1	0/7
+org.jfree.chart.text.TextBlock	private float[] calculateOffsets(org.jfree.chart.text.TextBlockAnchor, double, double) 	yAdj	B5	0/6
+org.jfree.chart.text.TextLine	public void draw(java.awt.Graphics2D, float, float, org.jfree.chart.text.TextAnchor, float, float, double) 	xAdj	B1	0/6
+org.jfree.chart.text.TextBlock	private float[] calculateOffsets(org.jfree.chart.text.TextBlockAnchor, double, double) 	xAdj	B1	0/5
+org.jfree.chart.text.TextBlock	public java.awt.Shape calculateBounds(java.awt.Graphics2D, float, float, org.jfree.chart.text.TextBlockAnchor, float, float, double) 	bounds	B1	0/3
+org.jfree.chart.text.TextUtils	public static org.jfree.chart.text.TextBlock createTextBlock(java.lang.String, java.awt.Font, java.awt.Paint, float, int, org.jfree.chart.text.TextMeasurer) 	next	B5	0/2
+org.jfree.chart.text.TextUtils	private static float[] deriveRotationAnchorOffsets(java.awt.Graphics2D, java.lang.String, org.jfree.chart.text.TextAnchor) 	yAdj	B1	2/19
+org.jfree.chart.text.TextUtils	private static float[] deriveRotationAnchorOffsets(java.awt.Graphics2D, java.lang.String, org.jfree.chart.text.TextAnchor) 	yAdj	B7	0/10
+org.jfree.chart.text.TextUtils	private static float[] deriveTextBoundsAnchorOffsets(java.awt.Graphics2D, java.lang.String, org.jfree.chart.text.TextAnchor) 	yAdj	B1	3/20
+org.jfree.chart.text.TextUtils	private static float[] deriveTextBoundsAnchorOffsets(java.awt.Graphics2D, java.lang.String, org.jfree.chart.text.TextAnchor) 	yAdj	B5	0/10
+org.jfree.chart.text.TextUtils	public static org.jfree.chart.text.TextBlock createTextBlock(java.lang.String, java.awt.Font, java.awt.Paint, float, int, org.jfree.chart.text.TextMeasurer) 	newFragment	B11	2/7
+org.jfree.chart.text.TextUtils	private static float[] deriveTextBoundsAnchorOffsets(java.awt.Graphics2D, java.lang.String, org.jfree.chart.text.TextAnchor, java.awt.geom.Rectangle2D) 	yAdj	B1	6/20
+org.jfree.chart.text.TextUtils	private static float[] deriveTextBoundsAnchorOffsets(java.awt.Graphics2D, java.lang.String, org.jfree.chart.text.TextAnchor, java.awt.geom.Rectangle2D) 	yAdj	B5	0/10
+org.jfree.chart.text.TextBlock	public void draw(java.awt.Graphics2D, float, float, org.jfree.chart.text.TextBlockAnchor, float, float, double) 	lineOffset	B3	1/6
+org.jfree.chart.text.TextUtils	public static org.jfree.chart.text.TextBlock createTextBlock(java.lang.String, java.awt.Font, java.awt.Paint, float, int, org.jfree.chart.text.TextMeasurer) 	newStr	B11	2/6
+org.jfree.chart.text.TextUtils	private static float[] deriveRotationAnchorOffsets(java.awt.Graphics2D, java.lang.String, org.jfree.chart.text.TextAnchor) 	xAdj	B1	2/9
+org.jfree.chart.text.TextUtils	private static float[] deriveTextBoundsAnchorOffsets(java.awt.Graphics2D, java.lang.String, org.jfree.chart.text.TextAnchor) 	xAdj	B1	5/10
+org.jfree.chart.text.TextUtils	private static float[] deriveTextBoundsAnchorOffsets(java.awt.Graphics2D, java.lang.String, org.jfree.chart.text.TextAnchor, java.awt.geom.Rectangle2D) 	xAdj	B1	5/10
+org.jfree.chart.text.TextBlock	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	height	B1	2/4
+org.jfree.chart.text.TextBlock	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	height	B2	2/3
+org.jfree.chart.text.TextBlock	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	height	B3	1/2
+org.jfree.chart.text.TextBlock	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	width	B1	2/4
+org.jfree.chart.text.TextBlock	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	width	B2	2/3
+org.jfree.chart.text.TextBlock	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	width	B3	1/2
+org.jfree.chart.text.TextLine	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	height	B1	2/4
+org.jfree.chart.text.TextLine	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	height	B2	2/3
+org.jfree.chart.text.TextLine	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	height	B3	1/2
+org.jfree.chart.text.TextLine	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	width	B1	2/4
+org.jfree.chart.text.TextLine	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	width	B2	2/3
+org.jfree.chart.text.TextLine	public org.jfree.chart.block.Size2D calculateDimensions(java.awt.Graphics2D) 	width	B3	1/2
+org.jfree.chart.text.TextUtils	public static org.jfree.chart.text.TextBlock createTextBlock(java.lang.String, java.awt.Font, java.awt.Paint) 	moreInputToProcess	B3	5/8
+org.jfree.chart.text.TextBox	public void draw(java.awt.Graphics2D, float, float, org.jfree.chart.api.RectangleAnchor) 	d2	B1	3/4

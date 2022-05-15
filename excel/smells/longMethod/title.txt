@@ -1,0 +1,29 @@
+org.jfree.chart.title.TextTitle	public java.lang.Object draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.lang.Object) 	entity	B3	1/6
+org.jfree.chart.title.TextTitle	public java.lang.Object draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.lang.Object) 	entity	B5	0/5
+org.jfree.chart.title.TextTitle	public java.lang.Object draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.lang.Object) 	entity	B6	0/3
+org.jfree.chart.title.TextTitle	public java.lang.Object draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.lang.Object) 	entity	B3	1/6
+org.jfree.chart.title.TextTitle	public java.lang.Object draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.lang.Object) 	entity	B5	0/5
+org.jfree.chart.title.TextTitle	public java.lang.Object draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.lang.Object) 	entity	B6	0/3
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startY	B1	7/20
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startY	B6	0/13
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawHorizontal(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startX	B1	6/19
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawHorizontal(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startX	B4	0/13
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startX	B1	7/11
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startX	B3	0/3
+org.jfree.chart.title.TextTitle	protected void drawHorizontal(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	anchor	B1	7/17
+org.jfree.chart.title.TextTitle	protected void drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	anchor	B1	7/17
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawHorizontal(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	bottomSpace	B1	2/4
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawHorizontal(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	leftSpace	B1	2/4
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawHorizontal(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	rightSpace	B1	2/4
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawHorizontal(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	topSpace	B1	2/4
+org.jfree.chart.title.TextTitle	protected void drawHorizontal(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	y	B1	4/7
+org.jfree.chart.title.TextTitle	protected void drawHorizontal(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	y	B7	3/6
+org.jfree.chart.title.TextTitle	protected void drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	x	B1	4/7
+org.jfree.chart.title.TextTitle	protected void drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	x	B7	3/6
+org.jfree.chart.title.TextTitle	protected void drawHorizontal(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	x	B1	5/9
+org.jfree.chart.title.TextTitle	protected void drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	y	B1	5/9
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	bottomSpace	B1	3/5
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	leftSpace	B1	3/5
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	rightSpace	B1	3/5
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawVertical(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	topSpace	B1	3/5
+org.jfree.chart.title.ImageTitle	protected org.jfree.chart.block.Size2D drawHorizontal(java.awt.Graphics2D, java.awt.geom.Rectangle2D) 	startY	B1	6/10

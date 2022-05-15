@@ -1,0 +1,53 @@
+org.jfree.chart.swing.editor.DefaultPlotEditor	public void updatePlotProperties(org.jfree.chart.plot.Plot) 	rangeAxis	B9	0/12
+org.jfree.chart.swing.editor.DefaultPlotEditor	public void updatePlotProperties(org.jfree.chart.plot.Plot) 	rangeAxis	B15	0/2
+org.jfree.chart.swing.editor.DefaultPlotEditor	public void updatePlotProperties(org.jfree.chart.plot.Plot) 	rangeAxis	B9	0/10
+org.jfree.chart.swing.editor.DefaultPlotEditor	public void updatePlotProperties(org.jfree.chart.plot.Plot) 	domainAxis	B2	0/9
+org.jfree.chart.swing.editor.DefaultPlotEditor	public void updatePlotProperties(org.jfree.chart.plot.Plot) 	domainAxis	B6	0/2
+org.jfree.chart.swing.editor.DefaultPlotEditor	protected javax.swing.JTabbedPane createPlotTabs(org.jfree.chart.plot.Plot) 	rangeAxis	B7	0/7
+org.jfree.chart.swing.editor.DefaultTitleEditor	public void setTitleProperties(org.jfree.chart.JFreeChart) 	title	B2	0/7
+org.jfree.chart.swing.editor.PaintSample	public sealed void paintComponent(java.awt.Graphics) 	area	B1	0/7
+org.jfree.chart.swing.editor.DefaultPlotEditor	public void updatePlotProperties(org.jfree.chart.plot.Plot) 	domainAxis	B2	0/7
+org.jfree.chart.swing.editor.DefaultPlotEditor	protected javax.swing.JPanel createPlotPanel(org.jfree.chart.plot.Plot) 	tabs	B17	0/5
+org.jfree.chart.swing.editor.DefaultPlotEditor	protected javax.swing.JTabbedPane createPlotTabs(org.jfree.chart.plot.Plot) 	domainAxis	B1	0/5
+org.jfree.chart.swing.editor.DefaultValueAxisEditor	public sealed void setAxisProperties(org.jfree.chart.axis.Axis) 	valueAxis	B1	0/5
+org.jfree.chart.swing.editor.DefaultValueAxisEditor	public void validateMaximum() 	newMax	B1	0/5
+org.jfree.chart.swing.editor.DefaultValueAxisEditor	public void validateMinimum() 	newMin	B1	0/5
+org.jfree.chart.swing.editor.LCBLayout	public void layoutContainer(java.awt.Container) 	x	B18	0/5
+org.jfree.chart.swing.editor.DefaultLogAxisEditor	protected sealed javax.swing.JPanel createTickUnitPanel() 	manualTickUnit	B1	0/4
+org.jfree.chart.swing.editor.DefaultNumberAxisEditor	protected sealed javax.swing.JPanel createTickUnitPanel() 	manualTickUnit	B1	0/4
+org.jfree.chart.swing.editor.DefaultPlotEditor	protected javax.swing.JPanel createPlotPanel(org.jfree.chart.plot.Plot) 	appearance	B17	0/4
+org.jfree.chart.swing.editor.DefaultPlotEditor	public void updatePlotProperties(org.jfree.chart.plot.Plot) 	plot	B1	0/4
+org.jfree.chart.swing.editor.DefaultPolarPlotEditor	private javax.swing.JPanel createPlotPanel() 	angleOffset	B1	0/4
+org.jfree.chart.swing.editor.DefaultPolarPlotEditor	private javax.swing.JPanel createPlotPanel() 	manualTickUnit	B1	0/4
+org.jfree.chart.swing.editor.DefaultChartEditor	public void updateChart(org.jfree.chart.JFreeChart) 	chart	B1	0/3
+org.jfree.chart.swing.editor.DefaultLogAxisEditor	public sealed void setAxisProperties(org.jfree.chart.axis.Axis) 	logAxis	B1	0/3
+org.jfree.chart.swing.editor.DefaultLogAxisEditor	public void validateTickUnit() 	newTickUnit	B1	0/3
+org.jfree.chart.swing.editor.DefaultNumberAxisEditor	public sealed void setAxisProperties(org.jfree.chart.axis.Axis) 	numberAxis	B1	0/3
+org.jfree.chart.swing.editor.DefaultNumberAxisEditor	public void validateTickUnit() 	newTickUnit	B1	0/3
+org.jfree.chart.swing.editor.DefaultPolarPlotEditor	public sealed void updatePlotProperties(org.jfree.chart.plot.Plot) 	pp	B1	0/3
+org.jfree.chart.swing.editor.DefaultPolarPlotEditor	public void validateAngleOffset() 	newOffset	B1	0/3
+org.jfree.chart.swing.editor.DefaultPolarPlotEditor	public void validateTickUnit() 	newTickUnit	B1	0/3
+org.jfree.chart.swing.editor.DefaultAxisEditor	private void attemptLabelFontSelection() 	labelFont	B2	0/2
+org.jfree.chart.swing.editor.DefaultAxisEditor	public void attemptTickLabelFontSelection() 	tickLabelFont	B2	0/2
+org.jfree.chart.swing.editor.DefaultTitleEditor	public void attemptFontSelection() 	titleFont	B2	0/2
+org.jfree.chart.swing.editor.DefaultValueAxisEditor	protected javax.swing.JPanel createTickUnitPanel() 	autoTickUnitSelectionCheckBox	B1	0/2
+org.jfree.chart.swing.editor.DefaultPlotEditor	protected javax.swing.JPanel createPlotPanel(org.jfree.chart.plot.Plot) 	orientationCombo	B11	1/7
+org.jfree.chart.swing.editor.DefaultPlotEditor	protected javax.swing.JPanel createPlotPanel(org.jfree.chart.plot.Plot) 	orientationCombo	B12	0/6
+org.jfree.chart.swing.editor.DefaultPlotEditor	protected javax.swing.JPanel createPlotPanel(org.jfree.chart.plot.Plot) 	drawLinesCheckBox	B13	1/3
+org.jfree.chart.swing.editor.DefaultPlotEditor	protected javax.swing.JPanel createPlotPanel(org.jfree.chart.plot.Plot) 	drawLinesCheckBox	B14	0/2
+org.jfree.chart.swing.editor.LCBLayout	public java.awt.Dimension minimumLayoutSize(java.awt.Container) 	totalHeight	B1	6/11
+org.jfree.chart.swing.editor.LCBLayout	public java.awt.Dimension minimumLayoutSize(java.awt.Container) 	totalHeight	B2	4/9
+org.jfree.chart.swing.editor.LCBLayout	public java.awt.Dimension minimumLayoutSize(java.awt.Container) 	totalHeight	B8	0/3
+org.jfree.chart.swing.editor.LCBLayout	public java.awt.Dimension minimumLayoutSize(java.awt.Container) 	totalHeight	B9	0/2
+org.jfree.chart.swing.editor.LCBLayout	public java.awt.Dimension preferredLayoutSize(java.awt.Container) 	totalHeight	B1	6/11
+org.jfree.chart.swing.editor.LCBLayout	public java.awt.Dimension preferredLayoutSize(java.awt.Container) 	totalHeight	B2	4/9
+org.jfree.chart.swing.editor.LCBLayout	public java.awt.Dimension preferredLayoutSize(java.awt.Container) 	totalHeight	B8	0/3
+org.jfree.chart.swing.editor.LCBLayout	public java.awt.Dimension preferredLayoutSize(java.awt.Container) 	totalHeight	B9	0/2
+org.jfree.chart.swing.editor.LCBLayout	public void layoutContainer(java.awt.Container) 	totalHeight	B1	6/11
+org.jfree.chart.swing.editor.LCBLayout	public void layoutContainer(java.awt.Container) 	totalHeight	B2	4/9
+org.jfree.chart.swing.editor.LCBLayout	public void layoutContainer(java.awt.Container) 	totalHeight	B8	0/3
+org.jfree.chart.swing.editor.LCBLayout	public void layoutContainer(java.awt.Container) 	totalHeight	B9	0/2
+org.jfree.chart.swing.editor.DefaultPlotEditor	protected javax.swing.JPanel createPlotPanel(org.jfree.chart.plot.Plot) 	drawShapesCheckBox	B15	1/3
+org.jfree.chart.swing.editor.DefaultPlotEditor	protected javax.swing.JPanel createPlotPanel(org.jfree.chart.plot.Plot) 	drawShapesCheckBox	B16	0/2
+org.jfree.chart.swing.editor.StrokeSample	public sealed void paintComponent(java.awt.Graphics) 	two	B1	5/7
+org.jfree.chart.swing.editor.StrokeSample	public sealed void paintComponent(java.awt.Graphics) 	one	B1	5/6
