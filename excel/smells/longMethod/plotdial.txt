@@ -1,0 +1,29 @@
+org.jfree.chart.plot.dial.DialPointer.Pin	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	line	B1	0/7
+org.jfree.chart.plot.dial.DialPointer.Pin	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	arc	B1	0/5
+org.jfree.chart.plot.dial.DialPlot	public void setBackground(org.jfree.chart.plot.dial.DialLayer) 	background	B1	0/4
+org.jfree.chart.plot.dial.DialPlot	public void setCap(org.jfree.chart.plot.dial.DialLayer) 	cap	B1	0/4
+org.jfree.chart.plot.dial.DialPlot	public void setBackground(org.jfree.chart.plot.dial.DialLayer) 	background	B1	0/4
+org.jfree.chart.plot.dial.DialPlot	public void setBackground(org.jfree.chart.plot.dial.DialLayer) 	background	B3	0/2
+org.jfree.chart.plot.dial.DialPlot	public void setCap(org.jfree.chart.plot.dial.DialLayer) 	cap	B1	0/4
+org.jfree.chart.plot.dial.DialPlot	public void setCap(org.jfree.chart.plot.dial.DialLayer) 	cap	B3	0/2
+org.jfree.chart.plot.dial.DialBackground	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	p	B1	0/3
+org.jfree.chart.plot.dial.DialPlot	public void removeLayer(int) 	layer	B1	0/3
+org.jfree.chart.plot.dial.DialPlot	public void removePointer(int) 	pointer	B1	0/3
+org.jfree.chart.plot.dial.DialValueIndicator	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	tb	B2	0/2
+org.jfree.chart.plot.dial.StandardDialScale	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	arcRectMinor	B1	1/4
+org.jfree.chart.plot.dial.ArcDialFrame	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	area1	B1	2/5
+org.jfree.chart.plot.dial.ArcDialFrame	protected java.awt.Shape getOuterWindow(java.awt.geom.Rectangle2D) 	inner	B1	2/4
+org.jfree.chart.plot.dial.ArcDialFrame	protected java.awt.Shape getOuterWindow(java.awt.geom.Rectangle2D) 	outer	B1	2/4
+org.jfree.chart.plot.dial.DialPointer.Pointer	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	arc1	B1	3/5
+org.jfree.chart.plot.dial.StandardDialRange	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	arcInner	B1	3/5
+org.jfree.chart.plot.dial.StandardDialRange	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	arcInner	B3	2/3
+org.jfree.chart.plot.dial.StandardDialRange	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	arcOuter	B1	3/5
+org.jfree.chart.plot.dial.StandardDialRange	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	arcOuter	B3	2/3
+org.jfree.chart.plot.dial.DialPointer.Pointer	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	gp	B1	12/18
+org.jfree.chart.plot.dial.DialValueIndicator	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	maxH	B1	7/9
+org.jfree.chart.plot.dial.DialValueIndicator	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	maxH	B2	2/3
+org.jfree.chart.plot.dial.DialValueIndicator	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	maxW	B1	7/9
+org.jfree.chart.plot.dial.DialValueIndicator	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	maxW	B2	2/3
+org.jfree.chart.plot.dial.DialPointer.Pointer	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	arc2	B1	4/5
+org.jfree.chart.plot.dial.DialPointer.Pointer	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	arc3	B1	4/5
+org.jfree.chart.plot.dial.DialPointer.Pointer	public void draw(java.awt.Graphics2D, org.jfree.chart.plot.dial.DialPlot, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D) 	line	B1	6/7

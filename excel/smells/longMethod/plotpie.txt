@@ -1,0 +1,82 @@
+org.jfree.chart.plot.pie.PiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	item	B12	0/14
+org.jfree.chart.plot.pie.PiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	item	B14	0/10
+org.jfree.chart.plot.pie.PiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	item	B16	0/7
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void spreadEvenly(double, double) 	y	B2	0/10
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void spreadEvenly(double, double) 	y	B4	0/8
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void spreadEvenly(double, double) 	y	B6	0/5
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void spreadEvenly(double, double) 	y	B7	0/4
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	item	B11	0/8
+org.jfree.chart.plot.pie.PiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	include	B5	0/8
+org.jfree.chart.plot.pie.PiePlot	protected void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	entity	B19	0/7
+org.jfree.chart.plot.pie.PiePlot	protected void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	entity	B21	0/4
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void spreadEvenly(double, double) 	gap	B1	0/6
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void spreadEvenly(double, double) 	gap	B2	0/5
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void spreadEvenly(double, double) 	gap	B4	0/3
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	explodeArea	B9	0/6
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	explodeArea	B11	0/3
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	keys	B3	0/5
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	piedataset	B13	0/5
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void adjustInwards() 	r3	B6	0/5
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void adjustInwards() 	r1	B4	0/5
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	pieCount	B3	0/4
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	title	B10	0/4
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void adjustDownwards(double, double) 	record1	B2	0/4
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void adjustUpwards(double, double) 	record1	B2	0/4
+org.jfree.chart.plot.pie.PiePlot	protected void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	ep	B9	0/4
+org.jfree.chart.plot.pie.MultiplePiePlot	private void readObject(java.io.ObjectInputStream) throws java.io.IOException, java.lang.ClassNotFoundException	stream	B1	0/3
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	labelReserve	B1	0/3
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	lm	B9	0/3
+org.jfree.chart.plot.pie.PiePlot	public void setDataset(PieDataset<K>) 	event	B3	0/3
+org.jfree.chart.plot.pie.PiePlot	public void setDataset(PieDataset<K>) 	existing	B1	0/3
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void spreadEvenly(double, double) 	sumOfLabelHeights	B1	0/3
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void spreadEvenly(double, double) 	sumOfLabelHeights	B2	0/2
+org.jfree.chart.plot.pie.PiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	info	B1	0/3
+org.jfree.chart.plot.pie.PiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	info	B2	0/2
+org.jfree.chart.plot.pie.PiePlot	protected void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	url	B21	0/3
+org.jfree.chart.plot.pie.PiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	urlText	B14	0/3
+org.jfree.chart.plot.pie.PiePlot	protected void drawItem(java.awt.Graphics2D, int, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState, int) 	tip	B19	0/3
+org.jfree.chart.plot.pie.PiePlot	protected void drawSimpleLabels(java.awt.Graphics2D, List<K>, double, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState) 	arc	B7	0/3
+org.jfree.chart.plot.pie.PiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	toolTipText	B12	0/3
+org.jfree.chart.plot.pie.PiePlot	public void setDataset(PieDataset<K>) 	dataset	B3	0/2
+org.jfree.chart.plot.pie.PieLabelDistributor	protected void spreadEvenly(double, double) 	record	B7	1/3
+org.jfree.chart.plot.pie.MultiplePiePlot	private void prefetchSectionPaints() 	p	B3	1/6
+org.jfree.chart.plot.pie.MultiplePiePlot	private void prefetchSectionPaints() 	p	B4	0/3
+org.jfree.chart.plot.pie.MultiplePiePlot	private void prefetchSectionPaints() 	p	B8	1/6
+org.jfree.chart.plot.pie.MultiplePiePlot	private void prefetchSectionPaints() 	p	B9	0/3
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rect	B3	5/27
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rect	B6	1/23
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rect	B8	1/17
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	rect	B9	1/8
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	p	B18	1/5
+org.jfree.chart.plot.pie.PiePlot	protected java.awt.geom.Point2D getArcCenter(org.jfree.chart.plot.pie.PiePlotState, K) 	arc1	B4	11/13
+org.jfree.chart.plot.pie.PiePlot	protected java.awt.geom.Point2D getArcCenter(org.jfree.chart.plot.pie.PiePlotState, K) 	arc2	B4	11/13
+org.jfree.chart.plot.pie.PiePlot	protected void drawLabels(java.awt.Graphics2D, List<K>, double, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState) 	v	B3	2/4
+org.jfree.chart.plot.pie.PiePlot	protected void drawSimpleLabels(java.awt.Graphics2D, List<K>, double, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState) 	v	B3	2/4
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	runningTotal	B16	5/7
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	runningTotal	B17	5/6
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	runningTotal	B18	4/5
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	runningTotal	B19	2/3
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	xoffset	B26	3/5
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	xoffset	B27	1/3
+org.jfree.chart.plot.pie.PiePlot	protected void drawLabels(java.awt.Graphics2D, List<K>, double, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState) 	include	B3	4/7
+org.jfree.chart.plot.pie.PiePlot	protected void drawSimpleLabels(java.awt.Graphics2D, List<K>, double, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState) 	include	B3	4/7
+org.jfree.chart.plot.pie.MultiplePiePlot	public sealed void draw(java.awt.Graphics2D, java.awt.geom.Rectangle2D, java.awt.geom.Point2D, org.jfree.chart.plot.PlotState, org.jfree.chart.plot.PlotRenderingInfo) 	row	B26	2/3
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	linkX	B1	9/11
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	linkX	B3	6/8
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	linkX	B5	4/6
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	linkX	B6	1/2
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	linkY	B1	9/11
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	linkY	B3	6/8
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	linkY	B5	4/6
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	linkY	B6	1/2
+org.jfree.chart.plot.pie.PiePlot	protected void drawLabels(java.awt.Graphics2D, List<K>, double, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState) 	runningTotal	B3	8/9
+org.jfree.chart.plot.pie.PiePlot	protected void drawLabels(java.awt.Graphics2D, List<K>, double, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState) 	runningTotal	B6	1/2
+org.jfree.chart.plot.pie.PiePlot	protected void drawSimpleLabels(java.awt.Graphics2D, List<K>, double, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState) 	runningTotal	B3	8/9
+org.jfree.chart.plot.pie.PiePlot	protected void drawSimpleLabels(java.awt.Graphics2D, List<K>, double, java.awt.geom.Rectangle2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.pie.PiePlotState) 	runningTotal	B6	1/2
+org.jfree.chart.plot.pie.PiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	section	B3	11/14
+org.jfree.chart.plot.pie.PiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	section	B4	10/12
+org.jfree.chart.plot.pie.PiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	section	B5	9/11
+org.jfree.chart.plot.pie.PiePlot	public sealed org.jfree.chart.legend.LegendItemCollection getLegendItems() 	section	B10	1/3
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	linkArea	B1	15/16
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	linkArea	B3	12/13
+org.jfree.chart.plot.pie.PiePlot	protected void drawPie(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jfree.chart.plot.PlotRenderingInfo) 	linkArea	B5	10/11

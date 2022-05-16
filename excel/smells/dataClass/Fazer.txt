@@ -1,0 +1,1 @@
+verificar para cada class se é composta apenas por get e set

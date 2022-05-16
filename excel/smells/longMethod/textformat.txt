@@ -1,0 +1,1 @@
+org.jfree.chart.text.format.HexNumberFormat	public sealed java.lang.StringBuffer format(long, java.lang.StringBuffer, java.text.FieldPosition) 	l_pad	B1	1/3
