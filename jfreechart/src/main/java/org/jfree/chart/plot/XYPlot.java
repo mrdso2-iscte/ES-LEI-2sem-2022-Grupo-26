@@ -3144,97 +3144,15 @@ public class XYPlot<S extends Comparable<S>> extends Plot
      * @see #setQuadrantPaint(int, Paint)
      */
     protected void drawQuadrants(Graphics2D g2, Rectangle2D area) {
-        //  0 | 1
-        //  --+--
-        //  2 | 3
-        boolean somethingToDraw = false;
-
-        ValueAxis xAxis = getDomainAxis();
+        boolean somethingToDraw = somethingToDraw();
+		Rectangle2D[] r = r(area);
+		ValueAxis xAxis = getDomainAxis();
         if (xAxis == null) {  // we can't draw quadrants without a valid x-axis
             return;
         }
-        double x = xAxis.getRange().constrain(this.quadrantOrigin.getX());
-        double xx = xAxis.valueToJava2D(x, area, getDomainAxisEdge());
-
         ValueAxis yAxis = getRangeAxis();
         if (yAxis == null) {  // we can't draw quadrants without a valid y-axis
             return;
-        }
-        double y = yAxis.getRange().constrain(this.quadrantOrigin.getY());
-        double yy = yAxis.valueToJava2D(y, area, getRangeAxisEdge());
-
-        double xmin = xAxis.getLowerBound();
-        double xxmin = xAxis.valueToJava2D(xmin, area, getDomainAxisEdge());
-
-        double xmax = xAxis.getUpperBound();
-        double xxmax = xAxis.valueToJava2D(xmax, area, getDomainAxisEdge());
-
-        double ymin = yAxis.getLowerBound();
-        double yymin = yAxis.valueToJava2D(ymin, area, getRangeAxisEdge());
-
-        double ymax = yAxis.getUpperBound();
-        double yymax = yAxis.valueToJava2D(ymax, area, getRangeAxisEdge());
-
-        Rectangle2D[] r = new Rectangle2D[] {null, null, null, null};
-        if (this.quadrantPaint[0] != null) {
-            if (x > xmin && y < ymax) {
-                if (this.orientation == PlotOrientation.HORIZONTAL) {
-                    r[0] = new Rectangle2D.Double(Math.min(yymax, yy),
-                            Math.min(xxmin, xx), Math.abs(yy - yymax),
-                            Math.abs(xx - xxmin));
-                }
-                else {  // PlotOrientation.VERTICAL
-                    r[0] = new Rectangle2D.Double(Math.min(xxmin, xx),
-                            Math.min(yymax, yy), Math.abs(xx - xxmin),
-                            Math.abs(yy - yymax));
-                }
-                somethingToDraw = true;
-            }
-        }
-        if (this.quadrantPaint[1] != null) {
-            if (x < xmax && y < ymax) {
-                if (this.orientation == PlotOrientation.HORIZONTAL) {
-                    r[1] = new Rectangle2D.Double(Math.min(yymax, yy),
-                            Math.min(xxmax, xx), Math.abs(yy - yymax),
-                            Math.abs(xx - xxmax));
-                }
-                else {  // PlotOrientation.VERTICAL
-                    r[1] = new Rectangle2D.Double(Math.min(xx, xxmax),
-                            Math.min(yymax, yy), Math.abs(xx - xxmax),
-                            Math.abs(yy - yymax));
-                }
-                somethingToDraw = true;
-            }
-        }
-        if (this.quadrantPaint[2] != null) {
-            if (x > xmin && y > ymin) {
-                if (this.orientation == PlotOrientation.HORIZONTAL) {
-                    r[2] = new Rectangle2D.Double(Math.min(yymin, yy),
-                            Math.min(xxmin, xx), Math.abs(yy - yymin),
-                            Math.abs(xx - xxmin));
-                }
-                else {  // PlotOrientation.VERTICAL
-                    r[2] = new Rectangle2D.Double(Math.min(xxmin, xx),
-                            Math.min(yymin, yy), Math.abs(xx - xxmin),
-                            Math.abs(yy - yymin));
-                }
-                somethingToDraw = true;
-            }
-        }
-        if (this.quadrantPaint[3] != null) {
-            if (x < xmax && y > ymin) {
-                if (this.orientation == PlotOrientation.HORIZONTAL) {
-                    r[3] = new Rectangle2D.Double(Math.min(yymin, yy),
-                            Math.min(xxmax, xx), Math.abs(yy - yymin),
-                            Math.abs(xx - xxmax));
-                }
-                else {  // PlotOrientation.VERTICAL
-                    r[3] = new Rectangle2D.Double(Math.min(xx, xxmax),
-                            Math.min(yymin, yy), Math.abs(xx - xxmax),
-                            Math.abs(yy - yymin));
-                }
-                somethingToDraw = true;
-            }
         }
         if (somethingToDraw) {
             Composite originalComposite = g2.getComposite();
@@ -3249,6 +3167,102 @@ public class XYPlot<S extends Comparable<S>> extends Plot
             g2.setComposite(originalComposite);
         }
     }
+
+	private boolean somethingToDraw() {
+		boolean somethingToDraw = false;
+		ValueAxis xAxis = getDomainAxis();
+		double x = xAxis.getRange().constrain(this.quadrantOrigin.getX());
+		ValueAxis yAxis = getRangeAxis();
+		double y = yAxis.getRange().constrain(this.quadrantOrigin.getY());
+		double xmin = xAxis.getLowerBound();
+		double xmax = xAxis.getUpperBound();
+		double ymin = yAxis.getLowerBound();
+		double ymax = yAxis.getUpperBound();
+		if (this.quadrantPaint[0] != null) {
+			if (x > xmin && y < ymax) {
+				somethingToDraw = true;
+			}
+		}
+		if (this.quadrantPaint[1] != null) {
+			if (x < xmax && y < ymax) {
+				somethingToDraw = true;
+			}
+		}
+		if (this.quadrantPaint[2] != null) {
+			if (x > xmin && y > ymin) {
+				somethingToDraw = true;
+			}
+		}
+		if (this.quadrantPaint[3] != null) {
+			if (x < xmax && y > ymin) {
+				somethingToDraw = true;
+			}
+		}
+		return somethingToDraw;
+	}
+
+	private Rectangle2D[] r(Rectangle2D area) {
+		ValueAxis xAxis = getDomainAxis();
+		double x = xAxis.getRange().constrain(this.quadrantOrigin.getX());
+		double xx = xAxis.valueToJava2D(x, area, getDomainAxisEdge());
+		ValueAxis yAxis = getRangeAxis();
+		double y = yAxis.getRange().constrain(this.quadrantOrigin.getY());
+		double yy = yAxis.valueToJava2D(y, area, getRangeAxisEdge());
+		double xmin = xAxis.getLowerBound();
+		double xxmin = xAxis.valueToJava2D(xmin, area, getDomainAxisEdge());
+		double xmax = xAxis.getUpperBound();
+		double xxmax = xAxis.valueToJava2D(xmax, area, getDomainAxisEdge());
+		double ymin = yAxis.getLowerBound();
+		double yymin = yAxis.valueToJava2D(ymin, area, getRangeAxisEdge());
+		double ymax = yAxis.getUpperBound();
+		double yymax = yAxis.valueToJava2D(ymax, area, getRangeAxisEdge());
+		Rectangle2D[] r = new Rectangle2D[] { null, null, null, null };
+		if (this.quadrantPaint[0] != null) {
+			if (x > xmin && y < ymax) {
+				if (this.orientation == PlotOrientation.HORIZONTAL) {
+					r[0] = new Rectangle2D.Double(Math.min(yymax, yy), Math.min(xxmin, xx), Math.abs(yy - yymax),
+							Math.abs(xx - xxmin));
+				} else {
+					r[0] = new Rectangle2D.Double(Math.min(xxmin, xx), Math.min(yymax, yy), Math.abs(xx - xxmin),
+							Math.abs(yy - yymax));
+				}
+			}
+		}
+		if (this.quadrantPaint[1] != null) {
+			if (x < xmax && y < ymax) {
+				if (this.orientation == PlotOrientation.HORIZONTAL) {
+					r[1] = new Rectangle2D.Double(Math.min(yymax, yy), Math.min(xxmax, xx), Math.abs(yy - yymax),
+							Math.abs(xx - xxmax));
+				} else {
+					r[1] = new Rectangle2D.Double(Math.min(xx, xxmax), Math.min(yymax, yy), Math.abs(xx - xxmax),
+							Math.abs(yy - yymax));
+				}
+			}
+		}
+		if (this.quadrantPaint[2] != null) {
+			if (x > xmin && y > ymin) {
+				if (this.orientation == PlotOrientation.HORIZONTAL) {
+					r[2] = new Rectangle2D.Double(Math.min(yymin, yy), Math.min(xxmin, xx), Math.abs(yy - yymin),
+							Math.abs(xx - xxmin));
+				} else {
+					r[2] = new Rectangle2D.Double(Math.min(xxmin, xx), Math.min(yymin, yy), Math.abs(xx - xxmin),
+							Math.abs(yy - yymin));
+				}
+			}
+		}
+		if (this.quadrantPaint[3] != null) {
+			if (x < xmax && y > ymin) {
+				if (this.orientation == PlotOrientation.HORIZONTAL) {
+					r[3] = new Rectangle2D.Double(Math.min(yymin, yy), Math.min(xxmax, xx), Math.abs(yy - yymin),
+							Math.abs(xx - xxmax));
+				} else {
+					r[3] = new Rectangle2D.Double(Math.min(xx, xxmax), Math.min(yymin, yy), Math.abs(xx - xxmax),
+							Math.abs(yy - yymin));
+				}
+			}
+		}
+		return r;
+	}
 
     /**
      * Draws the domain tick bands, if any.
@@ -5227,25 +5241,16 @@ public class XYPlot<S extends Comparable<S>> extends Plot
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        @SuppressWarnings("unchecked")
+        ValueAxis axis = axis();
+		@SuppressWarnings("unchecked")
         XYPlot<S> clone = (XYPlot) super.clone();
-        clone.domainAxes = CloneUtils.cloneMapValues(this.domainAxes);
-        for (ValueAxis axis : clone.domainAxes.values()) {
-            if (axis != null) {
-                axis.setPlot(clone);
-                axis.addChangeListener(clone);
-            }
-        }
         clone.rangeAxes = CloneUtils.cloneMapValues(this.rangeAxes);
-        for (ValueAxis axis : clone.rangeAxes.values()) {
-            if (axis != null) {
-                axis.setPlot(clone);
-                axis.addChangeListener(clone);
+        for (ValueAxis axis1 : clone.rangeAxes.values()) {
+            if (axis1 != null) {
+                axis1.setPlot(clone);
+                axis1.addChangeListener(clone);
             }
         }
-        clone.domainAxisLocations = new HashMap<>(this.domainAxisLocations);
-        clone.rangeAxisLocations = new HashMap<>(this.rangeAxisLocations);
-
         // the datasets are not cloned, but listeners need to be added...
         clone.datasets = new HashMap<>(this.datasets);
         for (XYDataset<S> dataset : clone.datasets.values()) {
@@ -5266,32 +5271,54 @@ public class XYPlot<S extends Comparable<S>> extends Plot
                 renderer.addChangeListener(clone);
             }
         }
-        clone.foregroundDomainMarkers = CloneUtils.clone(
-                this.foregroundDomainMarkers);
-        clone.backgroundDomainMarkers = CloneUtils.clone(
-                this.backgroundDomainMarkers);
-        clone.foregroundRangeMarkers = CloneUtils.clone(
-                this.foregroundRangeMarkers);
-        clone.backgroundRangeMarkers = CloneUtils.clone(
-                this.backgroundRangeMarkers);
-        clone.annotations = CloneUtils.cloneList(this.annotations);
-        if (this.fixedDomainAxisSpace != null) {
-            clone.fixedDomainAxisSpace = CloneUtils.clone(
-                    this.fixedDomainAxisSpace);
-        }
-        if (this.fixedRangeAxisSpace != null) {
-            clone.fixedRangeAxisSpace = CloneUtils.clone(
-                    this.fixedRangeAxisSpace);
-        }
-        if (this.fixedLegendItems != null) {
-            clone.fixedLegendItems
-                    = (LegendItemCollection) this.fixedLegendItems.clone();
-        }
-        clone.quadrantOrigin = CloneUtils.clone(this.quadrantOrigin);
-        clone.quadrantPaint = this.quadrantPaint.clone();
         return clone;
 
     }
+
+	private ValueAxis axis() throws CloneNotSupportedException {
+		@SuppressWarnings("unchecked")
+		XYPlot<S> clone = (XYPlot) super.clone();
+		clone.domainAxes = CloneUtils.cloneMapValues(this.domainAxes);
+		ValueAxis axis = axis2(clone);
+		return axis();
+	}
+
+	private ValueAxis axis2(XYPlot<S> clone) throws CloneNotSupportedException {
+		for (ValueAxis axis : clone.domainAxes.values()) {
+			if (axis != null) {
+				axis.setPlot(clone);
+				axis.addChangeListener(clone);
+			}
+		}
+		clone1(clone);
+		return axis();
+	}
+
+	private <S extends Comparable<S>> void clone1(XYPlot<S> clone) throws CloneNotSupportedException {
+		clone.rangeAxes = CloneUtils.cloneMapValues(this.rangeAxes);
+		clone.domainAxisLocations = new HashMap<>(this.domainAxisLocations);
+		clone.rangeAxisLocations = new HashMap<>(this.rangeAxisLocations);
+		clone.datasets = new HashMap(this.datasets);
+		clone.datasetToDomainAxesMap = new TreeMap<>();
+		clone.datasetToRangeAxesMap = new TreeMap<>();
+		clone.renderers = CloneUtils.cloneMapValues(this.renderers);
+		clone.foregroundDomainMarkers = CloneUtils.clone(this.foregroundDomainMarkers);
+		clone.backgroundDomainMarkers = CloneUtils.clone(this.backgroundDomainMarkers);
+		clone.foregroundRangeMarkers = CloneUtils.clone(this.foregroundRangeMarkers);
+		clone.backgroundRangeMarkers = CloneUtils.clone(this.backgroundRangeMarkers);
+		clone.annotations = CloneUtils.cloneList(this.annotations);
+		if (this.fixedDomainAxisSpace != null) {
+			clone.fixedDomainAxisSpace = CloneUtils.clone(this.fixedDomainAxisSpace);
+		}
+		if (this.fixedRangeAxisSpace != null) {
+			clone.fixedRangeAxisSpace = CloneUtils.clone(this.fixedRangeAxisSpace);
+		}
+		if (this.fixedLegendItems != null) {
+			clone.fixedLegendItems = (LegendItemCollection) this.fixedLegendItems.clone();
+		}
+		clone.quadrantOrigin = CloneUtils.clone(this.quadrantOrigin);
+		clone.quadrantPaint = this.quadrantPaint.clone();
+	}
 
     /**
      * Provides serialization support.

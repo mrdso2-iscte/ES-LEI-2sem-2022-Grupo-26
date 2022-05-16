@@ -1264,23 +1264,18 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
      *
      * @param indices  the list of indices ({@code null} permitted).
      */
+   
+    
     private void checkAxisIndices(List<Integer> indices) {
         // axisIndices can be:
         // 1.  null;
         // 2.  non-empty, containing only Integer objects that are unique.
-        if (indices == null) {
-            return;  // OK
-        }
-        int count = indices.size();
-        if (count == 0) {
-            throw new IllegalArgumentException("Empty list not permitted.");
-        }
+        if (indices == null) return;  // OK
+        if (indices.size() == 0) throw new IllegalArgumentException("Empty list not permitted.");
         HashSet<Integer> set = new HashSet<>();
-        for (int i = 0; i < count; i++) {
+        for (int i = 0; i < indices.size(); i++) {
             Integer item = indices.get(i);
-            if (set.contains(item)) {
-                throw new IllegalArgumentException("Indices must be unique.");
-            }
+            if (set.contains(item)) throw new IllegalArgumentException("Indices must be unique.");
             set.add(item);
         }
     }
@@ -3270,13 +3265,13 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
             // the plot area, since that is used later by the axes
             state = new PlotRenderingInfo(null);
         }
-        state.setPlotArea(area);
-
-        // adjust the drawing area for the plot insets (if any)...
+        boolean foundData = foundData(g2, area, anchor, state);
+		// adjust the drawing area for the plot insets (if any)...
         RectangleInsets insets = getInsets();
         insets.trim(area);
 
-        // calculate the data area...
+        CategoryCrosshairState<R, C> crosshairState = crosshairState(g2, area, anchor);
+		// calculate the data area...
         AxisSpace space = calculateAxisSpace(g2, area);
         Rectangle2D dataArea = space.shrink(area, null);
         this.axisOffset.trim(dataArea);
@@ -3284,7 +3279,6 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
         if (dataArea.isEmpty()) {
             return;
         }
-        state.setDataArea(dataArea);
         createAndAddEntity((Rectangle2D) dataArea.clone(), state, null, null);
 
         // if there is a renderer, it draws the background, otherwise use the
@@ -3302,30 +3296,6 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
         if (anchor != null && !dataArea.contains(anchor)) {
             anchor = ShapeUtils.getPointInRectangle(anchor.getX(),
                     anchor.getY(), dataArea);
-        }
-        CategoryCrosshairState<R, C> crosshairState = new CategoryCrosshairState<>();
-        crosshairState.setCrosshairDistance(Double.POSITIVE_INFINITY);
-        crosshairState.setAnchor(anchor);
-
-        // specify the anchor X and Y coordinates in Java2D space, for the
-        // cases where these are not updated during rendering (i.e. no lock
-        // on data)
-        crosshairState.setAnchorX(Double.NaN);
-        crosshairState.setAnchorY(Double.NaN);
-        if (anchor != null) {
-            ValueAxis rangeAxis = getRangeAxis();
-            if (rangeAxis != null) {
-                double y;
-                if (getOrientation() == PlotOrientation.VERTICAL) {
-                    y = rangeAxis.java2DToValue(anchor.getY(), dataArea,
-                            getRangeAxisEdge());
-                }
-                else {
-                    y = rangeAxis.java2DToValue(anchor.getX(), dataArea,
-                            getRangeAxisEdge());
-                }
-                crosshairState.setAnchorY(y);
-            }
         }
         crosshairState.setRowKey(getDomainCrosshairRowKey());
         crosshairState.setColumnKey(getDomainCrosshairColumnKey());
@@ -3371,21 +3341,12 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
             drawRangeMarkers(g2, dataArea, i, Layer.BACKGROUND);
         }
 
-        // now render data items...
-        boolean foundData = false;
-
         // set up the alpha-transparency...
         Composite originalComposite = g2.getComposite();
         g2.setComposite(AlphaComposite.getInstance(
                 AlphaComposite.SRC_OVER, getForegroundAlpha()));
 
         DatasetRenderingOrder order = getDatasetRenderingOrder();
-        List<Integer> datasetIndices = getDatasetIndices(order);
-        for (int i : datasetIndices) {
-            foundData = render(g2, dataArea, i, state, crosshairState)
-                    || foundData;
-        }
-
         // draw the foreground markers...
         List<Integer> rendererIndices = getRendererIndices(order);
         for (int i : rendererIndices) {
@@ -3464,6 +3425,97 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
         }
 
     }
+
+	private boolean foundData(Graphics2D g2, Rectangle2D area, Point2D anchor, PlotRenderingInfo state) {
+		state.setPlotArea(area);
+		CategoryCrosshairState<R, C> crosshairState = crosshairState2(g2, area, anchor);
+		AxisSpace space = calculateAxisSpace(g2, area);
+		Rectangle2D dataArea = space.shrink(area, null);
+		dataArea = integerise(dataArea);
+		state.setDataArea(dataArea);
+		BufferedImage dataImage = null;
+		boolean suppressShadow = Boolean.TRUE.equals(g2.getRenderingHint(JFreeChart.KEY_SUPPRESS_SHADOW_GENERATION));
+		if (this.shadowGenerator != null && !suppressShadow) {
+			dataImage = new BufferedImage((int) dataArea.getWidth(), (int) dataArea.getHeight(),
+					BufferedImage.TYPE_INT_ARGB);
+			g2 = dataImage.createGraphics();
+		}
+		boolean foundData = false;
+		DatasetRenderingOrder order = getDatasetRenderingOrder();
+		List<Integer> datasetIndices = getDatasetIndices(order);
+		for (int i : datasetIndices) {
+			foundData = render(g2, dataArea, i, state, crosshairState) || foundData;
+		}
+		return foundData;
+	}
+
+	private CategoryCrosshairState<R, C> crosshairState2(Graphics2D g2, Rectangle2D area, Point2D anchor) {
+		CategoryCrosshairState<R, C> crosshairState = crosshairState(g2, area, anchor);
+		AxisSpace space = calculateAxisSpace(g2, area);
+		Rectangle2D dataArea = space.shrink(area, null);
+		dataArea = integerise(dataArea);
+		if (anchor != null && !dataArea.contains(anchor)) {
+			anchor = ShapeUtils.getPointInRectangle(anchor.getX(), anchor.getY(), dataArea);
+		}
+		crosshairState.setRowKey(getDomainCrosshairRowKey());
+		crosshairState.setColumnKey(getDomainCrosshairColumnKey());
+		crosshairState.setCrosshairY(getRangeCrosshairValue());
+		int datasetIndex = crosshairState.getDatasetIndex();
+		ValueAxis yAxis = getRangeAxisForDataset(datasetIndex);
+		RectangleEdge yAxisEdge = getRangeAxisEdge();
+		if (!this.rangeCrosshairLockedOnData && anchor != null) {
+			double yy;
+			if (getOrientation() == PlotOrientation.VERTICAL) {
+				yy = yAxis.java2DToValue(anchor.getY(), dataArea, yAxisEdge);
+			} else {
+				yy = yAxis.java2DToValue(anchor.getX(), dataArea, yAxisEdge);
+			}
+			crosshairState.setCrosshairY(yy);
+		}
+		return crosshairState;
+	}
+
+	private CategoryCrosshairState<R, C> crosshairState(Graphics2D g2, Rectangle2D area, Point2D anchor) {
+		AxisSpace space = calculateAxisSpace(g2, area);
+		Rectangle2D dataArea = space.shrink(area, null);
+		dataArea = integerise(dataArea);
+		if (anchor != null && !dataArea.contains(anchor)) {
+			anchor = ShapeUtils.getPointInRectangle(anchor.getX(), anchor.getY(), dataArea);
+		}
+		CategoryCrosshairState<R, C> crosshairState = new CategoryCrosshairState<>();
+		crosshairState.setCrosshairDistance(Double.POSITIVE_INFINITY);
+		crosshairState.setAnchor(anchor);
+		crosshairState.setAnchorX(Double.NaN);
+		crosshairState.setAnchorY(Double.NaN);
+		if (anchor != null) {
+			ValueAxis rangeAxis = getRangeAxis();
+			if (rangeAxis != null) {
+				double y;
+				if (getOrientation() == PlotOrientation.VERTICAL) {
+					y = rangeAxis.java2DToValue(anchor.getY(), dataArea, getRangeAxisEdge());
+				} else {
+					y = rangeAxis.java2DToValue(anchor.getX(), dataArea, getRangeAxisEdge());
+				}
+				crosshairState.setAnchorY(y);
+			}
+		}
+		crosshairState.setRowKey(getDomainCrosshairRowKey());
+		crosshairState.setColumnKey(getDomainCrosshairColumnKey());
+		crosshairState.setCrosshairY(getRangeCrosshairValue());
+		int datasetIndex = crosshairState.getDatasetIndex();
+		ValueAxis yAxis = getRangeAxisForDataset(datasetIndex);
+		RectangleEdge yAxisEdge = getRangeAxisEdge();
+		if (!this.rangeCrosshairLockedOnData && anchor != null) {
+			double yy;
+			if (getOrientation() == PlotOrientation.VERTICAL) {
+				yy = yAxis.java2DToValue(anchor.getY(), dataArea, yAxisEdge);
+			} else {
+				yy = yAxis.java2DToValue(anchor.getX(), dataArea, yAxisEdge);
+			}
+			crosshairState.setCrosshairY(yy);
+		}
+		return crosshairState;
+	}
 
     /**
      * Returns the indices of the non-null datasets in the specified order.
@@ -3623,6 +3675,8 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
      *
      * @return A boolean that indicates whether or not real data was found.
      */
+    
+    
     public boolean render(Graphics2D g2, Rectangle2D dataArea, int index,
             PlotRenderingInfo info, CategoryCrosshairState<R, C> crosshairState) {
 
@@ -3633,56 +3687,50 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
         ValueAxis rangeAxis = getRangeAxisForDataset(index);
         boolean hasData = !DatasetUtils.isEmptyOrNull(currentDataset);
         if (hasData && renderer != null) {
-
             foundData = true;
-            CategoryItemRendererState state = renderer.initialise(g2, dataArea,
-                    this, index, info);
-            state.setCrosshairState(crosshairState);
-            int columnCount = currentDataset.getColumnCount();
-            int rowCount = currentDataset.getRowCount();
-            int passCount = renderer.getPassCount();
-            for (int pass = 0; pass < passCount; pass++) {
-                if (this.columnRenderingOrder == SortOrder.ASCENDING) {
-                    for (int column = 0; column < columnCount; column++) {
-                        if (this.rowRenderingOrder == SortOrder.ASCENDING) {
-                            for (int row = 0; row < rowCount; row++) {
-                                renderer.drawItem(g2, state, dataArea, this,
-                                        domainAxis, rangeAxis, currentDataset,
-                                        row, column, pass);
-                            }
-                        }
-                        else {
-                            for (int row = rowCount - 1; row >= 0; row--) {
-                                renderer.drawItem(g2, state, dataArea, this,
-                                        domainAxis, rangeAxis, currentDataset,
-                                        row, column, pass);
-                            }
-                        }
-                    }
-                }
-                else {
-                    for (int column = columnCount - 1; column >= 0; column--) {
-                        if (this.rowRenderingOrder == SortOrder.ASCENDING) {
-                            for (int row = 0; row < rowCount; row++) {
-                                renderer.drawItem(g2, state, dataArea, this,
-                                        domainAxis, rangeAxis, currentDataset,
-                                        row, column, pass);
-                            }
-                        }
-                        else {
-                            for (int row = rowCount - 1; row >= 0; row--) {
-                                renderer.drawItem(g2, state, dataArea, this,
-                                        domainAxis, rangeAxis, currentDataset,
-                                        row, column, pass);
-                            }
-                        }
-                    }
-                }
+            CategoryItemRendererState state = state(g2, dataArea, index, info, crosshairState, currentDataset, renderer,
+					domainAxis, rangeAxis);
             }
-        }
         return foundData;
-
     }
+
+	private <R extends Comparable<R>, C extends Comparable<C>> CategoryItemRendererState state(Graphics2D g2,
+			Rectangle2D dataArea, int index, PlotRenderingInfo info, CategoryCrosshairState<R, C> crosshairState,
+			CategoryDataset<R, C> currentDataset, CategoryItemRenderer renderer, CategoryAxis domainAxis,
+			ValueAxis rangeAxis) {
+		CategoryItemRendererState state = renderer.initialise(g2, dataArea, this, index, info);
+		state.setCrosshairState(crosshairState);
+		for (int pass = 0; pass < renderer.getPassCount(); pass++) {
+			if (this.columnRenderingOrder == SortOrder.ASCENDING) {
+				for (int column = 0; column < currentDataset.getColumnCount(); column++) {
+					if (this.rowRenderingOrder == SortOrder.ASCENDING)
+						for (int row = 0; row < currentDataset.getRowCount(); row++) {
+							renderer.drawItem(g2, state, dataArea, this, domainAxis, rangeAxis, currentDataset, row,
+									column, pass);
+						}
+					else
+						for (int row = currentDataset.getRowCount() - 1; row >= 0; row--) {
+							renderer.drawItem(g2, state, dataArea, this, domainAxis, rangeAxis, currentDataset, row,
+									column, pass);
+						}
+				}
+			} else {
+				for (int column = currentDataset.getColumnCount() - 1; column >= 0; column--) {
+					if (this.rowRenderingOrder == SortOrder.ASCENDING)
+						for (int row = 0; row < currentDataset.getRowCount(); row++) {
+							renderer.drawItem(g2, state, dataArea, this, domainAxis, rangeAxis, currentDataset, row,
+									column, pass);
+						}
+					else
+						for (int row = currentDataset.getRowCount() - 1; row >= 0; row--) {
+							renderer.drawItem(g2, state, dataArea, this, domainAxis, rangeAxis, currentDataset, row,
+									column, pass);
+						}
+				}
+			}
+		}
+		return state;
+	}
 
     /**
      * Draws the domain gridlines for the plot, if they are visible.
@@ -3693,16 +3741,11 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
      * @see #drawRangeGridlines(Graphics2D, Rectangle2D, List)
      */
     protected void drawDomainGridlines(Graphics2D g2, Rectangle2D dataArea) {
-
-        if (!isDomainGridlinesVisible()) {
-            return;
-        }
+        if (!isDomainGridlinesVisible()) return;
         CategoryAnchor anchor = getDomainGridlinePosition();
         RectangleEdge domainAxisEdge = getDomainAxisEdge();
         CategoryDataset<R, C> dataset = getDataset();
-        if (dataset == null) {
-            return;
-        }
+        if (dataset == null) return;
         CategoryAxis axis = getDomainAxis();
         if (axis != null) {
             int columnCount = dataset.getColumnCount();
@@ -3710,9 +3753,7 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
                 double xx = axis.getCategoryJava2DCoordinate(anchor, c,
                         columnCount, dataArea, domainAxisEdge);
                 CategoryItemRenderer renderer1 = getRenderer();
-                if (renderer1 != null) {
-                    renderer1.drawDomainGridline(g2, this, dataArea, xx);
-                }
+                if (renderer1 != null) renderer1.drawDomainGridline(g2, this, dataArea, xx);
             }
         }
     }
@@ -3726,45 +3767,44 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
      *
      * @see #drawDomainGridlines(Graphics2D, Rectangle2D)
      */
+    
+    public void drawRangeGridlinesHelp(Stroke gridStroke, Paint gridPaint, boolean paintLine) {
+    	gridStroke = getRangeGridlineStroke();
+        gridPaint = getRangeGridlinePaint();
+        paintLine = true;
+    }
+    
+    public void drawRangeGridlinesMinorHelp(Stroke gridStroke, Paint gridPaint, boolean paintLine) {
+    	gridStroke = getRangeMinorGridlineStroke();
+        gridPaint = getRangeMinorGridlinePaint();
+        paintLine = true;
+    }
+    
     protected void drawRangeGridlines(Graphics2D g2, Rectangle2D dataArea,
                                       List<ValueTick> ticks) {
         // draw the range grid lines, if any...
-        if (!isRangeGridlinesVisible() && !isRangeMinorGridlinesVisible()) {
-            return;
-        }
+        if (!isRangeGridlinesVisible() && !isRangeMinorGridlinesVisible()) return;
         // no axis, no gridlines...
         ValueAxis axis = getRangeAxis();
-        if (axis == null) {
-            return;
-        }
+        if (axis == null) return;
         // no renderer, no gridlines...
         CategoryItemRenderer r = getRenderer();
-        if (r == null) {
-            return;
-        }
-
+        if (r == null) return;
         Stroke gridStroke = null;
         Paint gridPaint = null;
         boolean paintLine;
         for (ValueTick tick : ticks) {
             paintLine = false;
             if ((tick.getTickType() == TickType.MINOR)
-                    && isRangeMinorGridlinesVisible()) {
-                gridStroke = getRangeMinorGridlineStroke();
-                gridPaint = getRangeMinorGridlinePaint();
-                paintLine = true;
-            }
+                    && isRangeMinorGridlinesVisible()) 
+            	drawRangeGridlinesMinorHelp(gridStroke, gridPaint, paintLine);
             else if ((tick.getTickType() == TickType.MAJOR)
-                    && isRangeGridlinesVisible()) {
-                gridStroke = getRangeGridlineStroke();
-                gridPaint = getRangeGridlinePaint();
-                paintLine = true;
-            }
+                    && isRangeGridlinesVisible())
+                drawRangeGridlinesHelp(gridStroke, gridPaint, paintLine);
             if (((tick.getValue() != 0.0)
-                    || !isRangeZeroBaselineVisible()) && paintLine) {
+                    || !isRangeZeroBaselineVisible()) && paintLine)
                 r .drawRangeLine(g2, this, axis, dataArea,
                             tick.getValue(), gridPaint, gridStroke);
-            }
         }
     }
 
@@ -3906,27 +3946,28 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
     protected void drawDomainCrosshair(Graphics2D g2, Rectangle2D dataArea,
             PlotOrientation orientation, int datasetIndex, R rowKey, C columnKey,
             Stroke stroke, Paint paint) {
-        CategoryDataset<R, C> dataset = getDataset(datasetIndex);
-        CategoryAxis axis = getDomainAxisForDataset(datasetIndex);
-        CategoryItemRenderer renderer = getRenderer(datasetIndex);
-        Line2D line;
-        if (orientation == PlotOrientation.VERTICAL) {
-            double xx = renderer.getItemMiddle(rowKey, columnKey, dataset, axis,
-                    dataArea, RectangleEdge.BOTTOM);
-            line = new Line2D.Double(xx, dataArea.getMinY(), xx,
-                    dataArea.getMaxY());
-        }
-        else {
-            double yy = renderer.getItemMiddle(rowKey, columnKey, dataset, axis,
-                    dataArea, RectangleEdge.LEFT);
-            line = new Line2D.Double(dataArea.getMinX(), yy,
-                    dataArea.getMaxX(), yy);
-        }
-        g2.setStroke(stroke);
+        Line2D line = line(dataArea, orientation, datasetIndex, rowKey, columnKey);
+		g2.setStroke(stroke);
         g2.setPaint(paint);
         g2.draw(line);
 
     }
+
+	private <R extends Comparable<R>, C extends Comparable<C>> Line2D line(Rectangle2D dataArea,
+			PlotOrientation orientation, int datasetIndex, R rowKey, C columnKey) {
+		CategoryDataset<R, C> dataset = (CategoryDataset<R, C>) getDataset(datasetIndex);
+		CategoryAxis axis = getDomainAxisForDataset(datasetIndex);
+		CategoryItemRenderer renderer = getRenderer(datasetIndex);
+		Line2D line;
+		if (orientation == PlotOrientation.VERTICAL) {
+			double xx = renderer.getItemMiddle(rowKey, columnKey, dataset, axis, dataArea, RectangleEdge.BOTTOM);
+			line = new Line2D.Double(xx, dataArea.getMinY(), xx, dataArea.getMaxY());
+		} else {
+			double yy = renderer.getItemMiddle(rowKey, columnKey, dataset, axis, dataArea, RectangleEdge.LEFT);
+			line = new Line2D.Double(dataArea.getMinX(), yy, dataArea.getMaxX(), yy);
+		}
+		return line;
+	}
 
     /**
      * Draws a range crosshair.
@@ -4761,28 +4802,16 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
      */
     @Override
     public Object clone() throws CloneNotSupportedException {
-        @SuppressWarnings("unchecked")
+        CategoryAxis axis = axis();
+		@SuppressWarnings("unchecked")
         CategoryPlot<R, C> clone = (CategoryPlot) super.clone();
-        clone.domainAxes = CloneUtils.cloneMapValues(this.domainAxes);
-        for (CategoryAxis axis : clone.domainAxes.values()) {
-            if (axis != null) {
-                axis.setPlot(clone);
-                axis.addChangeListener(clone);
-            }
-        }
         clone.rangeAxes = CloneUtils.cloneMapValues(this.rangeAxes);
-        for (ValueAxis axis : clone.rangeAxes.values()) {
-            if (axis != null) {
-                axis.setPlot(clone);
-                axis.addChangeListener(clone);
+        for (ValueAxis axis1 : clone.rangeAxes.values()) {
+            if (axis1 != null) {
+                axis1.setPlot(clone);
+                axis1.addChangeListener(clone);
             }
         }
-
-        // AxisLocation is immutable, so we can just copy the maps
-        clone.domainAxisLocations = new HashMap<>(
-                this.domainAxisLocations);
-        clone.rangeAxisLocations = new HashMap<>(
-                this.rangeAxisLocations);
 
         clone.datasets = new HashMap<>(this.datasets);
         for (CategoryDataset<R, C> dataset : clone.datasets.values()) {
@@ -4790,11 +4819,6 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
                 dataset.addChangeListener(clone);
             }
         }
-        clone.datasetToDomainAxesMap = new TreeMap<>();
-        clone.datasetToDomainAxesMap.putAll(this.datasetToDomainAxesMap);
-        clone.datasetToRangeAxesMap = new TreeMap<>();
-        clone.datasetToRangeAxesMap.putAll(this.datasetToRangeAxesMap);
-
         clone.renderers = CloneUtils.cloneMapValues(this.renderers);
         for (CategoryItemRenderer renderer : clone.renderers.values()) {
             if (renderer != null) {
@@ -4802,29 +4826,50 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
                 renderer.addChangeListener(clone);
             }
         }
-        if (this.fixedDomainAxisSpace != null) {
-            clone.fixedDomainAxisSpace = CloneUtils.clone(
-                    this.fixedDomainAxisSpace);
-        }
-        if (this.fixedRangeAxisSpace != null) {
-            clone.fixedRangeAxisSpace = CloneUtils.clone(
-                    this.fixedRangeAxisSpace);
-        }
-
-        clone.annotations = CloneUtils.cloneList(this.annotations);
-        clone.foregroundDomainMarkers = CloneUtils.cloneMapValues(
-                this.foregroundDomainMarkers);
-        clone.backgroundDomainMarkers = CloneUtils.cloneMapValues(
-                this.backgroundDomainMarkers);
-        clone.foregroundRangeMarkers = CloneUtils.cloneMapValues(
-                this.foregroundRangeMarkers);
-        clone.backgroundRangeMarkers = CloneUtils.cloneMapValues(
-                this.backgroundRangeMarkers);
-        if (this.fixedLegendItems != null) {
-            clone.fixedLegendItems = CloneUtils.clone(this.fixedLegendItems);
-        }
         return clone;
     }
+
+	private CategoryAxis axis() throws CloneNotSupportedException {
+		CategoryPlot<R, C> clone = clone2();
+		clone.domainAxes = CloneUtils.cloneMapValues(this.domainAxes);
+		for (CategoryAxis axis : clone.domainAxes.values()) {
+			if (axis != null) {
+				axis.setPlot(clone);
+				axis.addChangeListener(clone);
+			}
+		}
+		return axis();
+	}
+
+	private CategoryPlot<R, C> clone2() throws CloneNotSupportedException {
+		@SuppressWarnings("unchecked")
+		CategoryPlot<R, C> clone = (CategoryPlot) super.clone();
+		clone.domainAxes = CloneUtils.cloneMapValues(this.domainAxes);
+		clone.rangeAxes = CloneUtils.cloneMapValues(this.rangeAxes);
+		clone.domainAxisLocations = new HashMap<>(this.domainAxisLocations);
+		clone.rangeAxisLocations = new HashMap<>(this.rangeAxisLocations);
+		clone.datasets = new HashMap<>(this.datasets);
+		clone.datasetToDomainAxesMap = new TreeMap<>();
+		clone.datasetToDomainAxesMap.putAll(this.datasetToDomainAxesMap);
+		clone.datasetToRangeAxesMap = new TreeMap<>();
+		clone.datasetToRangeAxesMap.putAll(this.datasetToRangeAxesMap);
+		clone.renderers = CloneUtils.cloneMapValues(this.renderers);
+		if (this.fixedDomainAxisSpace != null) {
+			clone.fixedDomainAxisSpace = CloneUtils.clone(this.fixedDomainAxisSpace);
+		}
+		if (this.fixedRangeAxisSpace != null) {
+			clone.fixedRangeAxisSpace = CloneUtils.clone(this.fixedRangeAxisSpace);
+		}
+		clone.annotations = CloneUtils.cloneList(this.annotations);
+		clone.foregroundDomainMarkers = CloneUtils.cloneMapValues(this.foregroundDomainMarkers);
+		clone.backgroundDomainMarkers = CloneUtils.cloneMapValues(this.backgroundDomainMarkers);
+		clone.foregroundRangeMarkers = CloneUtils.cloneMapValues(this.foregroundRangeMarkers);
+		clone.backgroundRangeMarkers = CloneUtils.cloneMapValues(this.backgroundRangeMarkers);
+		if (this.fixedLegendItems != null) {
+			clone.fixedLegendItems = CloneUtils.clone(this.fixedLegendItems);
+		}
+		return clone;
+	}
 
     /**
      * Provides serialization support.
@@ -4860,21 +4905,8 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
     private void readObject(ObjectInputStream stream)
         throws IOException, ClassNotFoundException {
 
-        stream.defaultReadObject();
-        this.domainGridlineStroke = SerialUtils.readStroke(stream);
-        this.domainGridlinePaint = SerialUtils.readPaint(stream);
-        this.rangeGridlineStroke = SerialUtils.readStroke(stream);
-        this.rangeGridlinePaint = SerialUtils.readPaint(stream);
-        this.rangeCrosshairStroke = SerialUtils.readStroke(stream);
-        this.rangeCrosshairPaint = SerialUtils.readPaint(stream);
-        this.domainCrosshairStroke = SerialUtils.readStroke(stream);
-        this.domainCrosshairPaint = SerialUtils.readPaint(stream);
-        this.rangeMinorGridlineStroke = SerialUtils.readStroke(stream);
-        this.rangeMinorGridlinePaint = SerialUtils.readPaint(stream);
-        this.rangeZeroBaselineStroke = SerialUtils.readStroke(stream);
-        this.rangeZeroBaselinePaint = SerialUtils.readPaint(stream);
-
-        for (CategoryAxis xAxis : this.domainAxes.values()) {
+        stream(stream);
+		for (CategoryAxis xAxis : this.domainAxes.values()) {
             if (xAxis != null) {
                 xAxis.setPlot(this);
                 xAxis.addChangeListener(this);
@@ -4898,5 +4930,21 @@ public class CategoryPlot<R extends Comparable<R>, C extends Comparable<C>>
         }
 
     }
+
+	private void stream(ObjectInputStream stream) throws IOException, ClassNotFoundException {
+		stream.defaultReadObject();
+		this.domainGridlineStroke = SerialUtils.readStroke(stream);
+		this.domainGridlinePaint = SerialUtils.readPaint(stream);
+		this.rangeGridlineStroke = SerialUtils.readStroke(stream);
+		this.rangeGridlinePaint = SerialUtils.readPaint(stream);
+		this.rangeCrosshairStroke = SerialUtils.readStroke(stream);
+		this.rangeCrosshairPaint = SerialUtils.readPaint(stream);
+		this.domainCrosshairStroke = SerialUtils.readStroke(stream);
+		this.domainCrosshairPaint = SerialUtils.readPaint(stream);
+		this.rangeMinorGridlineStroke = SerialUtils.readStroke(stream);
+		this.rangeMinorGridlinePaint = SerialUtils.readPaint(stream);
+		this.rangeZeroBaselineStroke = SerialUtils.readStroke(stream);
+		this.rangeZeroBaselinePaint = SerialUtils.readPaint(stream);
+	}
 
 }
