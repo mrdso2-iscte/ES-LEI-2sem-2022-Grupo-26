@@ -383,17 +383,9 @@ public class XYAreaRenderer extends AbstractXYItemRenderer
                 XYSeriesLabelGenerator lg = getLegendItemLabelGenerator();
                 String label = lg.generateLabel(dataset, series);
                 String description = label;
-                String toolTipText = null;
-                if (getLegendItemToolTipGenerator() != null) {
-                    toolTipText = getLegendItemToolTipGenerator().generateLabel(
-                            dataset, series);
-                }
-                String urlText = null;
-                if (getLegendItemURLGenerator() != null) {
-                    urlText = getLegendItemURLGenerator().generateLabel(
-                            dataset, series);
-                }
-                Paint paint = lookupSeriesPaint(series);
+                String toolTipText = toolTipText(series, dataset);
+				String urlText = urlText(series, dataset);
+				Paint paint = lookupSeriesPaint(series);
                 result = new LegendItem(label, description, toolTipText,
                         urlText, this.legendArea, paint);
                 result.setLabelFont(lookupLegendTextFont(series));
@@ -409,6 +401,22 @@ public class XYAreaRenderer extends AbstractXYItemRenderer
         }
         return result;
     }
+
+	private String toolTipText(int series, XYDataset dataset) {
+		String toolTipText = null;
+		if (getLegendItemToolTipGenerator() != null) {
+			toolTipText = getLegendItemToolTipGenerator().generateLabel(dataset, series);
+		}
+		return toolTipText;
+	}
+
+	private String urlText(int series, XYDataset dataset) {
+		String urlText = null;
+		if (getLegendItemURLGenerator() != null) {
+			urlText = getLegendItemURLGenerator().generateLabel(dataset, series);
+		}
+		return urlText;
+	}
 
     /**
      * Draws the visual representation of a single data item.
@@ -439,13 +447,11 @@ public class XYAreaRenderer extends AbstractXYItemRenderer
         }
         XYAreaRendererState areaState = (XYAreaRendererState) state;
 
-        // get the data point...
+        crosshairState(dataArea, plot, domainAxis, rangeAxis, dataset, series, item, crosshairState);
+		// get the data point...
         double x1 = dataset.getXValue(series, item);
-        double y1 = dataset.getYValue(series, item);
-        if (Double.isNaN(y1)) {
-            y1 = 0.0;
-        }
-        double transX1 = domainAxis.valueToJava2D(x1, dataArea,
+        double y1 = y1(dataset, series, item);
+		double transX1 = domainAxis.valueToJava2D(x1, dataArea,
                 plot.getDomainAxisEdge());
         double transY1 = rangeAxis.valueToJava2D(y1, dataArea,
                 plot.getRangeAxisEdge());
@@ -454,11 +460,8 @@ public class XYAreaRenderer extends AbstractXYItemRenderer
         // "hot spot" for the area (used by the chart entity)...
         int itemCount = dataset.getItemCount(series);
         double x0 = dataset.getXValue(series, Math.max(item - 1, 0));
-        double y0 = dataset.getYValue(series, Math.max(item - 1, 0));
-        if (Double.isNaN(y0)) {
-            y0 = 0.0;
-        }
-        double transX0 = domainAxis.valueToJava2D(x0, dataArea,
+        double y0 = y0(dataset, series, item);
+		double transX0 = domainAxis.valueToJava2D(x0, dataArea,
                 plot.getDomainAxisEdge());
         double transY0 = rangeAxis.valueToJava2D(y0, dataArea,
                 plot.getRangeAxisEdge());
@@ -555,60 +558,24 @@ public class XYAreaRenderer extends AbstractXYItemRenderer
 
             // draw an outline around the Area.
             if (isOutline()) {
-                Shape area = areaState.area;
-
-                // Java2D has some issues drawing dashed lines around "large"
+                Shape area = area(dataArea, series, areaState);
+				// Java2D has some issues drawing dashed lines around "large"
                 // geometrical shapes - for example, see bug 6620013 in the
                 // Java bug database.  So, we'll check if the outline is
                 // dashed and, if it is, do our own clipping before drawing
                 // the outline...
                 Stroke outlineStroke = lookupSeriesOutlineStroke(series);
-                if (outlineStroke instanceof BasicStroke) {
-                    BasicStroke bs = (BasicStroke) outlineStroke;
-                    if (bs.getDashArray() != null) {
-                        Area poly = new Area(areaState.area);
-                        // we make the clip region slightly larger than the
-                        // dataArea so that the clipped edges don't show lines
-                        // on the chart
-                        Area clip = new Area(new Rectangle2D.Double(
-                                dataArea.getX() - 5.0, dataArea.getY() - 5.0,
-                                dataArea.getWidth() + 10.0,
-                                dataArea.getHeight() + 10.0));
-                        poly.intersect(clip);
-                        area = poly;
-                    }
-                } // end of workaround
-
                 g2.setStroke(outlineStroke);
                 g2.setPaint(lookupSeriesOutlinePaint(series));
                 g2.draw(area);
             }
         }
 
-        int datasetIndex = plot.indexOf(dataset);
-        updateCrosshairValues(crosshairState, x1, y1, datasetIndex,
-                transX1, transY1, orientation);
-
         // collect entity and tool tip information...
         EntityCollection entities = state.getEntityCollection();
         if (entities != null) {
-            GeneralPath hotspot = new GeneralPath();
-            if (plot.getOrientation() == PlotOrientation.HORIZONTAL) {
-                moveTo(hotspot, transZero, ((transX0 + transX1) / 2.0));
-                lineTo(hotspot, ((transY0 + transY1) / 2.0), ((transX0 + transX1) / 2.0));
-                lineTo(hotspot, transY1, transX1);
-                lineTo(hotspot, ((transY1 + transY2) / 2.0), ((transX1 + transX2) / 2.0));
-                lineTo(hotspot, transZero, ((transX1 + transX2) / 2.0));
-            } else { // vertical orientation
-                moveTo(hotspot, ((transX0 + transX1) / 2.0), transZero);
-                lineTo(hotspot, ((transX0 + transX1) / 2.0), ((transY0 + transY1) / 2.0));
-                lineTo(hotspot, transX1, transY1);
-                lineTo(hotspot, ((transX1 + transX2) / 2.0), ((transY1 + transY2) / 2.0));
-                lineTo(hotspot, ((transX1 + transX2) / 2.0), transZero);
-            }
-            hotspot.closePath();
-
-            // limit the entity hotspot area to the data area
+            GeneralPath hotspot = hotspot(plot, transX1, transY1, transX0, transY0, transX2, transY2, transZero);
+			// limit the entity hotspot area to the data area
             Area dataAreaHotspot = new Area(hotspot);
             dataAreaHotspot.intersect(new Area(dataArea));
 
@@ -619,6 +586,74 @@ public class XYAreaRenderer extends AbstractXYItemRenderer
         }
 
     }
+
+	private Shape area(Rectangle2D dataArea, int series, XYAreaRenderer.XYAreaRendererState areaState) {
+		Shape area = areaState.area;
+		Stroke outlineStroke = lookupSeriesOutlineStroke(series);
+		if (outlineStroke instanceof BasicStroke) {
+			BasicStroke bs = (BasicStroke) outlineStroke;
+			if (bs.getDashArray() != null) {
+				Area poly = poly(dataArea, areaState);
+				area = poly;
+			}
+		}
+		return area;
+	}
+
+	private Area poly(Rectangle2D dataArea, XYAreaRenderer.XYAreaRendererState areaState) {
+		Area poly = new Area(areaState.area);
+		Area clip = new Area(new Rectangle2D.Double(dataArea.getX() - 5.0, dataArea.getY() - 5.0,
+				dataArea.getWidth() + 10.0, dataArea.getHeight() + 10.0));
+		poly.intersect(clip);
+		return poly;
+	}
+
+	private void crosshairState(Rectangle2D dataArea, XYPlot plot, ValueAxis domainAxis, ValueAxis rangeAxis,
+			XYDataset dataset, int series, int item, CrosshairState crosshairState) {
+		double x1 = dataset.getXValue(series, item);
+		double y1 = y1(dataset, series, item);
+		double transX1 = domainAxis.valueToJava2D(x1, dataArea, plot.getDomainAxisEdge());
+		double transY1 = rangeAxis.valueToJava2D(y1, dataArea, plot.getRangeAxisEdge());
+		PlotOrientation orientation = plot.getOrientation();
+		int datasetIndex = plot.indexOf(dataset);
+		updateCrosshairValues(crosshairState, x1, y1, datasetIndex, transX1, transY1, orientation);
+	}
+
+	private double y1(XYDataset dataset, int series, int item) {
+		double y1 = dataset.getYValue(series, item);
+		if (Double.isNaN(y1)) {
+			y1 = 0.0;
+		}
+		return y1;
+	}
+
+	private double y0(XYDataset dataset, int series, int item) {
+		double y0 = dataset.getYValue(series, Math.max(item - 1, 0));
+		if (Double.isNaN(y0)) {
+			y0 = 0.0;
+		}
+		return y0;
+	}
+
+	private GeneralPath hotspot(XYPlot plot, double transX1, double transY1, double transX0, double transY0,
+			double transX2, double transY2, double transZero) {
+		GeneralPath hotspot = new GeneralPath();
+		if (plot.getOrientation() == PlotOrientation.HORIZONTAL) {
+			moveTo(hotspot, transZero, ((transX0 + transX1) / 2.0));
+			lineTo(hotspot, ((transY0 + transY1) / 2.0), ((transX0 + transX1) / 2.0));
+			lineTo(hotspot, transY1, transX1);
+			lineTo(hotspot, ((transY1 + transY2) / 2.0), ((transX1 + transX2) / 2.0));
+			lineTo(hotspot, transZero, ((transX1 + transX2) / 2.0));
+		} else {
+			moveTo(hotspot, ((transX0 + transX1) / 2.0), transZero);
+			lineTo(hotspot, ((transX0 + transX1) / 2.0), ((transY0 + transY1) / 2.0));
+			lineTo(hotspot, transX1, transY1);
+			lineTo(hotspot, ((transX1 + transX2) / 2.0), ((transY1 + transY2) / 2.0));
+			lineTo(hotspot, ((transX1 + transX2) / 2.0), transZero);
+		}
+		hotspot.closePath();
+		return hotspot;
+	}
 
     /**
      * Returns a clone of the renderer.

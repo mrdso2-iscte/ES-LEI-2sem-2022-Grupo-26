@@ -181,16 +181,19 @@ class DefaultValueAxisEditor extends DefaultAxisEditor
         tickUnitPanel.setBorder(BorderFactory.createEmptyBorder(4, 4, 4, 4));
 
         tickUnitPanel.add(new JPanel());
-        this.autoTickUnitSelectionCheckBox = new JCheckBox(
-                localizationResources.getString("Auto-TickUnit_Selection"),
-                this.autoTickUnitSelection);
-        this.autoTickUnitSelectionCheckBox.setActionCommand("AutoTickOnOff");
-        this.autoTickUnitSelectionCheckBox.addActionListener(this);
+        autoTickUnitSelectionCheckBox();
+		this.autoTickUnitSelectionCheckBox.setActionCommand("AutoTickOnOff");
         tickUnitPanel.add(this.autoTickUnitSelectionCheckBox);
         tickUnitPanel.add(new JPanel());
 
         return tickUnitPanel;
     }
+
+	private void autoTickUnitSelectionCheckBox() {
+		this.autoTickUnitSelectionCheckBox = new JCheckBox(localizationResources.getString("Auto-TickUnit_Selection"),
+				this.autoTickUnitSelection);
+		this.autoTickUnitSelectionCheckBox.addActionListener(this);
+	}
 
     /**
      * Getter for the {@link #autoTickUnitSelection} flag.
@@ -366,39 +369,45 @@ class DefaultValueAxisEditor extends DefaultAxisEditor
      * Revalidate the range minimum.
      */
     public void validateMinimum() {
-        double newMin;
-        try {
-            newMin = Double.parseDouble(this.minimumRangeValue.getText());
-            if (newMin >= this.maximumValue) {
-                newMin = this.minimumValue;
-            }
-        }
-        catch (NumberFormatException e) {
-            newMin = this.minimumValue;
-        }
-
-        this.minimumValue = newMin;
+        double newMin = newMin();
+		this.minimumValue = newMin;
         this.minimumRangeValue.setText(Double.toString(this.minimumValue));
     }
+
+	private double newMin() {
+		double newMin;
+		try {
+			newMin = Double.parseDouble(this.minimumRangeValue.getText());
+			if (newMin >= this.maximumValue) {
+				newMin = this.minimumValue;
+			}
+		} catch (NumberFormatException e) {
+			newMin = this.minimumValue;
+		}
+		return newMin;
+	}
 
     /**
      * Revalidate the range maximum.
      */
     public void validateMaximum() {
-        double newMax;
-        try {
-            newMax = Double.parseDouble(this.maximumRangeValue.getText());
-            if (newMax <= this.minimumValue) {
-                newMax = this.maximumValue;
-            }
-        }
-        catch (NumberFormatException e) {
-            newMax = this.maximumValue;
-        }
-
-        this.maximumValue = newMax;
+        double newMax = newMax();
+		this.maximumValue = newMax;
         this.maximumRangeValue.setText(Double.toString(this.maximumValue));
     }
+
+	private double newMax() {
+		double newMax;
+		try {
+			newMax = Double.parseDouble(this.maximumRangeValue.getText());
+			if (newMax <= this.minimumValue) {
+				newMax = this.maximumValue;
+			}
+		} catch (NumberFormatException e) {
+			newMax = this.maximumValue;
+		}
+		return newMax;
+	}
 
     /**
      * Sets the properties of the specified axis to match the properties
@@ -409,11 +418,16 @@ class DefaultValueAxisEditor extends DefaultAxisEditor
     @Override
     public void setAxisProperties(Axis axis) {
         super.setAxisProperties(axis);
-        ValueAxis valueAxis = (ValueAxis) axis;
-        valueAxis.setAutoRange(this.autoRange);
-        if (!this.autoRange) {
-            valueAxis.setRange(this.minimumValue, this.maximumValue);
-        }
-        valueAxis.setAutoTickUnitSelection(this.autoTickUnitSelection);
+        ValueAxis valueAxis = valueAxis(axis);
     }
+
+	private ValueAxis valueAxis(Axis axis) {
+		ValueAxis valueAxis = (ValueAxis) axis;
+		valueAxis.setAutoRange(this.autoRange);
+		if (!this.autoRange) {
+			valueAxis.setRange(this.minimumValue, this.maximumValue);
+		}
+		valueAxis.setAutoTickUnitSelection(this.autoTickUnitSelection);
+		return valueAxis;
+	}
 }

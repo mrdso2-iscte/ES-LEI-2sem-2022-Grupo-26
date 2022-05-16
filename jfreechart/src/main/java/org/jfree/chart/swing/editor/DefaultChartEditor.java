@@ -258,10 +258,14 @@ class DefaultChartEditor extends JPanel implements ActionListener, ChartEditor {
      */
     @Override
     public void updateChart(JFreeChart chart) {
-        this.titleEditor.setTitleProperties(chart);
-        this.plotEditor.updatePlotProperties(chart.getPlot());
-        chart.setAntiAlias(getAntiAlias());
-        chart.setBackgroundPaint(getBackgroundPaint());
+        chart(chart);
+		this.plotEditor.updatePlotProperties(chart.getPlot());
     }
+
+	private void chart(JFreeChart chart) {
+		this.titleEditor.setTitleProperties(chart);
+		chart.setAntiAlias(getAntiAlias());
+		chart.setBackgroundPaint(getBackgroundPaint());
+	}
 
 }
