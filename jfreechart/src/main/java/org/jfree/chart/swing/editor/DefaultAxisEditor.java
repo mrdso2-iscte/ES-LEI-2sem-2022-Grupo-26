@@ -413,13 +413,15 @@ class DefaultAxisEditor extends JPanel implements ActionListener {
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
         if (result == JOptionPane.OK_OPTION) {
-            this.labelFont = panel.getSelectedFont();
-            this.labelFontField.setText(
-                this.labelFont.getFontName() + " " + this.labelFont.getSize()
-            );
+            labelFont(panel);
         }
 
     }
+
+	private void labelFont(FontChooserPanel panel) {
+		this.labelFont = panel.getSelectedFont();
+		this.labelFontField.setText(this.labelFont.getFontName() + " " + this.labelFont.getSize());
+	}
 
     /**
      * Allows the user the opportunity to change the outline paint.
@@ -445,14 +447,15 @@ class DefaultAxisEditor extends JPanel implements ActionListener {
             JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 
         if (result == JOptionPane.OK_OPTION) {
-            this.tickLabelFont = panel.getSelectedFont();
-            this.tickLabelFontField.setText(
-                this.tickLabelFont.getFontName() + " "
-                + this.tickLabelFont.getSize()
-            );
+            tickLabelFont(panel);
         }
 
     }
+
+	private void tickLabelFont(FontChooserPanel panel) {
+		this.tickLabelFont = panel.getSelectedFont();
+		this.tickLabelFontField.setText(this.tickLabelFont.getFontName() + " " + this.tickLabelFont.getSize());
+	}
 
 //    /**
 //     * Presents insets chooser panel allowing user to modify tick label's

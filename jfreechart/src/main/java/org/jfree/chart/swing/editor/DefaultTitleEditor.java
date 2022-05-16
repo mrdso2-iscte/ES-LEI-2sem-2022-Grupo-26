@@ -223,12 +223,14 @@ class DefaultTitleEditor extends JPanel implements ActionListener {
             );
 
         if (result == JOptionPane.OK_OPTION) {
-            this.titleFont = panel.getSelectedFont();
-            this.fontfield.setText(
-                this.titleFont.getFontName() + " " + this.titleFont.getSize()
-            );
+            titleFont(panel);
         }
     }
+
+	private void titleFont(FontChooserPanel panel) {
+		this.titleFont = panel.getSelectedFont();
+		this.fontfield.setText(this.titleFont.getFontName() + " " + this.titleFont.getSize());
+	}
 
     /**
      * Allow the user the opportunity to select a Paint object.  For now, we
@@ -261,11 +263,25 @@ class DefaultTitleEditor extends JPanel implements ActionListener {
      * If we are not supposed to show the title, the controls are disabled.
      */
     private void enableOrDisableControls() {
-        boolean enabled = (this.showTitle == true);
-        this.titleField.setEnabled(enabled);
-        this.selectFontButton.setEnabled(enabled);
-        this.selectPaintButton.setEnabled(enabled);
+        selectFontButton();
+		selectPaintButton();
+		titleField();
     }
+
+	private void titleField() {
+		boolean enabled = (this.showTitle == true);
+		this.titleField.setEnabled(enabled);
+	}
+
+	private void selectPaintButton() {
+		boolean enabled = (this.showTitle == true);
+		this.selectPaintButton.setEnabled(enabled);
+	}
+
+	private void selectFontButton() {
+		boolean enabled = (this.showTitle == true);
+		this.selectFontButton.setEnabled(enabled);
+	}
 
     /**
      * Sets the properties of the specified title to match the properties
@@ -275,18 +291,23 @@ class DefaultTitleEditor extends JPanel implements ActionListener {
      */
     public void setTitleProperties(JFreeChart chart) {
         if (this.showTitle) {
-            TextTitle title = chart.getTitle();
-            if (title == null) {
-                title = new TextTitle();
-                chart.setTitle(title);
-            }
-            title.setText(getTitleText());
-            title.setFont(getTitleFont());
-            title.setPaint(getTitlePaint());
+            TextTitle title = title(chart);
         }
         else {
             chart.setTitle((TextTitle) null);
         }
     }
+
+	private TextTitle title(JFreeChart chart) {
+		TextTitle title = chart.getTitle();
+		if (title == null) {
+			title = new TextTitle();
+			chart.setTitle(title);
+		}
+		title.setText(getTitleText());
+		title.setFont(getTitleFont());
+		title.setPaint(getTitlePaint());
+		return title;
+	}
 
 }
