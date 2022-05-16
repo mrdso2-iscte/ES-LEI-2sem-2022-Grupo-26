@@ -3033,27 +3033,30 @@ public abstract class AbstractRenderer implements ChartElement, Cloneable, Seria
      * @throws ClassNotFoundException  if there is a classpath problem.
      */
     private void readObject(ObjectInputStream stream) throws IOException, ClassNotFoundException {
-        stream.defaultReadObject();
-        this.seriesPaintMap = SerialUtils.readMapOfPaint(stream);
-        this.defaultPaint = SerialUtils.readPaint(stream);
-        this.seriesFillPaintMap = SerialUtils.readMapOfPaint(stream);
-        this.defaultFillPaint = SerialUtils.readPaint(stream);
-        this.seriesOutlinePaintMap = SerialUtils.readMapOfPaint(stream);
-        this.defaultOutlinePaint = SerialUtils.readPaint(stream);
-        this.seriesStrokeMap = SerialUtils.readMapOfStroke(stream);
-        this.defaultStroke = SerialUtils.readStroke(stream);
-        this.seriesOutlineStrokeMap = SerialUtils.readMapOfStroke(stream);
-        this.defaultOutlineStroke = SerialUtils.readStroke(stream);
-        this.defaultShape = SerialUtils.readShape(stream);
-        this.itemLabelPaints = SerialUtils.readMapOfPaint(stream);
-        this.defaultItemLabelPaint = SerialUtils.readPaint(stream);
-        this.defaultLegendShape = SerialUtils.readShape(stream);
-        this.legendTextPaints = SerialUtils.readMapOfPaint(stream);
-        this.defaultLegendTextPaint = SerialUtils.readPaint(stream);
-
-        // listeners are not restored automatically, but storage must be
+        stream(stream);
+		// listeners are not restored automatically, but storage must be
         // provided...
         this.listenerList = new EventListenerList();
     }
+
+	private void stream(ObjectInputStream stream) throws IOException, ClassNotFoundException {
+		stream.defaultReadObject();
+		this.seriesPaintMap = SerialUtils.readMapOfPaint(stream);
+		this.defaultPaint = SerialUtils.readPaint(stream);
+		this.seriesFillPaintMap = SerialUtils.readMapOfPaint(stream);
+		this.defaultFillPaint = SerialUtils.readPaint(stream);
+		this.seriesOutlinePaintMap = SerialUtils.readMapOfPaint(stream);
+		this.defaultOutlinePaint = SerialUtils.readPaint(stream);
+		this.seriesStrokeMap = SerialUtils.readMapOfStroke(stream);
+		this.defaultStroke = SerialUtils.readStroke(stream);
+		this.seriesOutlineStrokeMap = SerialUtils.readMapOfStroke(stream);
+		this.defaultOutlineStroke = SerialUtils.readStroke(stream);
+		this.defaultShape = SerialUtils.readShape(stream);
+		this.itemLabelPaints = SerialUtils.readMapOfPaint(stream);
+		this.defaultItemLabelPaint = SerialUtils.readPaint(stream);
+		this.defaultLegendShape = SerialUtils.readShape(stream);
+		this.legendTextPaints = SerialUtils.readMapOfPaint(stream);
+		this.defaultLegendTextPaint = SerialUtils.readPaint(stream);
+	}
 
 }

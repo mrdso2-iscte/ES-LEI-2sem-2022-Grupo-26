@@ -388,30 +388,48 @@ public class DefaultPolarItemRenderer extends AbstractRenderer
         if (!getItemCreateEntity(series, item)) {
             return;
         }
-        Shape hotspot = area;
-        if (hotspot == null) {
-            double r = getDefaultEntityRadius();
-            double w = r * 2;
-            if (getPlot().getOrientation() == PlotOrientation.VERTICAL) {
-                hotspot = new Ellipse2D.Double(entityX - r, entityY - r, w, w);
-            }
-            else {
-                hotspot = new Ellipse2D.Double(entityY - r, entityX - r, w, w);
-            }
-        }
-        String tip = null;
-        XYToolTipGenerator generator = getToolTipGenerator(series, item);
-        if (generator != null) {
-            tip = generator.generateToolTip(dataset, series, item);
-        }
-        String url = null;
-        if (getURLGenerator() != null) {
-            url = getURLGenerator().generateURL(dataset, series, item);
-        }
-        XYItemEntity entity = new XYItemEntity(hotspot, dataset, series, item,
-                tip, url);
-        entities.add(entity);
+        XYItemEntity entity = entity(area, dataset, series, item, entityX, entityY);
+		entities.add(entity);
     }
+
+	private XYItemEntity entity(Shape area, XYDataset dataset, int series, int item, double entityX, double entityY) {
+		Shape hotspot = hotspot(area, entityX, entityY);
+		String tip = tip(dataset, series, item);
+		String url = url(dataset, series, item);
+		XYItemEntity entity = new XYItemEntity(hotspot, dataset, series, item, tip, url);
+		return entity;
+	}
+
+	private String url(XYDataset dataset, int series, int item) {
+		String url = null;
+		if (getURLGenerator() != null) {
+			url = getURLGenerator().generateURL(dataset, series, item);
+		}
+		return url;
+	}
+
+	private String tip(XYDataset dataset, int series, int item) {
+		String tip = null;
+		XYToolTipGenerator generator = getToolTipGenerator(series, item);
+		if (generator != null) {
+			tip = generator.generateToolTip(dataset, series, item);
+		}
+		return tip;
+	}
+
+	private Shape hotspot(Shape area, double entityX, double entityY) {
+		Shape hotspot = area;
+		if (hotspot == null) {
+			double r = getDefaultEntityRadius();
+			double w = r * 2;
+			if (getPlot().getOrientation() == PlotOrientation.VERTICAL) {
+				hotspot = new Ellipse2D.Double(entityX - r, entityY - r, w, w);
+			} else {
+				hotspot = new Ellipse2D.Double(entityY - r, entityX - r, w, w);
+			}
+		}
+		return hotspot;
+	}
 
     /**
      * Plots the data for a given series.
@@ -578,29 +596,37 @@ public class DefaultPolarItemRenderer extends AbstractRenderer
         g2.setPaint(plot.getRadiusGridlinePaint());
         g2.setStroke(plot.getRadiusGridlineStroke());
 
-        double centerValue;
-        if (radialAxis.isInverted()) {
-            centerValue = radialAxis.getUpperBound();
-        } else {
-            centerValue = radialAxis.getLowerBound();
-        }
-        Point center = plot.translateToJava2D(0, centerValue, radialAxis, dataArea);
+        double centerValue = centerValue(radialAxis);
+		Point center = plot.translateToJava2D(0, centerValue, radialAxis, dataArea);
 
         for (Object o : ticks) {
-            NumberTick tick = (NumberTick) o;
-            double angleDegrees = plot.isCounterClockwise()
-                    ? plot.getAngleOffset() : -plot.getAngleOffset();
-            Point p = plot.translateToJava2D(angleDegrees,
-                    tick.getNumber().doubleValue(), radialAxis, dataArea);
-            int r = p.x - center.x;
-            int upperLeftX = center.x - r;
-            int upperLeftY = center.y - r;
-            int d = 2 * r;
-            Ellipse2D ring = new Ellipse2D.Double(upperLeftX, upperLeftY, d, d);
-            g2.setPaint(plot.getRadiusGridlinePaint());
+            Ellipse2D ring = ring(plot, radialAxis, dataArea, center, o);
+			g2.setPaint(plot.getRadiusGridlinePaint());
             g2.draw(ring);
         }
     }
+
+	private double centerValue(ValueAxis radialAxis) {
+		double centerValue;
+		if (radialAxis.isInverted()) {
+			centerValue = radialAxis.getUpperBound();
+		} else {
+			centerValue = radialAxis.getLowerBound();
+		}
+		return centerValue;
+	}
+
+	private Ellipse2D ring(PolarPlot plot, ValueAxis radialAxis, Rectangle2D dataArea, Point center, Object o) {
+		NumberTick tick = (NumberTick) o;
+		double angleDegrees = plot.isCounterClockwise() ? plot.getAngleOffset() : -plot.getAngleOffset();
+		Point p = plot.translateToJava2D(angleDegrees, tick.getNumber().doubleValue(), radialAxis, dataArea);
+		int r = p.x - center.x;
+		int upperLeftX = center.x - r;
+		int upperLeftY = center.y - r;
+		int d = 2 * r;
+		Ellipse2D ring = new Ellipse2D.Double(upperLeftX, upperLeftY, d, d);
+		return ring;
+	}
 
     /**
      * Return the legend for the given series.
@@ -636,14 +662,8 @@ public class DefaultPolarItemRenderer extends AbstractRenderer
         String label = seriesKey.toString();
         String description = label;
         Shape shape = lookupSeriesShape(series);
-        Paint paint;
-        if (this.useFillPaint) {
-            paint = lookupSeriesFillPaint(series);
-        }
-        else {
-            paint = lookupSeriesPaint(series);
-        }
-        Stroke stroke = lookupSeriesStroke(series);
+        Paint paint = paint(series);
+		Stroke stroke = lookupSeriesStroke(series);
         Paint outlinePaint = lookupSeriesOutlinePaint(series);
         Stroke outlineStroke = lookupSeriesOutlineStroke(series);
         boolean shapeOutlined = isSeriesFilled(series)
@@ -660,6 +680,16 @@ public class DefaultPolarItemRenderer extends AbstractRenderer
 
         return result;
     }
+
+	private Paint paint(int series) {
+		Paint paint;
+		if (this.useFillPaint) {
+			paint = lookupSeriesFillPaint(series);
+		} else {
+			paint = lookupSeriesPaint(series);
+		}
+		return paint;
+	}
 
     /**
      * Returns the tooltip generator for the specified series and item.
