@@ -1257,35 +1257,15 @@ public class PolarPlot extends Plot implements ValueAxisPlot, Zoomable,
             return;
         }
 
-        // record the plot area...
-        if (info != null) {
-            info.setPlotArea(area);
-        }
-
-        // adjust the drawing area for the plot insets (if any)...
+        info(area, info);
+		// adjust the drawing area for the plot insets (if any)...
         RectangleInsets insets = getInsets();
         insets.trim(area);
 
-        Rectangle2D dataArea = area;
-        if (info != null) {
-            info.setDataArea(dataArea);
-        }
-
+        AxisState state = state(g2, area);
+		Rectangle2D dataArea = area;
         // draw the plot background and axes...
         drawBackground(g2, dataArea);
-        int axisCount = this.axes.size();
-        AxisState state = null;
-        for (int i = 0; i < axisCount; i++) {
-            ValueAxis axis = getAxis(i);
-            if (axis != null) {
-                PolarAxisLocation location = this.axisLocations.get(i);
-                AxisState s = drawAxis(axis, location, g2, dataArea);
-                if (i == 0) {
-                    state = s;
-                }
-            }
-        }
-
         // now for each dataset, get the renderer and the appropriate axis
         // and render the dataset...
         Shape originalClip = g2.getClip();
@@ -1303,6 +1283,33 @@ public class PolarPlot extends Plot implements ValueAxisPlot, Zoomable,
         drawCornerTextItems(g2, dataArea);
     }
 
+	private void info(Rectangle2D area, PlotRenderingInfo info) {
+		if (info != null) {
+			info.setPlotArea(area);
+		}
+		Rectangle2D dataArea = area;
+		if (info != null) {
+			info.setDataArea(dataArea);
+		}
+	}
+
+	private AxisState state(Graphics2D g2, Rectangle2D area) {
+		Rectangle2D dataArea = area;
+		int axisCount = this.axes.size();
+		AxisState state = null;
+		for (int i = 0; i < axisCount; i++) {
+			ValueAxis axis = getAxis(i);
+			if (axis != null) {
+				PolarAxisLocation location = this.axisLocations.get(i);
+				AxisState s = drawAxis(axis, location, g2, dataArea);
+				if (i == 0) {
+					state = s;
+				}
+			}
+		}
+		return state;
+	}
+
     /**
      * Draws the corner text items.
      *
@@ -1316,19 +1323,15 @@ public class PolarPlot extends Plot implements ValueAxisPlot, Zoomable,
 
         g2.setColor(Color.BLACK);
         double width = 0.0;
-        double height = 0.0;
-        for (String msg : this.cornerTextItems) {
+        double height = height(g2);
+		for (String msg : this.cornerTextItems) {
             FontMetrics fm = g2.getFontMetrics();
             Rectangle2D bounds = TextUtils.getTextBounds(msg, g2, fm);
             width = Math.max(width, bounds.getWidth());
-            height += bounds.getHeight();
         }
 
         double xadj = ANNOTATION_MARGIN * 2.0;
-        double yadj = ANNOTATION_MARGIN;
         width += xadj;
-        height += yadj;
-
         double x = area.getMaxX() - width;
         double y = area.getMaxY() - height;
         g2.drawRect((int) x, (int) y, (int) width, (int) height);
@@ -1340,6 +1343,18 @@ public class PolarPlot extends Plot implements ValueAxisPlot, Zoomable,
             g2.drawString(msg, (int) x, (int) y);
         }
     }
+
+	private double height(Graphics2D g2) {
+		double height = 0.0;
+		for (String msg : this.cornerTextItems) {
+			FontMetrics fm = g2.getFontMetrics();
+			Rectangle2D bounds = TextUtils.getTextBounds(msg, g2, fm);
+			height += bounds.getHeight();
+		}
+		double yadj = ANNOTATION_MARGIN;
+		height += yadj;
+		return height;
+	}
 
     /**
      * Draws the axis with the specified index.
@@ -1354,58 +1369,72 @@ public class PolarPlot extends Plot implements ValueAxisPlot, Zoomable,
     protected AxisState drawAxis(ValueAxis axis, PolarAxisLocation location,
             Graphics2D g2, Rectangle2D plotArea) {
 
-        double centerX = plotArea.getCenterX();
+        Rectangle2D dataArea = dataArea(location, plotArea);
+		double centerX = plotArea.getCenterX();
         double centerY = plotArea.getCenterY();
-        double r = Math.min(plotArea.getWidth() / 2.0,
-                plotArea.getHeight() / 2.0) - this.margin;
-        double x = centerX - r;
-        double y = centerY - r;
-
-        Rectangle2D dataArea = null;
         AxisState result = null;
         if (location == PolarAxisLocation.NORTH_RIGHT) {
-            dataArea = new Rectangle2D.Double(x, y, r, r);
             result = axis.draw(g2, centerX, plotArea, dataArea,
                     RectangleEdge.RIGHT, null);
         }
         else if (location == PolarAxisLocation.NORTH_LEFT) {
-            dataArea = new Rectangle2D.Double(centerX, y, r, r);
             result = axis.draw(g2, centerX, plotArea, dataArea,
                     RectangleEdge.LEFT, null);
         }
         else if (location == PolarAxisLocation.SOUTH_LEFT) {
-            dataArea = new Rectangle2D.Double(centerX, centerY, r, r);
             result = axis.draw(g2, centerX, plotArea, dataArea,
                     RectangleEdge.LEFT, null);
         }
         else if (location == PolarAxisLocation.SOUTH_RIGHT) {
-            dataArea = new Rectangle2D.Double(x, centerY, r, r);
             result = axis.draw(g2, centerX, plotArea, dataArea,
                     RectangleEdge.RIGHT, null);
         }
         else if (location == PolarAxisLocation.EAST_ABOVE) {
-            dataArea = new Rectangle2D.Double(centerX, centerY, r, r);
             result = axis.draw(g2, centerY, plotArea, dataArea,
                     RectangleEdge.TOP, null);
         }
         else if (location == PolarAxisLocation.EAST_BELOW) {
-            dataArea = new Rectangle2D.Double(centerX, y, r, r);
             result = axis.draw(g2, centerY, plotArea, dataArea,
                     RectangleEdge.BOTTOM, null);
         }
         else if (location == PolarAxisLocation.WEST_ABOVE) {
-            dataArea = new Rectangle2D.Double(x, centerY, r, r);
             result = axis.draw(g2, centerY, plotArea, dataArea,
                     RectangleEdge.TOP, null);
         }
         else if (location == PolarAxisLocation.WEST_BELOW) {
-            dataArea = new Rectangle2D.Double(x, y, r, r);
             result = axis.draw(g2, centerY, plotArea, dataArea,
                     RectangleEdge.BOTTOM, null);
         }
 
         return result;
     }
+
+	private Rectangle2D dataArea(PolarAxisLocation location, Rectangle2D plotArea) {
+		double centerX = plotArea.getCenterX();
+		double centerY = plotArea.getCenterY();
+		double r = Math.min(plotArea.getWidth() / 2.0, plotArea.getHeight() / 2.0) - this.margin;
+		double x = centerX - r;
+		double y = centerY - r;
+		Rectangle2D dataArea = null;
+		if (location == PolarAxisLocation.NORTH_RIGHT) {
+			dataArea = new Rectangle2D.Double(x, y, r, r);
+		} else if (location == PolarAxisLocation.NORTH_LEFT) {
+			dataArea = new Rectangle2D.Double(centerX, y, r, r);
+		} else if (location == PolarAxisLocation.SOUTH_LEFT) {
+			dataArea = new Rectangle2D.Double(centerX, centerY, r, r);
+		} else if (location == PolarAxisLocation.SOUTH_RIGHT) {
+			dataArea = new Rectangle2D.Double(x, centerY, r, r);
+		} else if (location == PolarAxisLocation.EAST_ABOVE) {
+			dataArea = new Rectangle2D.Double(centerX, centerY, r, r);
+		} else if (location == PolarAxisLocation.EAST_BELOW) {
+			dataArea = new Rectangle2D.Double(centerX, y, r, r);
+		} else if (location == PolarAxisLocation.WEST_ABOVE) {
+			dataArea = new Rectangle2D.Double(x, centerY, r, r);
+		} else if (location == PolarAxisLocation.WEST_BELOW) {
+			dataArea = new Rectangle2D.Double(x, y, r, r);
+		}
+		return dataArea;
+	}
 
     /**
      * Draws a representation of the data within the dataArea region, using the
